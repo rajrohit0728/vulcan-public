@@ -1,0 +1,113 @@
+version: v1alpha
+type: vulcan
+name: trino-bq
+owner: rohitrajtmdcio
+tags:
+  - trino
+  - managed-trino
+  - bigquery
+  - secret-catalog
+description: >
+  Managed Trino demo — BigQuery catalog via trino.catalog.config secret
+  (no depot). Quick-sanity layered pipeline with CSV seeds, dq, audits,
+  tests, macros, semantics, an  d metrics.
+spec:
+  runAsUser: "rohitrajtmdcio"
+  compute: engineering-compute
+  engine: trino
+  repo:
+    url: https://github.com/rajrohit0728/vulcan-public
+    syncFlags:
+      - "--ref=main"
+      - "--submodules=off"
+    baseDir: bigquery
+    # secretId: engineering:git-sync-rr
+
+  # No depots — BigQuery catalog from trino.catalog.config only.
+  # Secret keys must be Trino catalog property names (see bigqueryrr.yaml).
+  trino:
+    catalog:
+      config:
+        - "engineering:bigqueryrr"
+
+    coordinator:
+      trinoServerConfig:
+        jvmConfig: |
+          -server
+          -Xmx4G
+          -XX:+UseG1GC
+          -XX:G1HeapRegionSize=32M
+          -XX:+UseGCOverheadLimit
+          -XX:+ExplicitGCInvokesConcurrent
+          -XX:+HeapDumpOnOutOfMemoryError
+          -Djdk.attach.allowAttachSelf=true
+          --enable-native-access=ALL-UNNAMED
+          --add-opens=java.base/java.nio=ALL-UNNAMED
+          --sun-misc-unsafe-memory-access=allow
+        logProperties: |
+          io.trino=INFO
+    workers:
+      replicas: 1
+      trinoServerConfig:
+        jvmConfig: |
+          -server
+          -Xmx4G
+          -XX:+UseG1GC
+          -XX:G1HeapRegionSize=32M
+          -XX:+UseGCOverheadLimit
+          -XX:+ExplicitGCInvokesConcurrent
+          -XX:+HeapDumpOnOutOfMemoryError
+          -Djdk.attach.allowAttachSelf=true
+          --enable-native-access=ALL-UNNAMED
+          --add-opens=java.base/java.nio=ALL-UNNAMED
+          --sun-misc-unsafe-memory-access=allow
+        logProperties: |
+          io.trino=INFO
+
+  workflow:
+    logLevel: INFO
+    schedule:
+      crons:
+        - "0 */6 * * *"
+      endOn: "2027-01-01T00:00:00-00:00"
+      timezone: "UTC"
+      concurrencyPolicy: Forbid
+    resource:
+      request:
+        cpu: "1000m"
+        memory: "2Gi"
+      limit:
+        cpu: "2000m"
+        memory: "4Gi"
+    plan:
+      command:
+        - vulcan
+      arguments:
+        - --log-to-stdout
+        - plan
+        - --auto-apply
+    run:
+      command:
+        - vulcan
+      arguments:
+        - --log-to-stdout
+        - run
+
+  # Vulcan gateway catalog (no depots on this DP).
+  use:
+    projection:
+      projections:
+        envVars:
+          - key: TRINO_CATALOG
+            template: "bigqueryrr"
+
+  api:
+    replicas: 1
+    logLevel: INFO
+    resource:
+      request:
+        cpu: "1000m"
+        memory: "2Gi"
+      limit:
+        cpu: "2000m"
+        memory: "4Gi"

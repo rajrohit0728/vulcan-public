@@ -1,0 +1,24 @@
+kind: dq
+name: dim_customers_dq
+depends_on: bigqueryrr.mart_v3_vnew.dim_customers
+
+profiles:
+  - region
+  - customer_tier
+  - region_tier
+  - priority_rank
+
+rules:
+  - row_count > 0:
+      name: has_rows
+      dimension: completeness
+  - missing_count(customer_id) = 0:
+      name: no_missing_customer_id
+      dimension: completeness
+  - duplicate_count(customer_id) = 0:
+      name: unique_customer_id
+      dimension: uniqueness
+  - missing_count(region_tier) = 0:
+      name: no_missing_region_tier
+      dimension: completeness
+      description: Every customer should resolve to a region tier via the lookup join.

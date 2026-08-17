@@ -1,0 +1,26 @@
+kind: dq
+name: mart_sales_summary_dq
+depends_on: bigqueryrr.mart_v3_vnew.mart_sales_summary
+
+profiles:
+  - order_count
+  - total_quantity
+  - total_net_amount
+
+rules:
+  - row_count > 0:
+      name: has_rows
+      dimension: completeness
+  - missing_count(order_date) = 0:
+      name: no_missing_order_date
+      dimension: completeness
+  - failed rows:
+      name: unique_grain
+      dimension: uniqueness
+      fail query: |
+        SELECT order_date, region, category, COUNT(*) AS cnt
+        FROM bigqueryrr.mart_v3_vnew.mart_sales_summary
+        GROUP BY order_date, region, category
+        HAVING COUNT(*) > 1
+      samples limit: 5
+      description: "One row per order_date/region/category grain"
