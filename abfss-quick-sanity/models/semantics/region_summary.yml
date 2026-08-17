@@ -1,0 +1,30 @@
+kind: semantic
+name: region_summary
+depends_on: abfsslhdepotrr.mart_v3_vnew.region_order_summary
+description: Regional order and revenue rollup for Explore demos.
+
+dimensions:
+  - region
+  - customer_count
+  - order_count
+  - total_net_amount
+  - avg_order_value
+
+measures:
+  - name: customer_count_sum
+    type: sum
+    expression: "{region_summary.customer_count}"
+  - name: order_count_sum
+    type: sum
+    expression: "{region_summary.order_count}"
+  - name: total_net_amount_sum
+    type: sum
+    expression: "{region_summary.total_net_amount}"
+  - name: avg_order_value_avg
+    type: avg
+    expression: "{region_summary.avg_order_value}"
+
+tags:
+  - sales
+  - region
+  - demo

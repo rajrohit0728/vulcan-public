@@ -1,0 +1,27 @@
+kind: dq
+name: dim_customers_dq
+depends_on: abfsslhdepotrr.mart_v3_vnew.dim_customers
+
+profiles:
+  - region
+  - customer_tier
+  - region_tier
+  - priority_rank
+
+rules:
+  - row_count > 0:
+      name: has_rows
+      dimension: completeness
+      description: "dim_customers should never produce an empty result set"
+  - missing_count(customer_id) = 0:
+      name: no_missing_customer_id
+      dimension: completeness
+      description: "customer_id is required on every dimension row"
+  - duplicate_count(customer_id) = 0:
+      name: unique_customer_id
+      dimension: uniqueness
+      description: "customer_id should be unique per row in the dimension"
+  - missing_count(region_tier) = 0:
+      name: no_missing_region_tier
+      dimension: completeness
+      description: Every customer should resolve to a region tier via the lookup join.

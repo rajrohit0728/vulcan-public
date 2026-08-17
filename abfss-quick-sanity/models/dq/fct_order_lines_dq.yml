@@ -1,0 +1,41 @@
+kind: dq
+name: fct_order_lines_dq
+depends_on: abfsslhdepotrr.mart_v3_vnew.fct_order_lines
+
+profiles:
+  - quantity
+  - unit_price
+  - discount_pct
+  - net_amount
+
+rules:
+  - row_count > 0:
+      name: has_rows
+      dimension: completeness
+      description: "fct_order_lines should never produce an empty result set"
+  - missing_count(order_item_id) = 0:
+      name: no_missing_order_item_id
+      dimension: completeness
+      description: "order_item_id is required on every fact row"
+  - duplicate_count(order_item_id) = 0:
+      name: unique_order_item_id
+      dimension: uniqueness
+      description: "order_item_id should be unique per row in the fact table"
+  - failed rows:
+      name: no_negative_net_amount
+      dimension: validity
+      fail query: |
+        SELECT order_item_id, net_amount
+        FROM abfsslhdepotrr.mart_v3_vnew.fct_order_lines
+        WHERE net_amount < 0
+      samples limit: 5
+      description: "net_amount should not be negative"
+  - failed rows:
+      name: discount_in_range
+      dimension: validity
+      fail query: |
+        SELECT order_item_id, discount_pct
+        FROM abfsslhdepotrr.mart_v3_vnew.fct_order_lines
+        WHERE discount_pct < 0 OR discount_pct > 100
+      samples limit: 5
+      description: "discount_pct must be within [0, 100]"

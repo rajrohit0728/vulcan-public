@@ -1,0 +1,5 @@
+region,region_tier,priority_rank
+US-West,strategic,1
+US-East,strategic,2
+EU-West,standard,3
+APAC,standard,4

@@ -1,0 +1,44 @@
+test_int_customers_enriched:
+  model: abfsslhdepotrr.intermediate_v3_vnew.int_customers_enriched
+  inputs:
+    abfsslhdepotrr.staging_v3_vnew.stg_customers:
+      rows:
+        - customer_id: 1
+          name: Alice Johnson
+          email: alice.johnson@example.com
+          region: US-West
+          customer_tier: Gold
+          signup_date: "2024-01-12"
+        - customer_id: 4
+          name: Diego Patel
+          email: diego.patel@example.com
+          region: EU-West
+          customer_tier: Bronze
+          signup_date: "2024-03-11"
+    abfsslhdepotrr.staging_v3_vnew.stg_region_tier:
+      rows:
+        - region: US-West
+          region_tier: strategic
+          priority_rank: 1
+        - region: EU-West
+          region_tier: standard
+          priority_rank: 3
+  outputs:
+    query:
+      rows:
+        - customer_id: 1
+          name: Alice Johnson
+          email: alice.johnson@example.com
+          region: US-West
+          customer_tier: Gold
+          signup_date: "2024-01-12"
+          region_tier: strategic
+          priority_rank: 1
+        - customer_id: 4
+          name: Diego Patel
+          email: diego.patel@example.com
+          region: EU-West
+          customer_tier: Bronze
+          signup_date: "2024-03-11"
+          region_tier: standard
+          priority_rank: 3

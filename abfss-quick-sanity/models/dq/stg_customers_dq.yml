@@ -1,0 +1,21 @@
+kind: dq
+name: stg_customers_dq
+depends_on: abfsslhdepotrr.staging_v3_vnew.stg_customers
+
+profiles:
+  - region
+  - customer_tier
+
+rules:
+  - row_count > 0:
+      name: has_rows
+      dimension: completeness
+      description: "stg_customers should never produce an empty result set"
+  - missing_count(customer_id) = 0:
+      name: no_missing_customer_id
+      dimension: completeness
+      description: "customer_id is required on every staged row"
+  - duplicate_count(customer_id) = 0:
+      name: unique_customer_id
+      dimension: uniqueness
+      description: "customer_id should be unique per row in staging"

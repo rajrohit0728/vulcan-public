@@ -1,0 +1,11 @@
+kind: metric
+name: orders_by_region
+measure: order_lines.order_count
+ts: order_lines.order_timestamp
+granularity: month
+dimensions:
+  - order_lines.region
+description: Monthly distinct order count by customer region.
+tags:
+  - sales
+  - orders

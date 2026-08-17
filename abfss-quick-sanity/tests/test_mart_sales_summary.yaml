@@ -1,0 +1,71 @@
+test_mart_sales_summary:
+  model: abfsslhdepotrr.mart_v3_vnew.mart_sales_summary
+  description: "Validates the daily rollup's GROUP BY / SUM / COUNT(DISTINCT ...) aggregation logic."
+  inputs:
+    abfsslhdepotrr.mart_v3_vnew.fct_order_lines:
+      rows:
+        - order_item_id: OI1
+          order_id: O1
+          order_date: "2024-05-01"
+          order_timestamp: "2024-05-01 00:00:00"
+          order_status: Completed
+          channel: Web
+          customer_id: 1
+          region: US-West
+          product_id: P001
+          product_name: Wireless Mouse
+          category: Electronics
+          quantity: 2
+          unit_price: 29.99
+          discount_pct: 0
+          net_amount: 59.98
+          order_value_tier: basic
+        - order_item_id: OI2
+          order_id: O1
+          order_date: "2024-05-01"
+          order_timestamp: "2024-05-01 00:00:00"
+          order_status: Completed
+          channel: Web
+          customer_id: 1
+          region: US-West
+          product_id: P008
+          product_name: USB-C Hub
+          category: Electronics
+          quantity: 1
+          unit_price: 19.99
+          discount_pct: 0
+          net_amount: 19.99
+          order_value_tier: micro
+        - order_item_id: OI3
+          order_id: O2
+          order_date: "2024-05-01"
+          order_timestamp: "2024-05-01 00:00:00"
+          order_status: Completed
+          channel: Mobile
+          customer_id: 2
+          region: US-East
+          product_id: P002
+          product_name: Mechanical Keyboard
+          category: Electronics
+          quantity: 1
+          unit_price: 79.99
+          discount_pct: 10
+          net_amount: 71.99
+          order_value_tier: basic
+  outputs:
+    query:
+      rows:
+        - order_date: "2024-05-01"
+          region: US-West
+          category: Electronics
+          order_count: 1
+          line_count: 2
+          total_quantity: 3.00
+          total_net_amount_usd: 79.97
+        - order_date: "2024-05-01"
+          region: US-East
+          category: Electronics
+          order_count: 1
+          line_count: 1
+          total_quantity: 1.00
+          total_net_amount_usd: 71.99

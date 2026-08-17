@@ -1,0 +1,31 @@
+kind: dq
+name: customer_region_rank_dq
+depends_on: abfsslhdepotrr.mart_v3_vnew.customer_region_rank
+
+profiles:
+  - total_spent
+  - spend_rank_in_region
+  - region_avg_spent
+
+rules:
+  - row_count > 0:
+      name: has_rows
+      dimension: completeness
+      description: "customer_region_rank should never produce an empty result set"
+  - missing_count(customer_id) = 0:
+      name: no_missing_customer_id
+      dimension: completeness
+      description: "customer_id is required on every ranked row"
+  - duplicate_count(customer_id) = 0:
+      name: unique_customer_id
+      dimension: uniqueness
+      description: "customer_id should be unique per row in the rank output"
+  - failed rows:
+      name: no_negative_total_spent
+      dimension: validity
+      fail query: |
+        SELECT customer_id, total_spent
+        FROM abfsslhdepotrr.mart_v3_vnew.customer_region_rank
+        WHERE total_spent < 0
+      samples limit: 5
+      description: "total_spent should not be negative"
