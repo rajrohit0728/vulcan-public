@@ -1,5 +1,5 @@
 version: v1alpha
-type: vulcan
+type: custom-cloud
 name: trino-bq
 owner: rohitrajtmdcio
 tags:
@@ -20,7 +20,7 @@ spec:
     syncFlags:
       - "--ref=main"
       - "--submodules=off"
-    baseDir: bigquery
+    baseDir: vulcan-public/bigquery
     # secretId: engineering:git-sync-rr
 
   # No depots — BigQuery catalog from trino.catalog.config only.
