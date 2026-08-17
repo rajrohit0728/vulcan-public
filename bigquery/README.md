@@ -29,7 +29,8 @@ bigquery/
 ├── models/
 │   ├── staging/                  # kind SEED, one per CSV (typed, asserted)
 │   ├── intermediate/             # kind FULL, joined/enriched
-│   ├── mart/                     # kind FULL, consumption-ready (dims/fact/summary/window fn)
+│   ├── mart/                     # kind FULL tables on bigqueryrr
+│   ├── mart_views/               # kind VIEW on abfsslhdepotrr (federates to bigqueryrr marts)
 │   ├── dq/                       # kind: dq — Soda-style rules + column profiles
 │   ├── semantics/                # kind: semantic — dimensions/measures/joins
 │   └── metrics/                  # kind: metric — business metrics over semantics
@@ -46,7 +47,7 @@ orders, 23 order line items, plus `region_tier.csv` — a hand-curated lookup
 (region → `region_tier` / `priority_rank`) that is **not** derived from the
 other seeds.
 
-**Staging** (`bigqueryrr.staging_v3_vnew`, `kind SEED`) — one seed model
+**Staging** (`bigqueryrr.staging_v4_vnew`, `kind SEED`) — one seed model
 per CSV, typed and asserted: `stg_customers`, `stg_products`, `stg_orders`,
 `stg_order_items`, `stg_region_tier`.
 
@@ -55,12 +56,12 @@ discount_pct)` (line revenue after a percentage discount) and
 `@order_value_tier(amount_col)` (classifies a line's `net_amount` into
 premium/standard/basic/micro), both used in `int_order_lines_enriched`.
 
-**Intermediate** (`bigqueryrr.intermediate_v3_vnew`, `kind FULL`):
+**Intermediate** (`bigqueryrr.intermediate_v4_vnew`, `kind FULL`):
 - `int_customers_enriched` — customers + the `stg_region_tier` seed lookup
 - `int_order_lines_enriched` — order items + orders + customers + products,
   computing `net_amount`/`order_value_tier` via the macros above
 
-**Mart** (`bigqueryrr.mart_v3_vnew`, `kind FULL`) — consumption-ready:
+**Mart** (`bigqueryrr.mart_v4_vnew`, `kind FULL`) — all physical mart tables:
 - `dim_customers`, `dim_products` (the latter adds a computed `margin_pct`)
 - `fct_order_lines` — order-line grain fact, excludes cancelled orders, adds
   an `order_timestamp` (`TIMESTAMP(6)`) alongside `order_date` (`DATE`) —
@@ -70,9 +71,14 @@ premium/standard/basic/micro), both used in `int_order_lines_enriched`.
   bare `TIMESTAMP` defaults to `TIMESTAMP(3)` and fails with `Unsupported
   column type: timestamp(3)`.
 - `mart_sales_summary` — daily revenue rollup by region × category
-  (`GROUP BY`, `SUM`, `COUNT(DISTINCT ...)`)
+- `region_order_summary` — regional order/revenue totals
 - `customer_region_rank` — `RANK() OVER (PARTITION BY region ORDER BY
   total_spent DESC)` + a windowed `AVG(...) OVER (...)`
+
+**Mart views** (`abfsslhdepotrr.mart_v4_vnew`, `kind VIEW`) — read-only
+depot-facing views over the BigQuery marts above (`SELECT * FROM
+bigqueryrr.mart_v4_vnew.<model>`). Semantics and Explore consumers query
+these views; DQ/tests target the underlying `bigqueryrr` tables.
 
 **Semantics** (`models/semantics/`, `kind: semantic`): `customers` and
 `order_lines` (joins `many_to_one` to `customers`) — every entity here is
@@ -142,5 +148,5 @@ vulcan run       # materializes staging seeds + intermediate/mart tables
 Ad-hoc sanity check after `run`:
 
 ```bash
-vulcan fetchdf "select * from bigqueryrr.mart_v3_vnew.mart_sales_summary order by total_net_amount desc limit 10"
+vulcan fetchdf "select * from abfsslhdepotrr.mart_v4_vnew.mart_sales_summary order by total_net_amount_usd desc limit 10"
 ```

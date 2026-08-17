@@ -1,7 +1,7 @@
 test_int_customers_enriched:
-  model: bigqueryrr.intermediate_v3_vnew.int_customers_enriched
+  model: bigqueryrr.intermediate_v4_vnew.int_customers_enriched
   inputs:
-    bigqueryrr.staging_v3_vnew.stg_customers:
+    bigqueryrr.staging_v4_vnew.stg_customers:
       rows:
         - customer_id: 1
           name: Alice Johnson
@@ -15,7 +15,7 @@ test_int_customers_enriched:
           region: EU-West
           customer_tier: Bronze
           signup_date: "2024-03-11"
-    bigqueryrr.staging_v3_vnew.stg_region_tier:
+    bigqueryrr.staging_v4_vnew.stg_region_tier:
       rows:
         - region: US-West
           region_tier: strategic

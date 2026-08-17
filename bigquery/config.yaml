@@ -3,11 +3,12 @@ display_name: "BigQuery Quick-Sanity Data Product"
 tenant: "default"
 description: >
   Layered (staging -> intermediate -> mart) data product on the Trino
-  `bigqueryrr` catalog. Sources mock/sample data from CSV seeds (customers,
-  products, orders, order line items, a region-tier lookup) rather than an
-  external catalog, demonstrating dq checks, audits, unit tests, macros,
-  semantics, and metrics on top of a seed-driven pipeline. Modeled after
-  spark-usecase/lakehouse/s3/quick-sanity, adapted for Trino/BigQuery.
+  `bigqueryrr` catalog, with read-only mart views exposed on the
+  `abfsslhdepotrr` Iceberg depot. Sources mock/sample data from CSV seeds
+  (customers, products, orders, order line items, a region-tier lookup) rather
+  than an external catalog, demonstrating dq checks, audits, unit tests,
+  macros, semantics, and metrics on top of a seed-driven pipeline. Modeled
+  after spark-usecase/lakehouse/s3/quick-sanity, adapted for Trino/BigQuery.
 discoverable: true
 version: "0.1.0"
 alignment: source_aligned

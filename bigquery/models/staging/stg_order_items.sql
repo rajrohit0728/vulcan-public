@@ -1,5 +1,5 @@
 MODEL (
-  name bigqueryrr.staging_v3_vnew.stg_order_items,
+  name bigqueryrr.staging_v4_vnew.stg_order_items,
   kind SEED (
     path '../../seeds/raw_order_items.csv'
   ),

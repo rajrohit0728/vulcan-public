@@ -1,6 +1,6 @@
 kind: dq
 name: mart_sales_summary_dq
-depends_on: bigqueryrr.mart_v3_vnew.mart_sales_summary
+depends_on: bigqueryrr.mart_v4_vnew.mart_sales_summary
 
 profiles:
   - order_count
@@ -21,7 +21,7 @@ rules:
       dimension: uniqueness
       fail query: |
         SELECT order_date, region, category, COUNT(*) AS cnt
-        FROM bigqueryrr.mart_v3_vnew.mart_sales_summary
+        FROM bigqueryrr.mart_v4_vnew.mart_sales_summary
         GROUP BY order_date, region, category
         HAVING COUNT(*) > 1
       samples limit: 5

@@ -1,5 +1,5 @@
 MODEL (
-  name bigqueryrr.mart_v3_vnew.region_order_summary,
+  name bigqueryrr.mart_v4_vnew.region_order_summary,
   kind FULL,
   owner 'rohitrajtmdcio',
   grain region,
@@ -27,5 +27,5 @@ SELECT
   CAST(
     SUM(net_amount) / NULLIF(COUNT(DISTINCT order_id), 0) AS DECIMAL(14, 2)
   ) AS avg_order_value
-FROM bigqueryrr.mart_v3_vnew.fct_order_lines
+FROM bigqueryrr.mart_v4_vnew.fct_order_lines
 GROUP BY region;

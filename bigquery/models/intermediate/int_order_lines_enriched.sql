@@ -1,5 +1,5 @@
 MODEL (
-  name bigqueryrr.intermediate_v3_vnew.int_order_lines_enriched,
+  name bigqueryrr.intermediate_v4_vnew.int_order_lines_enriched,
   kind FULL,
   owner 'rohitrajtmdcio',
   grain order_item_id,
@@ -59,11 +59,11 @@ FROM (
     oi.unit_price,
     oi.discount_pct,
     CAST(@net_amount(oi.quantity, oi.unit_price, oi.discount_pct) AS DECIMAL(12, 2)) AS net_amount
-  FROM bigqueryrr.staging_v3_vnew.stg_order_items AS oi
-  JOIN bigqueryrr.staging_v3_vnew.stg_orders AS o
+  FROM bigqueryrr.staging_v4_vnew.stg_order_items AS oi
+  JOIN bigqueryrr.staging_v4_vnew.stg_orders AS o
     ON oi.order_id = o.order_id
-  JOIN bigqueryrr.staging_v3_vnew.stg_customers AS c
+  JOIN bigqueryrr.staging_v4_vnew.stg_customers AS c
     ON o.customer_id = c.customer_id
-  JOIN bigqueryrr.staging_v3_vnew.stg_products AS p
+  JOIN bigqueryrr.staging_v4_vnew.stg_products AS p
     ON oi.product_id = p.product_id
 ) AS base;

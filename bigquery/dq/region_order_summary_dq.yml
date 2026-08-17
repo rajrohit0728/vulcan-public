@@ -1,6 +1,6 @@
 kind: dq
 name: region_order_summary_dq
-depends_on: bigqueryrr.mart_v3_vnew.region_order_summary
+depends_on: bigqueryrr.mart_v4_vnew.region_order_summary
 
 profiles:
   - customer_count
@@ -23,7 +23,7 @@ rules:
       dimension: uniqueness
       fail query: |
         SELECT region, COUNT(*) AS cnt
-        FROM bigqueryrr.mart_v3_vnew.region_order_summary
+        FROM bigqueryrr.mart_v4_vnew.region_order_summary
         GROUP BY region
         HAVING COUNT(*) > 1
       samples limit: 5

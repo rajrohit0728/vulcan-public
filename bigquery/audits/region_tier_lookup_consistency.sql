@@ -8,6 +8,6 @@ AUDIT (
 -- ever removed or miswired.
 SELECT c.*
 FROM @this_model AS c
-LEFT JOIN bigqueryrr.staging_v3_vnew.stg_region_tier AS t
+LEFT JOIN bigqueryrr.staging_v4_vnew.stg_region_tier AS t
   ON c.region = t.region
 WHERE t.region IS NULL

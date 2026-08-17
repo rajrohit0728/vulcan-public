@@ -1,5 +1,5 @@
 version: v1alpha
-type: vulcan
+type: custom-cloud
 name: abfss-spark-dp
 description: |
   Layered (staging -> intermediate -> mart) Spark + Iceberg ABFSS lakehouse data

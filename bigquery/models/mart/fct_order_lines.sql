@@ -1,5 +1,5 @@
 MODEL (
-  name bigqueryrr.mart_v3_vnew.fct_order_lines,
+  name bigqueryrr.mart_v4_vnew.fct_order_lines,
   kind FULL,
   owner 'rohitrajtmdcio',
   grain order_item_id,
@@ -49,5 +49,5 @@ SELECT
   discount_pct,
   net_amount,
   order_value_tier
-FROM bigqueryrr.intermediate_v3_vnew.int_order_lines_enriched
+FROM bigqueryrr.intermediate_v4_vnew.int_order_lines_enriched
 WHERE order_status != 'Cancelled';

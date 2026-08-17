@@ -1,5 +1,5 @@
 MODEL (
-  name bigqueryrr.staging_v3_vnew.stg_region_tier,
+  name bigqueryrr.staging_v4_vnew.stg_region_tier,
   kind SEED (
     path '../../seeds/region_tier.csv'
   ),

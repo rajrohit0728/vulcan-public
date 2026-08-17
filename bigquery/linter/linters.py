@@ -87,8 +87,11 @@ class RequireDqForMartModels(Rule):
     def check_model(self, model: "Model") -> t.Optional["RuleViolation"]:
         if _should_skip(model):
             return None
+        kind = str(getattr(model, "kind", "") or "").lower()
+        if kind == "view":
+            return None
         name = str(getattr(model, "name", "") or "")
-        if ".mart_v3_vnew." not in name and ".mart." not in name:
+        if ".mart_v4_vnew." not in name and ".mart." not in name:
             return None
         if getattr(model, "dq", None) is None:
             return self.violation(
