@@ -1,6 +1,6 @@
 kind: dq
 name: fct_order_lines_dq
-depends_on: abfsslhdepotrr.mart_v3_vnew.fct_order_lines
+depends_on: abfsslhdepotrr.mart_v4_vnew.fct_order_lines
 
 profiles:
   - quantity
@@ -26,7 +26,7 @@ rules:
       dimension: validity
       fail query: |
         SELECT order_item_id, net_amount
-        FROM abfsslhdepotrr.mart_v3_vnew.fct_order_lines
+        FROM abfsslhdepotrr.mart_v4_vnew.fct_order_lines
         WHERE net_amount < 0
       samples limit: 5
       description: "net_amount should not be negative"
@@ -35,7 +35,7 @@ rules:
       dimension: validity
       fail query: |
         SELECT order_item_id, discount_pct
-        FROM abfsslhdepotrr.mart_v3_vnew.fct_order_lines
+        FROM abfsslhdepotrr.mart_v4_vnew.fct_order_lines
         WHERE discount_pct < 0 OR discount_pct > 100
       samples limit: 5
       description: "discount_pct must be within [0, 100]"

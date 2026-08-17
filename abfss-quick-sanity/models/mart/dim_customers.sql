@@ -1,5 +1,5 @@
 MODEL (
-  name abfsslhdepotrr.mart_v3_vnew.dim_customers,
+  name abfsslhdepotrr.mart_v4_vnew.dim_customers,
   kind FULL,
   owner 'rohitrajtmdcio',
   grain customer_id,
@@ -32,4 +32,4 @@ SELECT
   signup_date,
   region_tier,
   priority_rank
-FROM abfsslhdepotrr.intermediate_v3_vnew.int_customers_enriched;
+FROM abfsslhdepotrr.intermediate_v4_vnew.int_customers_enriched;

@@ -1,5 +1,5 @@
 MODEL (
-  name abfsslhdepotrr.mart_v3_vnew.dim_products,
+  name abfsslhdepotrr.mart_v4_vnew.dim_products,
   kind FULL,
   owner 'rohitrajtmdcio',
   grain product_id,
@@ -28,4 +28,4 @@ SELECT
   CAST(unit_cost AS DECIMAL(10, 2)) AS unit_cost,
   CAST(list_price AS DECIMAL(10, 2)) AS list_price,
   CAST(ROUND((list_price - unit_cost) / NULLIF(list_price, 0) * 100, 2) AS DECIMAL(5, 2)) AS margin_pct
-FROM abfsslhdepotrr.staging_v3_vnew.stg_products;
+FROM abfsslhdepotrr.staging_v4_vnew.stg_products;

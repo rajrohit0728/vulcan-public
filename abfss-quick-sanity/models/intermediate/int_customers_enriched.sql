@@ -1,5 +1,5 @@
 MODEL (
-  name abfsslhdepotrr.intermediate_v3_vnew.int_customers_enriched,
+  name abfsslhdepotrr.intermediate_v4_vnew.int_customers_enriched,
   kind FULL,
   owner 'rohitrajtmdcio',
   grain customer_id,
@@ -29,6 +29,6 @@ SELECT
   c.signup_date,
   t.region_tier,
   t.priority_rank
-FROM abfsslhdepotrr.staging_v3_vnew.stg_customers AS c
-LEFT JOIN abfsslhdepotrr.staging_v3_vnew.stg_region_tier AS t
+FROM abfsslhdepotrr.staging_v4_vnew.stg_customers AS c
+LEFT JOIN abfsslhdepotrr.staging_v4_vnew.stg_region_tier AS t
   ON c.region = t.region;

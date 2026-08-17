@@ -1,6 +1,6 @@
 kind: dq
 name: dim_customers_dq
-depends_on: abfsslhdepotrr.mart_v3_vnew.dim_customers
+depends_on: abfsslhdepotrr.mart_v4_vnew.dim_customers
 
 profiles:
   - region
