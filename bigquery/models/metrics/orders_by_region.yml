@@ -5,7 +5,8 @@ ts: order_lines.order_timestamp
 granularity: month
 dimensions:
   - order_lines.region
-description: Monthly distinct order count by customer region.
+  - order_lines.order_value_tier
+description: Monthly distinct order count by customer region and order-value tier.
 tags:
   - sales
   - orders

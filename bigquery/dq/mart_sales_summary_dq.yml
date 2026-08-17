@@ -5,15 +5,17 @@ depends_on: bigqueryrr.mart_v3_vnew.mart_sales_summary
 profiles:
   - order_count
   - total_quantity
-  - total_net_amount
+  - total_net_amount_usd
 
 rules:
   - row_count > 0:
       name: has_rows
       dimension: completeness
+      description: "mart_sales_summary should never produce an empty result set"
   - missing_count(order_date) = 0:
       name: no_missing_order_date
       dimension: completeness
+      description: "order_date is required on every rollup row"
   - failed rows:
       name: unique_grain
       dimension: uniqueness

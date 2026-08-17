@@ -1,0 +1,13 @@
+kind: metric
+name: revenue_by_channel
+measure: order_lines.total_net_amount
+ts: order_lines.order_timestamp
+granularity: week
+dimensions:
+  - order_lines.channel
+  - order_lines.region
+description: Weekly net revenue by sales channel and customer region.
+tags:
+  - sales
+  - revenue
+  - channel

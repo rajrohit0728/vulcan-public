@@ -61,11 +61,11 @@ test_mart_sales_summary:
           order_count: 1
           line_count: 2
           total_quantity: 3.00
-          total_net_amount: 79.97
+          total_net_amount_usd: 79.97
         - order_date: "2024-05-01"
           region: US-East
           category: Electronics
           order_count: 1
           line_count: 1
           total_quantity: 1.00
-          total_net_amount: 71.99
+          total_net_amount_usd: 71.99

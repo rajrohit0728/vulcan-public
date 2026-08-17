@@ -6,7 +6,8 @@ granularity: day
 dimensions:
   - order_lines.region
   - order_lines.category
-description: Daily net revenue by customer region and product category.
+  - order_lines.channel
+description: Daily net revenue by customer region, product category, and channel.
 tags:
   - sales
   - revenue

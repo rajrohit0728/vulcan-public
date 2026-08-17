@@ -6,6 +6,7 @@ description: Customer dimension — segmentation by region, tier, and signup coh
 dimensions:
   - customer_id
   - name
+  - email
   - region
   - customer_tier
   - region_tier
@@ -18,6 +19,9 @@ measures:
     expression: "{customers.customer_id}"
   - name: avg_priority_rank
     type: avg
+    expression: "{customers.priority_rank}"
+  - name: max_priority_rank
+    type: max
     expression: "{customers.priority_rank}"
 
 tags:

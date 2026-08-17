@@ -15,6 +15,7 @@ dimensions:
   - customer_id
   - region
   - product_id
+  - product_name
   - category
   - order_value_tier
   - quantity
@@ -28,8 +29,14 @@ measures:
   - name: order_count
     type: count_distinct
     expression: "{order_lines.order_id}"
+  - name: customer_count
+    type: count_distinct
+    expression: "{order_lines.customer_id}"
   - name: total_net_amount
     type: sum
+    expression: "{order_lines.net_amount}"
+  - name: avg_net_amount
+    type: avg
     expression: "{order_lines.net_amount}"
   - name: total_quantity
     type: sum

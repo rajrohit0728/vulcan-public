@@ -1,0 +1,30 @@
+kind: dq
+name: region_order_summary_dq
+depends_on: bigqueryrr.mart_v3_vnew.region_order_summary
+
+profiles:
+  - customer_count
+  - order_count
+  - line_count
+  - total_net_amount
+  - avg_order_value
+
+rules:
+  - row_count > 0:
+      name: has_rows
+      dimension: completeness
+      description: "region_order_summary should have at least one region"
+  - missing_count(region) = 0:
+      name: no_missing_region
+      dimension: completeness
+      description: "region is required on every row"
+  - failed rows:
+      name: unique_region
+      dimension: uniqueness
+      fail query: |
+        SELECT region, COUNT(*) AS cnt
+        FROM bigqueryrr.mart_v3_vnew.region_order_summary
+        GROUP BY region
+        HAVING COUNT(*) > 1
+      samples limit: 5
+      description: "One row per region"
