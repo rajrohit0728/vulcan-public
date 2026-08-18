@@ -1,6 +1,6 @@
 kind: dq
 name: stg_customers_dq
-depends_on: abfsslhdepotrr.staging_v5_vnew.stg_customers
+depends_on: abfsslhdepotrr.staging_v6_vnew.stg_customers
 
 profiles:
   - region

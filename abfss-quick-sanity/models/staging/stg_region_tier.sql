@@ -1,5 +1,5 @@
 MODEL (
-  name abfsslhdepotrr.staging_v5_vnew.stg_region_tier,
+  name abfsslhdepotrr.staging_v6_vnew.stg_region_tier,
   kind SEED (
     path '../../seeds/region_tier.csv'
   ),

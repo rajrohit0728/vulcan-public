@@ -1,5 +1,5 @@
 MODEL (
-  name abfsslhdepotrr.mart_v5_vnew.mart_sales_summary,
+  name abfsslhdepotrr.mart_v6_vnew.mart_sales_summary,
   kind FULL,
   owner 'rohitrajtmdcio',
   grains (order_date, region, category),
@@ -28,5 +28,5 @@ SELECT
   COUNT(*) AS line_count,
   CAST(SUM(quantity) AS DECIMAL(12, 2)) AS total_quantity,
   CAST(SUM(net_amount) AS DECIMAL(14, 2)) AS total_net_amount_usd
-FROM abfsslhdepotrr.mart_v5_vnew.fct_order_lines
+FROM abfsslhdepotrr.mart_v6_vnew.fct_order_lines
 GROUP BY order_date, region, category;
