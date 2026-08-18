@@ -1,6 +1,6 @@
 kind: semantic
 name: customers
-depends_on: abfsslhdepotrr.mart_v4_vnew.dim_customers
+depends_on: abfsslhdepotrr.mart_v5_vnew.dim_customers
 description: Customer dimension — segmentation by region, tier, and signup cohort.
 
 dimensions:

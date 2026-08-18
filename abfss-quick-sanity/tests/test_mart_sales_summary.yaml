@@ -1,8 +1,8 @@
 test_mart_sales_summary:
-  model: abfsslhdepotrr.mart_v4_vnew.mart_sales_summary
+  model: abfsslhdepotrr.mart_v5_vnew.mart_sales_summary
   description: "Validates the daily rollup's GROUP BY / SUM / COUNT(DISTINCT ...) aggregation logic."
   inputs:
-    abfsslhdepotrr.mart_v4_vnew.fct_order_lines:
+    abfsslhdepotrr.mart_v5_vnew.fct_order_lines:
       rows:
         - order_item_id: OI1
           order_id: O1

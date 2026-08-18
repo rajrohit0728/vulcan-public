@@ -88,7 +88,7 @@ class RequireDqForMartModels(Rule):
         if _should_skip(model):
             return None
         name = str(getattr(model, "name", "") or "")
-        if ".mart_v4_vnew." not in name and ".mart." not in name:
+        if ".mart_v5_vnew." not in name and ".mart." not in name:
             return None
         if getattr(model, "dq", None) is None:
             return self.violation(

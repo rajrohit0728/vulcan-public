@@ -13,16 +13,16 @@ tags:
   - iceberg
 spec:
   runAsUser: rohitrajtmdcio
-  compute: ui-dev-compute
+  compute: engineering-compute
   engine: spark
-  objectStoreConnection: ui-dev:vulcan-object-store-sec-abfss
+  objectStoreConnection: engineering:vulcan-object-store-sec-abfss
   repo:
     url: https://github.com/rajrohit0728/vulcan-public
     syncFlags:
       - "--ref=main"
       - "--submodules=off"
-    baseDir: abfss-quick-sanity
-    # secretId: ui-dev:git-sync-rr
+    baseDir: vulcan-public/abfss-quick-sanity
+    # secretId: engineering:git-sync-rr
   depots:
     - dataos://abfsslhdepotrr?purpose=rw
   workflow:

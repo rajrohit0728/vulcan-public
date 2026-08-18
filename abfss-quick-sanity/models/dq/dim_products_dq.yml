@@ -1,6 +1,6 @@
 kind: dq
 name: dim_products_dq
-depends_on: abfsslhdepotrr.mart_v4_vnew.dim_products
+depends_on: abfsslhdepotrr.mart_v5_vnew.dim_products
 
 profiles:
   - category
@@ -25,7 +25,7 @@ rules:
       dimension: validity
       fail query: |
         SELECT product_id, margin_pct
-        FROM abfsslhdepotrr.mart_v4_vnew.dim_products
+        FROM abfsslhdepotrr.mart_v5_vnew.dim_products
         WHERE margin_pct < 0
       samples limit: 5
       description: "margin_pct should not be negative"
