@@ -1,0 +1,64 @@
+discoverable: true
+version: 0.1.0
+alignment: consumer_aligned
+
+name: gcs-spark-dp
+display_name: GCS Spark Data Product
+description: >
+  Layered (staging -> intermediate -> mart) Spark + Iceberg data product on
+  gcslhdepot. Sources mock/sample data from CSV seeds (customers, products,
+  orders, order line items, a region-tier lookup) rather than an external
+  catalog, demonstrating dq checks, audits, unit tests, macros, semantics,
+  and metrics on top of a seed-driven pipeline.
+
+tags:
+  - gcs
+  - spark
+  - iceberg
+  - demo
+  - lakehouse
+  - sales_analytics
+
+terms:
+  - glossary.data_product
+  - glossary.sales_operations
+
+domain: sales_operations
+
+model_defaults:
+  dialect: spark2
+  owner: rohitrajtmdcio
+  start: '2024-01-01'
+  cron: '@daily'
+
+linter:
+  enabled: true
+  warn_rules:
+    - RequireGrainForAllModels
+    - RequireOwnerForAllModels
+    - RequireAssertionsForAllModels
+    - RequireDqForMartModels
+
+notification_targets:
+  - type: console
+    notify_on:
+      - run_start
+      - run_end
+      - run_failure
+      - audit_failure
+      - plan_change
+      - dq_start
+      - dq_end
+
+gateways:
+  default:
+    connection:
+      type: depot
+      address: dataos://gcslhdepot?purpose=rw
+
+default_gateway: default
+
+users:
+  - username: rohitrajtmdcio
+    email: rohit.raj@tmdc.io
+    type: OWNER

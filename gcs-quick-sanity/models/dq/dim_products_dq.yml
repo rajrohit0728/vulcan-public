@@ -1,0 +1,28 @@
+kind: dq
+name: dim_products_dq
+depends_on: gcslhdepot.mart_v5_vnew.dim_products
+
+profiles:
+  - category
+  - brand
+  - margin_pct
+
+rules:
+  - row_count > 0:
+      name: has_rows
+      dimension: completeness
+  - missing_count(product_id) = 0:
+      name: no_missing_product_id
+      dimension: completeness
+  - duplicate_count(product_id) = 0:
+      name: unique_product_id
+      dimension: uniqueness
+  - failed rows:
+      name: no_negative_margin
+      dimension: validity
+      fail query: |
+        SELECT product_id, margin_pct
+        FROM gcslhdepot.mart_v5_vnew.dim_products
+        WHERE margin_pct < 0
+      samples limit: 5
+      description: "margin_pct should not be negative"

@@ -1,0 +1,25 @@
+kind: semantic
+name: customers
+depends_on: gcslhdepot.mart_v5_vnew.dim_customers
+description: Customer dimension — segmentation by region, tier, and signup cohort.
+
+dimensions:
+  - customer_id
+  - name
+  - region
+  - customer_tier
+  - region_tier
+  - priority_rank
+  - signup_date
+
+measures:
+  - name: customer_count
+    type: count_distinct
+    expression: "{customers.customer_id}"
+  - name: avg_priority_rank
+    type: avg
+    expression: "{customers.priority_rank}"
+
+tags:
+  - sales
+  - customer

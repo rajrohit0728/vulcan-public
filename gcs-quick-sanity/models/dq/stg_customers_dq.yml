@@ -1,0 +1,18 @@
+kind: dq
+name: stg_customers_dq
+depends_on: gcslhdepot.staging_v5_vnew.stg_customers
+
+profiles:
+  - region
+  - customer_tier
+
+rules:
+  - row_count > 0:
+      name: has_rows
+      dimension: completeness
+  - missing_count(customer_id) = 0:
+      name: no_missing_customer_id
+      dimension: completeness
+  - duplicate_count(customer_id) = 0:
+      name: unique_customer_id
+      dimension: uniqueness

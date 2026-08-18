@@ -1,6 +1,6 @@
 version: v1alpha
 type: custom-cloud
-name: trino-bq
+name: trino-bq-v1
 owner: rohitrajtmdcio
 tags:
   - trino

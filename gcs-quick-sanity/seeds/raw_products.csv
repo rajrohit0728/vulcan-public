@@ -1,0 +1,9 @@
+product_id,product_name,category,brand,unit_cost,list_price
+P001,Wireless Mouse,Electronics,TechPro,12.50,29.99
+P002,Mechanical Keyboard,Electronics,KeyMaster,35.00,79.99
+P003,Standing Desk,Furniture,ComfortZone,110.00,249.99
+P004,Office Chair,Furniture,ComfortZone,75.00,189.99
+P005,Notebook Pack,Stationery,WriteWell,2.50,8.75
+P006,Desk Lamp,Furniture,BrightWorks,9.00,24.99
+P007,27-inch Monitor,Electronics,ViewMax,120.00,199.00
+P008,USB-C Hub,Electronics,ConnectPlus,8.00,19.99

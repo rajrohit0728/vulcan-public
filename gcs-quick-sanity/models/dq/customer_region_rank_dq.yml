@@ -1,0 +1,28 @@
+kind: dq
+name: customer_region_rank_dq
+depends_on: gcslhdepot.mart_v5_vnew.customer_region_rank
+
+profiles:
+  - total_spent
+  - spend_rank_in_region
+  - region_avg_spent
+
+rules:
+  - row_count > 0:
+      name: has_rows
+      dimension: completeness
+  - missing_count(customer_id) = 0:
+      name: no_missing_customer_id
+      dimension: completeness
+  - duplicate_count(customer_id) = 0:
+      name: unique_customer_id
+      dimension: uniqueness
+  - failed rows:
+      name: no_negative_total_spent
+      dimension: validity
+      fail query: |
+        SELECT customer_id, total_spent
+        FROM gcslhdepot.mart_v5_vnew.customer_region_rank
+        WHERE total_spent < 0
+      samples limit: 5
+      description: "total_spent should not be negative"

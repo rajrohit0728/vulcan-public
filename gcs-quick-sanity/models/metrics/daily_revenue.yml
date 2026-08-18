@@ -1,0 +1,12 @@
+kind: metric
+name: daily_revenue
+measure: order_lines.total_net_amount
+ts: order_lines.order_timestamp
+granularity: day
+dimensions:
+  - order_lines.region
+  - order_lines.category
+description: Daily net revenue by customer region and product category.
+tags:
+  - sales
+  - revenue
