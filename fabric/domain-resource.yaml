@@ -1,6 +1,6 @@
 version: v1alpha
 type: vulcan
-name: ri-fabricsn
+name: ri-fabricsn-public
 tags:
   - retail
   - retail-intelligence
