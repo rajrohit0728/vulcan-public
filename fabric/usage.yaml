@@ -1,0 +1,104 @@
+# Product usage guidance for the b2b-saas example project.
+#
+# Loaded via usage_path in config.yaml (./usage.yml). Capturing intended use, limits,
+# and references upfront reduces misuse of the product, sets expectations before anyone queries or builds on top of it, and gives product
+# owners a durable place to document judgment that does not belong in SQL or models.
+# Analysts and business stakeholders benefit from clear good_for and caveats; data
+# stewards and platform teams benefit from alignments and references that anchor
+# governance and onboarding without repeated ad hoc explanations.
+
+# Business outcomes the organization expects this data product to enable. These are
+# plain strings, not KPI objects with targets. They answer "why does this product
+# exist?" for catalog readers and internal planning. Keep each line specific enough
+# that a new analyst can tell whether their question belongs here.
+objectives:
+  - Reduce time-to-insight for revenue planning and cohort analysis
+  - Support self-serve analytics for marketing and finance stakeholders
+
+# Strategic programs, domain initiatives, or architecture choices this product
+# supports. Used alongside objectives to show how the product fits wider company
+# goals. Distinct from tags (search labels) and terms (glossary references).
+alignments:
+  - FY26 growth analytics initiative
+  - Source-aligned customer and revenue domain model
+
+# Display-only pricing plans for marketplace or internal catalog listings. Maps to
+# schema field pricing_plans. The unit field uses opendataproducts.org pricing-model
+# labels as free text (for example free, subscription, usage). Vulcan does not
+# process payments or enforce billing from this block.
+pricing_plans:
+  - name: Internal Usage
+    unit: free
+    notes: Employee and partner use only; not allowed for external share
+
+# Intended use cases and audiences. Each list entry is a UsageItem: a short title
+# plus optional details. Bare strings are accepted by the loader but explicit title
+# fields read better in metadata export and API responses.
+good_for:
+  - title: Customer analytics and segmentation
+    details: |
+      Slice users and accounts by industry, region, plan tier, and signup channel.
+      Supports funnel and profile questions that combine customer dimensions with
+      subscription and usage context at weekly grain.
+  - title: Revenue reporting and forecasting
+    details: |
+      Monthly MRR and ARR trends via arr_growth and related subscription semantics.
+      Suitable for finance planning, board packs, and segment-level revenue views
+      where a weekly refresh is acceptable.
+  - title: Cohort retention and engagement analysis
+    details: |
+      Retention by signup cohort (cohort_retention) and daily active users by plan
+      (product_engagement). Use for growth reviews, product adoption scorecards, and
+      comparing engagement across plan tiers.
+  - title: Subscription lifecycle and churn analysis
+    details: |
+      Plan mix, active subscriptions, cancellations, and churn patterns by segment
+      (churn_analysis). Supports lifecycle reporting and understanding why accounts
+      leave, not same-day operational triage.
+
+# Use cases where this product is a poor fit. Pair with caveats when freshness or
+# grain limits the answer. Helps consumers self-select before running expensive
+# warehouse queries or building dashboards on the wrong cadence.
+not_for:
+  - title: Real-time alerting and monitoring
+    details: |
+      Data refreshes on a weekly cadence. Event-level usage exists in the models but
+      the published product is not sized for sub-minute freshness, paging, or
+      threshold triggers on live streams.
+  - title: Real-time operational decisions
+    details: |
+      Answers can be up to seven days stale after the Monday batch. Do not drive
+      live capacity, support queue routing, or intraday revenue recognition from
+      this product; use operational systems or a near-real-time pipeline instead.
+
+# Limitations, freshness windows, and data scope rules consumers should read before
+# trusting results. Each entry is a Caveat with title, optional details, and
+# severity (low, medium, high). Severity is authoring metadata for display; it does
+# not trigger runtime warnings in the query engine.
+caveats:
+  - title: Historical coverage starts 2024-01-01
+    details: |
+      Metrics and dimensions reflect data from 2024-01-01 onward only. Earlier
+      periods are not backfilled in this example; long-range trends before that
+      date will be incomplete or empty.
+    severity: medium
+  - title: Weekly refresh cadence
+    details: |
+      Warehouse tables and semantic exports update on a weekly schedule (Mondays
+      around 06:00 UTC). Intra-week usage, churn, and revenue changes are not
+      visible until the next successful run.
+    severity: medium
+  - title: Test and demo accounts excluded
+    details: |
+      Seed and audit rules filter test, demo, and internal sandbox accounts from
+      customer and revenue counts. Totals will not match raw operational CRM
+      exports that still include those rows.
+    severity: low
+
+# Curated links to documentation, design artifacts, dashboards, and runbooks.
+# Each entry needs title and url; type is one of doc, design, dashboard, runbook,
+# or other. Prefer stable URLs. These surface on metadata.product.usage.references.
+references:
+  - title: Vulcan book
+    url: https://tmdc-io.github.io/vulcan-book/
+    type: doc

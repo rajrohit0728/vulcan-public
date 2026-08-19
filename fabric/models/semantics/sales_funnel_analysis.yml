@@ -1,0 +1,287 @@
+kind: semantic
+name: sales_funnel
+depends_on: goldv1.sales_funnel_analysis
+owner: shreyasikarwartmdcio
+description: >
+  Retail sales funnel — regional conversion from customer registration through
+  order placement, item addition, and shipment fulfillment. Exposes conversion
+  rate dimensions and measures including sum, avg, max, min, count, ratio,
+  string, and boolean types for regional funnel monitoring and drop-off analysis.
+
+ai_context:
+  instructions: >
+    Retail sales funnel semantic model for regional conversion analysis.
+    funnel_date is the primary time dimension; region_name is the primary
+    geographic slice. Conversion rate dimensions (registration_to_order_rate,
+    order_to_shipment_rate) are pre-computed at the grain level; use avg measures
+    for query-time aggregation. overall_conversion_rate combines all funnel stages.
+    Query via SQL API, REST API (JSON), or GraphQL API.
+  synonyms:
+    - sales funnel
+    - conversion funnel
+    - fulfillment funnel
+    - registration to purchase
+    - customer acquisition funnel
+  examples:
+    - description: fulfillment conversion by region
+      format: rest
+      query: |
+        {
+          "measures": ["sales_funnel.total_orders_shipped"],
+          "dimensions": ["sales_funnel.region_name"]
+        }
+    - description: full funnel conversion by region (SQL API)
+      format: sql
+      query: |
+        SELECT
+          sales_funnel.region_name,
+          MEASURE(sales_funnel.total_registered_customers),
+          MEASURE(sales_funnel.total_orders_placed),
+          MEASURE(sales_funnel.total_orders_shipped),
+          MEASURE(sales_funnel.avg_overall_conversion)
+        FROM sales_funnel
+        GROUP BY 1;
+    - description: regions with strong conversion (GraphQL API)
+      format: graphql
+      query: |
+        {
+          vulcan {
+            sales_funnel {
+              region_name
+              total_registered_customers
+              total_ordering_customers
+              avg_overall_conversion
+            }
+          }
+        }
+
+dimensions:
+  # ── timestamp ───────────────────────────────────────────────────────────────
+  - name: funnel_date
+    description: >
+      Snapshot date for the funnel metrics — anchored to the most recent qualifying
+      order date per region. Each region row reflects cumulative funnel state as of
+      its own latest activity date.
+    granularities:
+      - name: day
+        interval: 1 day
+      - name: week
+        interval: 1 week
+      - name: month
+        interval: 1 month
+    tags:
+      - timestamp
+      - temporal
+      - funnel
+    terms:
+      - funnel.snapshot_date
+      - retail.funnel_date
+
+  # ── string ──────────────────────────────────────────────────────────────────
+  - name: region_id
+    description: Numeric region key
+    behavior:
+      type: identifier
+  - name: region_name
+    description: Geographic sales region (North, South, East, West)
+    behavior:
+      type: categorical
+    ai_context:
+      instructions: Primary funnel slice by geography. Compare conversion rates across regions.
+      synonyms:
+        - sales region
+        - territory
+        - geography
+      examples:
+        - description: conversion rate by region
+          format: sql
+          query: |
+            SELECT
+              sales_funnel.region_name,
+              MEASURE(sales_funnel.avg_overall_conversion)
+            FROM sales_funnel
+            GROUP BY 1;
+    tags:
+      - string
+      - geography
+      - region
+    terms:
+      - geography.region_name
+      - sales.territory
+
+  # ── number ──────────────────────────────────────────────────────────────────
+  - name: registered_customers
+    description: Registered customer count at this funnel grain
+    tags:
+      - number
+      - funnel-top
+      - acquisition
+  - name: customers_with_orders
+    description: Count of customers who placed at least one order
+    tags:
+      - number
+      - funnel-mid
+      - conversion
+  - name: orders_placed
+    description: Total orders placed at this funnel grain
+    tags:
+      - number
+      - funnel-mid
+      - volume
+  - name: orders_with_items
+    description: Orders that had at least one line item
+    tags:
+      - number
+      - funnel-mid
+      - basket
+  - name: orders_shipped
+    description: Orders that were shipped at this funnel grain
+    tags:
+      - number
+      - funnel-bottom
+      - fulfillment
+  - name: registration_to_order_rate
+    description: Share of registered customers who placed an order (0–1)
+    tags:
+      - number
+      - rate
+      - conversion
+  - name: order_to_items_rate
+    description: Share of orders that contained at least one item (0–1)
+    tags:
+      - number
+      - rate
+      - basket
+  - name: order_to_shipment_rate
+    description: Share of orders that were shipped (0–1)
+    tags:
+      - number
+      - rate
+      - fulfillment
+  - name: overall_conversion_rate
+    description: End-to-end funnel conversion rate (registration → shipment)
+    tags:
+      - number
+      - rate
+      - overall-conversion
+  - name: drop_off_after_registration
+    description: Registered customers who never placed an order
+    tags:
+      - number
+      - drop-off
+      - funnel-leakage
+  - name: drop_off_orders_not_shipped
+    description: Orders placed but never shipped (unfulfilled)
+    tags:
+      - number
+      - drop-off
+      - unfulfilled
+  - name: avg_items_per_order
+    description: Average line items per order at this grain
+    tags:
+      - number
+      - basket-size
+      - volume
+  - name: avg_time_to_ship_days
+    description: Average days from order placement to shipment
+    tags:
+      - number
+      - fulfillment
+      - speed
+
+measures:
+  # ── sum ───────────────────────────────────────────────────────────────────────
+  - name: total_registered_customers
+    type: sum
+    expression: "{sales_funnel.registered_customers}"
+    description: Total registered customers at the top of the funnel
+    tags:
+      - sum
+      - funnel-top
+      - acquisition
+    terms:
+      - funnel.total_registered
+      - retail.registered_customers
+
+  - name: total_ordering_customers
+    type: sum
+    expression: "{sales_funnel.customers_with_orders}"
+    description: Total customers who placed at least one order
+    tags:
+      - sum
+      - funnel-mid
+      - conversion
+    terms:
+      - funnel.ordering_customers
+      - retail.purchasing_customers
+
+  - name: total_orders_placed
+    type: sum
+    expression: "{sales_funnel.orders_placed}"
+    description: Total orders placed across all funnel rows in scope
+    tags:
+      - sum
+      - orders
+      - volume
+    terms:
+      - funnel.total_orders
+      - retail.orders_placed
+
+  - name: total_orders_shipped
+    type: sum
+    expression: "{sales_funnel.orders_shipped}"
+    description: Total orders shipped across all funnel rows in scope
+    tags:
+      - sum
+      - shipments
+      - fulfillment
+    terms:
+      - funnel.total_shipped
+      - retail.shipped_orders
+
+  - name: total_registration_dropoff
+    type: sum
+    expression: "{sales_funnel.drop_off_after_registration}"
+    description: Total registered customers who never converted to an order
+    tags:
+      - sum
+      - drop-off
+      - funnel-leakage
+    terms:
+      - funnel.registration_dropoff
+      - retail.unconverted_registrations
+
+  - name: total_unfulfilled_orders
+    type: sum
+    expression: "{sales_funnel.drop_off_orders_not_shipped}"
+    description: Total orders placed but never shipped (unfulfilled backlog)
+    tags:
+      - sum
+      - unfulfilled
+      - fulfillment
+    terms:
+      - funnel.unfulfilled_orders
+      - retail.open_backlog
+
+rollups:
+  - name: region_snapshot
+    measures:
+      - total_registered_customers
+      - total_ordering_customers
+      - total_orders_placed
+      - total_orders_shipped
+      - total_registration_dropoff
+      - total_unfulfilled_orders
+    dimensions:
+      - region_name
+    time_dimension: funnel_date
+    granularity: day
+    description: >
+      Regional funnel snapshot covering registration, order, shipment, and
+      drop-off measures at day grain.
+
+joins:
+  - name: customer_profile
+    type: one_to_many
+    on: region_id
+    skip_for_bi: true

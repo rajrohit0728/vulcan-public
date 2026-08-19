@@ -1,0 +1,4 @@
+order_status,status_group,is_fulfilled,is_active_sort,description
+Confirmed,Open,false,1,Order has been accepted but not yet shipped
+Shipped,Fulfilled,true,2,Order has been shipped to the customer
+Cancelled,Closed,false,3,Order was cancelled and excluded from revenue metrics

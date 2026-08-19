@@ -1,0 +1,19 @@
+kind: metric
+name: weekly_revenue_trends
+owner: shreyasikarwartmdcio
+measure: weekly_sales.sum_weekly_revenue
+ts: weekly_sales.week_start_date
+granularity: week
+dimensions:
+  - name: region
+    ref: weekly_sales.region_name
+  - name: category
+    ref: weekly_sales.category
+description: Weekly revenue trends by region and product category.
+tags:
+  - sales
+  - revenue
+  - weekly
+terms:
+  - sales.weekly_trends
+  - metric.weekly_revenue

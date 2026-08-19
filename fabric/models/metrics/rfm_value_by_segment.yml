@@ -1,0 +1,19 @@
+kind: metric
+name: rfm_value_by_segment
+owner: shreyasikarwartmdcio
+measure: rfm.total_rfm_value
+ts: rfm.last_order_date
+granularity: month
+dimensions:
+  - name: rfm_segment
+    ref: rfm.rfm_segment
+  - name: region
+    ref: rfm.region_name
+description: Total customer monetary value by RFM segment and region.
+tags:
+  - rfm
+  - segmentation
+  - revenue
+terms:
+  - rfm.segment_value
+  - revenue.by_segment

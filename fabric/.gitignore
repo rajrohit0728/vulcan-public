@@ -1,0 +1,7 @@
+.env
+neondb-secret.yaml
+neondb-depot.yaml
+*.duckdb
+*.duckdb.wal
+# Prevent accidentally-created shell-export-style files (e.g. `export VAR="..."`)
+export *=*

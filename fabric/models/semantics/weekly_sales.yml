@@ -1,0 +1,294 @@
+kind: semantic
+name: weekly_sales
+depends_on: silverv1.fct_weekly_sales
+owner: shreyasikarwartmdcio
+description: >
+  Retail weekly sales aggregated by region and product category — weekly revenue,
+  order volume, peak/trough daily revenue, active customers, and shipment presence.
+
+ai_context:
+  instructions: >
+    Weekly retail sales semantic model. Default time dimension is week_start_date.
+    Use region_name and category for geographic and merchandising analysis.
+    any_shipments_this_week boolean enables fulfilled-week filtering.
+    Query via SQL API, REST API (JSON), or GraphQL API.
+  synonyms:
+    - weekly revenue
+    - weekly sales trend
+    - category weekly sales
+    - active customers by week
+  examples:
+    - description: weekly revenue by category
+      format: sql
+      query: |
+        SELECT
+          weekly_sales.week_start_date,
+          weekly_sales.category,
+          MEASURE(weekly_sales.sum_weekly_revenue)
+        FROM weekly_sales
+        GROUP BY 1, 2;
+    - description: peak daily revenue by region (REST API)
+      format: rest
+      query: |
+        {
+          "measures": ["weekly_sales.max_daily_revenue_in_week"],
+          "dimensions": ["weekly_sales.region_name"],
+          "timeDimensions": [
+            {
+              "dimension": "weekly_sales.week_start_date",
+              "granularity": "week",
+              "dateRange": "last 12 weeks"
+            }
+          ]
+        }
+
+dimensions:
+  # ── timestamp ───────────────────────────────────────────────────────────────
+  - name: week_start_date
+    description: Monday start of the ISO calendar week (primary time dimension)
+    granularities:
+      - name: week
+        interval: 1 week
+      - name: month
+        interval: 1 month
+    tags:
+      - timestamp
+      - temporal
+      - week
+    terms:
+      - sales.week_start
+      - retail.week_beginning
+
+  # ── string ──────────────────────────────────────────────────────────────────
+  - name: region_name
+    description: Geographic sales region (North, South, East, West)
+    behavior:
+      type: categorical
+    tags:
+      - string
+      - geography
+      - region
+    terms:
+      - geography.region_name
+      - sales.territory
+  - name: category
+    description: Product category label for the weekly aggregation row
+    behavior:
+      type: categorical
+    tags:
+      - string
+      - category
+      - merchandising
+    terms:
+      - product.category
+      - retail.merchandise_category
+
+  # ── boolean ─────────────────────────────────────────────────────────────────
+  - name: any_shipments_this_week
+    description: >
+      True if any order row in the week-region-category grain was shipped.
+    behavior:
+      type: categorical
+    tags:
+      - boolean
+      - shipment
+      - fulfillment
+    terms:
+      - fulfillment.any_shipments
+      - weekly_sales.shipped_flag
+
+  # ── number ──────────────────────────────────────────────────────────────────
+  - name: region_id
+    behavior:
+      type: identifier
+  - name: year
+    description: Calendar year of the week
+    tags:
+      - number
+      - temporal
+  - name: week_number
+    description: ISO week number within the year
+    tags:
+      - number
+      - temporal
+  - name: total_weekly_orders
+    description: Total orders aggregated for the week-region-category grain
+    tags:
+      - number
+      - orders
+  - name: total_weekly_items
+    description: Total units sold in the week-region-category grain
+    tags:
+      - number
+      - units
+  - name: total_weekly_revenue
+    description: Gross revenue for the week-region-category grain
+    tags:
+      - number
+      - revenue
+  - name: avg_daily_revenue
+    description: Average daily revenue within the week (total / active trading days)
+    tags:
+      - number
+      - revenue
+      - average
+  - name: max_daily_revenue
+    description: Peak single-day revenue within the week (from fct_daily_sales roll-up)
+    tags:
+      - number
+      - revenue
+      - peak
+  - name: min_daily_revenue
+    description: Lowest single-day revenue within the week
+    tags:
+      - number
+      - revenue
+      - trough
+  - name: active_customers
+    description: Distinct customers who ordered in the week-region-category grain
+    tags:
+      - number
+      - customers
+      - engagement
+  - name: shipment_days
+    description: Count of daily grain rows within the week that had at least one shipment
+    tags:
+      - number
+      - shipment
+      - fulfillment
+
+measures:
+  # ── sum ───────────────────────────────────────────────────────────────────────
+  - name: sum_weekly_revenue
+    type: sum
+    expression: "{weekly_sales.total_weekly_revenue}"
+    description: Total weekly gross revenue across rows in scope
+    tags:
+      - sum
+      - revenue
+      - headline
+    terms:
+      - sales.weekly_revenue
+      - retail.gross_weekly_revenue
+
+  - name: sum_weekly_orders
+    type: sum
+    expression: "{weekly_sales.total_weekly_orders}"
+    description: Total weekly order count across rows in scope
+    tags:
+      - sum
+      - orders
+      - volume
+    terms:
+      - sales.weekly_orders
+      - retail.weekly_order_count
+
+  - name: sum_weekly_items
+    type: sum
+    expression: "{weekly_sales.total_weekly_items}"
+    description: Total weekly units sold across rows in scope
+    tags:
+      - sum
+      - units
+      - volume
+    terms:
+      - sales.weekly_units
+      - retail.weekly_unit_volume
+
+  - name: total_shipment_days
+    type: sum
+    expression: "{weekly_sales.shipment_days}"
+    description: Total days-with-shipments across weekly rows in scope
+    tags:
+      - sum
+      - shipment
+      - fulfillment
+    terms:
+      - fulfillment.total_shipment_days
+
+  - name: active_customer_count
+    type: sum
+    expression: "{weekly_sales.active_customers}"
+    description: Weekly distinct active customer count summed across rows in scope
+    tags:
+      - sum
+      - customers
+      - engagement
+    terms:
+      - sales.weekly_active_customers
+      - retail.active_buyers_per_week
+
+  - name: rolling_4w_revenue
+    type: sum
+    expression: "{weekly_sales.total_weekly_revenue}"
+    rolling_window:
+      trailing: "4 weeks"
+      offset: end
+    description: >
+      Revenue over the trailing 4-week (approximately monthly) rolling window.
+      Requires week_start_date as the time dimension.
+    ai_context:
+      instructions: >
+        Trailing 4-week revenue for smoothed monthly comparisons. Always pair
+        with week_start_date at week granularity; do not use without a time grain.
+      synonyms:
+        - 4-week rolling revenue
+        - monthly rolling revenue
+        - trailing month revenue
+      caveats:
+        - Requires week_start_date time dimension in the query.
+      examples:
+        - description: rolling 4-week revenue by region
+          format: rest
+          query: |
+            {
+              "measures": ["weekly_sales.rolling_4w_revenue"],
+              "dimensions": ["weekly_sales.region_name"],
+              "timeDimensions": [
+                {
+                  "dimension": "weekly_sales.week_start_date",
+                  "granularity": "week",
+                  "dateRange": "last 12 weeks"
+                }
+              ]
+            }
+    tags:
+      - rolling-window
+      - revenue
+      - trend
+    terms:
+      - sales.rolling_4w_revenue
+      - retail.monthly_rolling_revenue
+
+rollups:
+  - name: rev_region_cat
+    measures:
+      - sum_weekly_revenue
+      - sum_weekly_orders
+      - active_customer_count
+    dimensions:
+      - region_name
+      - category
+      - any_shipments_this_week
+    time_dimension: week_start_date
+    granularity: week
+    description: >
+      Weekly revenue, order volume, and active customer counts by region,
+      category, and shipment presence.
+  - name: month_cat_rev
+    measures:
+      - sum_weekly_revenue
+      - sum_weekly_items
+      - total_shipment_days
+    dimensions:
+      - category
+    time_dimension: week_start_date
+    granularity: month
+    description: >
+      Month-level category revenue, units, and shipment-day totals derived from
+      weekly sales for merchandising trend analysis.
+
+joins:
+  - name: daily_sales
+    type: one_to_many
+    expression: "{weekly_sales.region_id} = {daily_sales.region_id} AND {weekly_sales.category} = {daily_sales.category} AND {weekly_sales.week_start_date} = DATEADD(week, DATEDIFF(week, 0, {daily_sales.order_date}), 0)"

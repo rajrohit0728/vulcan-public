@@ -1,0 +1,386 @@
+vde: false
+name: ri-fabricsn
+display_name: "SN [Fabric] Retail Intelligence Platform"
+description: >
+  Governed retail analytics data product covering revenue performance, customer lifecycle,
+  product merchandising, fulfillment operations, and RFM segmentation. Exposes a focused
+  semantic layer with business-ready measures for revenue, orders, customer value,
+  product performance, fulfillment conversion, and retention analysis.
+discoverable: true
+version: 0.1.0
+alignment: source_aligned
+allow_reciprocal_joins: true
+
+tags:
+  - retail
+  - retail-intelligence
+  - e-commerce
+  - orders
+  - revenue-analytics
+  - customer-analytics
+  - product-analytics
+  - fulfillment
+  - rfm-segmentation
+  - semantic-layer
+  - reference-implementation
+  - fabric
+
+terms:
+  - glossary.data_product
+  - glossary.retail_analytics
+  - glossary.orders
+  - glossary.revenue
+  - glossary.customer_segmentation
+  - glossary.product_performance
+
+domain: retail
+
+
+status: Active
+usage_path: ./usage.yaml
+agreement_path: ./agreement.md
+
+compliance:
+  regimes:
+    - GDPR
+    - SOC2
+  data_residency: us-only
+  legal_contact: legal@tmd.io
+
+support:
+  - channel: data-platform-help
+    tool: slack
+    scope: interactive
+    url: https://tmd-io.slack.com/archives/data-platform
+    hours: Mon-Fri 09:00-17:00 UTC
+  - channel: data-issues
+    tool: ticket
+    scope: issues
+    url: https://github.com/tmdc-io/vulcan/issues
+
+sla:
+  update_frequency:
+    target: 7
+    unit: d
+    monitoring:
+      system: vulcan-scheduler
+
+license:
+  url: https://bitbucket.org/rubik_/vulcan-examples/src/shreya-examples/testing_2/fabric/productise/agreement.md
+
+data_holder:
+  legal_name: TMDC Inc.
+  url: https://tmdc.io
+
+issue_tracker:
+  provider: github
+  url: https://github.com/tmdc-io/vulcan/issues
+
+
+after_authorize: "plugins.auth_ext:resolve_user_groups"
+
+linter:
+  enabled: true
+  warn_rules:
+    - RequireGrainForAllModels
+    - RequireOwnerForAllModels
+    - RequireAssertionsOrAuditsForAllModels
+    - RequireDqForAnalyticsModels
+    - RequireGeneratedBronzeSources
+    - preferassertions
+    - nomissingaudits
+
+ignore_patterns:
+  - "try/**"
+  - "domain-resource.yaml"
+
+model_defaults:
+  dialect: fabric
+  start: '2025-01-01'
+  cron: '0 */3 * * *'
+
+before_all:
+  - EXEC('IF SCHEMA_ID(''public_shreya'') IS NULL EXEC(''CREATE SCHEMA public_shreya'')');
+  - EXEC('IF SCHEMA_ID(''bronzev1'') IS NULL EXEC(''CREATE SCHEMA bronzev1'')');
+  - EXEC('IF SCHEMA_ID(''silverv1'') IS NULL EXEC(''CREATE SCHEMA silverv1'')');
+  - EXEC('IF SCHEMA_ID(''goldv1'') IS NULL EXEC(''CREATE SCHEMA goldv1'')');
+  - |
+    EXEC('IF OBJECT_ID(''public_shreya.regions_ext'', ''U'') IS NULL
+    CREATE TABLE public_shreya.regions_ext (
+      region_id   INTEGER,
+      region_name VARCHAR(255)
+    )');
+  - |
+    EXEC('IF OBJECT_ID(''public_shreya.customers_ext'', ''U'') IS NULL
+    CREATE TABLE public_shreya.customers_ext (
+      customer_id INTEGER,
+      region_id   INTEGER,
+      name        VARCHAR(255),
+      email       VARCHAR(255),
+      signup_date DATE
+    )');
+  - |
+    EXEC('IF OBJECT_ID(''public_shreya.suppliers_ext'', ''U'') IS NULL
+    CREATE TABLE public_shreya.suppliers_ext (
+      supplier_id INTEGER,
+      region_id   INTEGER,
+      name        VARCHAR(255)
+    )');
+  - |
+    EXEC('IF OBJECT_ID(''public_shreya.products_ext'', ''U'') IS NULL
+    CREATE TABLE public_shreya.products_ext (
+      product_id  INTEGER,
+      supplier_id INTEGER,
+      name        VARCHAR(255),
+      category    VARCHAR(255),
+      price       DECIMAL(10, 2)
+    )');
+  - |
+    EXEC('IF OBJECT_ID(''public_shreya.warehouses_ext'', ''U'') IS NULL
+    CREATE TABLE public_shreya.warehouses_ext (
+      warehouse_id INTEGER,
+      region_id    INTEGER,
+      name         VARCHAR(255)
+    )');
+  - |
+    EXEC('IF OBJECT_ID(''public_shreya.orders_ext'', ''U'') IS NULL
+    CREATE TABLE public_shreya.orders_ext (
+      order_id     INTEGER,
+      customer_id  INTEGER,
+      order_date   DATETIME2(6),
+      warehouse_id INTEGER,
+      order_status VARCHAR(255)
+    )');
+  - |
+    EXEC('IF OBJECT_ID(''public_shreya.order_items_ext'', ''U'') IS NULL
+    CREATE TABLE public_shreya.order_items_ext (
+      order_id   INTEGER,
+      item_id    INTEGER,
+      product_id INTEGER,
+      quantity   INTEGER,
+      unit_price DECIMAL(10, 2)
+    )');
+  - |
+    EXEC('IF OBJECT_ID(''public_shreya.shipments_ext'', ''U'') IS NULL
+    CREATE TABLE public_shreya.shipments_ext (
+      shipment_id  INTEGER,
+      order_id     INTEGER,
+      shipped_date DATE,
+      carrier      VARCHAR(255)
+    )');
+  - |
+    EXEC('IF OBJECT_ID(''public_shreya.dim_dates_ext'', ''U'') IS NULL
+    CREATE TABLE public_shreya.dim_dates_ext (
+      dt          DATE,
+      year        INTEGER,
+      month       INTEGER,
+      day_of_week VARCHAR(255)
+    )');
+  - |
+    INSERT INTO [public_shreya].regions_ext (region_id, region_name)
+    SELECT region_id, region_name
+    FROM (
+      VALUES
+        (1, 'North'),
+        (2, 'South'),
+        (3, 'East'),
+        (4, 'West'),
+        (5, 'Central')
+    ) AS seed(region_id, region_name)
+    WHERE NOT EXISTS (SELECT 1 FROM [public_shreya].regions_ext);
+  - |
+    WITH digits(n) AS (
+      SELECT n FROM (VALUES (0),(1),(2),(3),(4),(5),(6),(7),(8),(9)) AS d(n)
+    ), numbers AS (
+      SELECT TOP (500) ROW_NUMBER() OVER (ORDER BY a.n, b.n, c.n) AS id
+      FROM digits AS a CROSS JOIN digits AS b CROSS JOIN digits AS c
+    )
+    INSERT INTO [public_shreya].customers_ext (customer_id, region_id, name, email, signup_date)
+    SELECT
+      id AS customer_id,
+      (id % 5) + 1 AS region_id,
+      CONCAT('Customer ', CAST(id AS VARCHAR(20))) AS name,
+      CONCAT('customer', CAST(id AS VARCHAR(20)), '@example.com') AS email,
+      DATEADD(day, id % 120, CAST('2025-01-01' AS DATE)) AS signup_date
+    FROM numbers
+    WHERE NOT EXISTS (SELECT 1 FROM [public_shreya].customers_ext);
+  - |
+    WITH digits(n) AS (
+      SELECT n FROM (VALUES (0),(1),(2),(3),(4),(5),(6),(7),(8),(9)) AS d(n)
+    ), numbers AS (
+      SELECT TOP (500) ROW_NUMBER() OVER (ORDER BY a.n, b.n, c.n) AS id
+      FROM digits AS a CROSS JOIN digits AS b CROSS JOIN digits AS c
+    )
+    INSERT INTO [public_shreya].suppliers_ext (supplier_id, region_id, name)
+    SELECT
+      id AS supplier_id,
+      (id % 5) + 1 AS region_id,
+      CONCAT('Supplier ', CAST(id AS VARCHAR(20))) AS name
+    FROM numbers
+    WHERE NOT EXISTS (SELECT 1 FROM [public_shreya].suppliers_ext);
+  - |
+    WITH digits(n) AS (
+      SELECT n FROM (VALUES (0),(1),(2),(3),(4),(5),(6),(7),(8),(9)) AS d(n)
+    ), numbers AS (
+      SELECT TOP (500) ROW_NUMBER() OVER (ORDER BY a.n, b.n, c.n) AS id
+      FROM digits AS a CROSS JOIN digits AS b CROSS JOIN digits AS c
+    )
+    INSERT INTO [public_shreya].products_ext (product_id, supplier_id, name, category, price)
+    SELECT
+      id AS product_id,
+      (id % 500) + 1 AS supplier_id,
+      CONCAT('Product ', CAST(id AS VARCHAR(20))) AS name,
+      CASE id % 4
+        WHEN 0 THEN 'Widgets'
+        WHEN 1 THEN 'Gadgets'
+        WHEN 2 THEN 'Doohickeys'
+        ELSE 'Thingamajigs'
+      END AS category,
+      CAST(25 + (id % 475) AS DECIMAL(10, 2)) AS price
+    FROM numbers
+    WHERE NOT EXISTS (SELECT 1 FROM [public_shreya].products_ext);
+  - |
+    WITH digits(n) AS (
+      SELECT n FROM (VALUES (0),(1),(2),(3),(4),(5),(6),(7),(8),(9)) AS d(n)
+    ), numbers AS (
+      SELECT TOP (500) ROW_NUMBER() OVER (ORDER BY a.n, b.n, c.n) AS id
+      FROM digits AS a CROSS JOIN digits AS b CROSS JOIN digits AS c
+    )
+    INSERT INTO [public_shreya].warehouses_ext (warehouse_id, region_id, name)
+    SELECT
+      id AS warehouse_id,
+      (id % 5) + 1 AS region_id,
+      CONCAT('Fulfillment Hub ', CAST(id AS VARCHAR(20))) AS name
+    FROM numbers
+    WHERE NOT EXISTS (SELECT 1 FROM [public_shreya].warehouses_ext);
+  - |
+    WITH digits(n) AS (
+      SELECT n FROM (VALUES (0),(1),(2),(3),(4),(5),(6),(7),(8),(9)) AS d(n)
+    ), numbers AS (
+      SELECT TOP (500) ROW_NUMBER() OVER (ORDER BY a.n, b.n, c.n) AS id
+      FROM digits AS a CROSS JOIN digits AS b CROSS JOIN digits AS c
+    )
+    INSERT INTO [public_shreya].orders_ext (order_id, customer_id, order_date, warehouse_id, order_status)
+    SELECT
+      id AS order_id,
+      (id % 500) + 1 AS customer_id,
+      DATEADD(day, id % 180, CAST('2025-01-01T00:00:00' AS DATETIME2(6))) AS order_date,
+      (id % 500) + 1 AS warehouse_id,
+      CASE id % 5
+        WHEN 0 THEN 'Cancelled'
+        WHEN 1 THEN 'Confirmed'
+        ELSE 'Shipped'
+      END AS order_status
+    FROM numbers
+    WHERE NOT EXISTS (SELECT 1 FROM [public_shreya].orders_ext);
+  - |
+    WITH digits(n) AS (
+      SELECT n FROM (VALUES (0),(1),(2),(3),(4),(5),(6),(7),(8),(9)) AS d(n)
+    ), orders AS (
+      SELECT TOP (500) ROW_NUMBER() OVER (ORDER BY a.n, b.n, c.n) AS id
+      FROM digits AS a CROSS JOIN digits AS b CROSS JOIN digits AS c
+    ), items AS (
+      SELECT n + 1 AS id FROM (VALUES (0),(1),(2)) AS i(n)
+    )
+    INSERT INTO [public_shreya].order_items_ext (order_id, item_id, product_id, quantity, unit_price)
+    SELECT
+      generated.order_id,
+      generated.item_id,
+      generated.product_id,
+      generated.quantity,
+      COALESCE(products.price, CAST(25 + (generated.product_id % 475) AS DECIMAL(10, 2))) AS unit_price
+    FROM (
+      SELECT
+        orders.id AS order_id,
+        items.id AS item_id,
+        ((orders.id * 17 + items.id * 7) % 500) + 1 AS product_id,
+        ((orders.id + items.id) % 5) + 1 AS quantity
+      FROM orders
+      CROSS JOIN items
+      WHERE items.id <= (orders.id % 3) + 1
+    ) AS generated
+    LEFT JOIN [public_shreya].products_ext AS products
+      ON generated.product_id = products.product_id
+    WHERE NOT EXISTS (SELECT 1 FROM [public_shreya].order_items_ext);
+  - |
+    INSERT INTO [public_shreya].shipments_ext (shipment_id, order_id, shipped_date, carrier)
+    SELECT
+      CAST(ROW_NUMBER() OVER (ORDER BY orders.order_id) AS INTEGER) AS shipment_id,
+      orders.order_id,
+      DATEADD(day, (orders.order_id % 5) + 1, CAST(orders.order_date AS DATE)) AS shipped_date,
+      CASE orders.order_id % 4
+        WHEN 0 THEN 'DHL'
+        WHEN 1 THEN 'FedEx'
+        WHEN 2 THEN 'UPS'
+        ELSE 'USPS'
+      END AS carrier
+    FROM [public_shreya].orders_ext AS orders
+    WHERE orders.order_status = 'Shipped'
+      AND orders.order_id % 10 < 8
+      AND NOT EXISTS (SELECT 1 FROM [public_shreya].shipments_ext);
+  - |
+    WITH digits(n) AS (
+      SELECT n FROM (VALUES (0),(1),(2),(3),(4),(5),(6),(7),(8),(9)) AS d(n)
+    ), numbers AS (
+      SELECT TOP (500) ROW_NUMBER() OVER (ORDER BY a.n, b.n, c.n) - 1 AS id
+      FROM digits AS a CROSS JOIN digits AS b CROSS JOIN digits AS c
+    )
+    INSERT INTO [public_shreya].dim_dates_ext (dt, year, month, day_of_week)
+    SELECT
+      generated.dt,
+      DATEPART(year, generated.dt) AS year,
+      DATEPART(month, generated.dt) AS month,
+      DATENAME(weekday, generated.dt) AS day_of_week
+    FROM (
+      SELECT DATEADD(day, id, CAST('2025-01-01' AS DATE)) AS dt
+      FROM numbers
+    ) AS generated
+    WHERE NOT EXISTS (SELECT 1 FROM [public_shreya].dim_dates_ext);
+after_all:
+  - UPDATE STATISTICS bronzev1.orders;
+  - UPDATE STATISTICS bronzev1.order_items;
+  - UPDATE STATISTICS silverv1.fct_daily_sales;
+
+gateways:
+  default:
+    connection:
+      type: fabric
+      host: "{{ env_var('FABRIC_HOST', '') }}"
+      workspace_id: "{{ env_var('FABRIC_WORKSPACE_ID', '') }}"
+      tenant_id: "{{ env_var('FABRIC_TENANT_ID', '') }}"
+      port: "{{ env_var('FABRIC_PORT', '1433') }}"
+      driver: "{{ env_var('FABRIC_DRIVER', 'pyodbc') }}"
+      driver_name: "{{ env_var('FABRIC_DRIVER_NAME', 'ODBC Driver 18 for SQL Server') }}"
+      user: "{{ env_var('FABRIC_USER', '') }}"
+      password: "{{ env_var('FABRIC_PASSWORD', '') }}"
+      odbc_properties:
+        Authentication: "{{ env_var('FABRIC_ODBC_AUTHENTICATION', 'ActiveDirectoryServicePrincipal') }}"
+      database: "{{ env_var('FABRIC_DATABASE', '') }}"
+
+
+
+
+notification_targets:
+  - type: console
+    notify_on:
+      - apply_start
+      - apply_end
+      - apply_failure
+
+
+users:
+  - username: shreyasikarwartmdcio
+    email: shreya.sikarwar@tmdc.io
+    type: OWNER
+  - username: kanakguptatmdcio
+    email: kanak.gupta@tmdc.io
+    type: CONTRIBUTOR
+
+variables:
+  environment: local
+  source_schema: public_shreya
+  bronze_schema: bronzev1
+  silver_schema: silverv1
+  gold_schema: goldv1
+  min_customer_count: 10
+  min_order_count: 20

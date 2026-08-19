@@ -1,0 +1,84 @@
+version: v1alpha
+type: vulcan
+name: ri-fabricsn
+tags:
+  - retail
+  - retail-intelligence
+  - order-analytics
+  - sales-operations
+  - fabric
+spec:
+  compute: engineering-compute
+  engine: fabric
+  repo:
+    url: https://github.com/rajrohit0728/vulcan-public
+    syncFlags:
+      - "--ref=main"
+      - "--submodules=off"
+    baseDir: vulcan-public/fabric
+    # secretId: engineering:git-sync-rr
+  use:
+    projection:
+      secrets:
+        - id: engineering:fabric-secret
+          contextAlias: fabric
+      projections:
+        envVars:
+          - key: FABRIC_HOST
+            template: "{{ secrets['fabric'].FABRIC_HOST | base64_decode }}"
+          - key: FABRIC_WORKSPACE_ID
+            template: "{{ secrets['fabric'].FABRIC_WORKSPACE_ID | base64_decode }}"
+          - key: FABRIC_TENANT_ID
+            template: "{{ secrets['fabric'].FABRIC_TENANT_ID | base64_decode }}"
+          - key: FABRIC_PORT
+            template: "{{ secrets['fabric'].FABRIC_PORT | base64_decode }}"
+          - key: FABRIC_DRIVER
+            template: "{{ secrets['fabric'].FABRIC_DRIVER | base64_decode }}"
+          - key: FABRIC_DRIVER_NAME
+            template: "{{ secrets['fabric'].FABRIC_DRIVER_NAME | base64_decode }}"
+          - key: FABRIC_USER
+            template: "{{ secrets['fabric'].FABRIC_USER | base64_decode }}"
+          - key: FABRIC_PASSWORD
+            template: "{{ secrets['fabric'].FABRIC_PASSWORD | base64_decode }}"
+          - key: FABRIC_ODBC_AUTHENTICATION
+            template: "{{ secrets['fabric'].FABRIC_ODBC_AUTHENTICATION | base64_decode }}"
+          - key: FABRIC_DATABASE
+            template: "{{ secrets['fabric'].FABRIC_DATABASE | base64_decode }}"
+  workflow:
+    schedule:
+      crons:
+        - "0 */3 * * *"
+      endOn: "2027-01-01T00:00:00-00:00"
+      timezone: "US/Pacific"
+      concurrencyPolicy: Forbid
+    logLevel: INFO
+    resource:
+      request:
+        cpu: "200m"
+        memory: "512Mi"
+      limit:
+        cpu: "1000m"
+        memory: "1Gi"
+    plan:
+      command:
+        - vulcan
+      arguments:
+        - --log-to-stdout
+        - plan
+        - --auto-apply
+    run:
+      command:
+        - vulcan
+      arguments:
+        - --log-to-stdout
+        - run
+  api:
+    replicas: 2
+    logLevel: INFO
+    resource:
+      request:
+        cpu: "200m"
+        memory: "512Mi"
+      limit:
+        cpu: "4000m"
+        memory: "3Gi"

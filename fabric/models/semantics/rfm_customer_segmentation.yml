@@ -1,0 +1,304 @@
+kind: semantic
+name: rfm
+depends_on: goldv1.rfm_customer_segmentation
+owner: shreyasikarwartmdcio
+description: >
+  Retail RFM (Recency-Frequency-Monetary) customer segmentation with recommended
+  retention actions. Exposes all RFM score dimensions — string, number, boolean —
+  and a comprehensive measure suite including sum, avg, max, min, count_distinct,
+  ratio, string, and boolean types for retention campaign targeting.
+
+ai_context:
+  instructions: >
+    RFM semantic model for retention strategy and customer risk analysis.
+    rfm_segment is the primary categorical axis; use recency_days, frequency_orders,
+    and monetary_value numeric dimensions for score-level analysis. The
+    is_at_risk_customer boolean enables quick at-risk segment filtering.
+    Join to customer_profile for enriched customer attributes.
+    Query via SQL API, REST API (JSON), or GraphQL API.
+  synonyms:
+    - RFM segmentation
+    - customer risk scoring
+    - retention targeting
+    - champions
+    - at-risk customers
+    - customer lifecycle
+  examples:
+    - description: total monetary value by RFM segment
+      format: sql
+      query: |
+        SELECT
+          rfm.rfm_segment,
+          MEASURE(rfm.total_rfm_value)
+        FROM rfm
+        GROUP BY 1;
+    - description: avg recency for at-risk customers (REST API)
+      format: rest
+      query: |
+        {
+          "measures": ["rfm.avg_recency_days"],
+          "segments": ["rfm.at_risk_customers"]
+        }
+    - description: champion customer count by region (GraphQL API)
+      format: graphql
+      query: |
+        {
+          vulcan {
+            rfm {
+              region_name
+              rfm_segment
+              total_customers_rfm
+              total_rfm_value
+            }
+          }
+        }
+
+dimensions:
+  # ── identifier ──────────────────────────────────────────────────────────────
+  - name: customer_id
+    description: Customer surrogate key
+    behavior:
+      type: identifier
+
+  # ── string ──────────────────────────────────────────────────────────────────
+  - name: customer_name
+    description: Customer display name (PII — masked for restricted groups)
+    behavior:
+      type: categorical
+    tags:
+      - string
+      - pii
+      - customer
+    terms:
+      - customer.display_name
+  - name: email
+    description: Customer email address (PII — masked for restricted groups)
+    behavior:
+      type: categorical
+    tags:
+      - string
+      - pii
+      - contact
+    terms:
+      - customer.email
+  - name: region_name
+    description: Customer sales region
+    behavior:
+      type: categorical
+    tags:
+      - string
+      - geography
+      - region
+    terms:
+      - geography.region_name
+      - sales.territory
+  - name: rfm_segment
+    description: >
+      RFM-derived customer lifecycle segment: Champions, Loyal Customers,
+      Potential Loyalists, Promising, At Risk, Hibernating, Lost, etc.
+    behavior:
+      type: categorical
+    ai_context:
+      instructions: >
+        Primary segmentation axis for retention targeting. Use with total_rfm_value
+        for segment-level monetary attribution and avg_recency_days for urgency scoring.
+      synonyms:
+        - RFM label
+        - customer lifecycle stage
+        - retention segment
+      examples:
+        - description: customer count by RFM segment
+          format: sql
+          query: |
+            SELECT
+              rfm.rfm_segment,
+              MEASURE(rfm.total_customers_rfm)
+            FROM rfm
+            GROUP BY 1;
+    tags:
+      - string
+      - segment
+      - lifecycle
+    terms:
+      - rfm.segment_label
+      - retention.customer_segment
+  - name: recommended_action
+    description: >
+      Retention action recommended for this RFM segment
+      (masked as 'Restricted' for non-admin groups).
+    behavior:
+      type: categorical
+    tags:
+      - string
+      - retention
+      - action
+    terms:
+      - rfm.recommended_action
+      - retention.campaign_action
+
+  # ── timestamp ───────────────────────────────────────────────────────────────
+  - name: last_order_date
+    description: Date of the customer's last order (used for recency analysis)
+    granularities:
+      - name: day
+        interval: 1 day
+      - name: week
+        interval: 1 week
+      - name: month
+        interval: 1 month
+    tags:
+      - timestamp
+      - temporal
+      - recency
+    terms:
+      - customer.last_order_date
+      - rfm.recency_date
+  - name: last_order_day
+    description: Calendar date (DATE) of the customer's last order — the date-only projection of last_order_date, useful for day-level grouping and date comparisons
+    tags:
+      - date
+      - temporal
+      - recency
+
+  # ── boolean ─────────────────────────────────────────────────────────────────
+  - name: is_at_risk_customer
+    description: >
+      True for customers in the At Risk, Hibernating, or Lost RFM segments —
+      indicating churn risk requiring immediate retention action.
+    behavior:
+      type: categorical
+    ai_context:
+      instructions: >
+        Boolean churn-risk flag derived from RFM scoring. Use `WHERE is_at_risk_customer = 1`
+        for retention campaign audience selection.
+      synonyms:
+        - churn risk flag
+        - at-risk boolean
+        - retention-needed flag
+      examples:
+        - description: at-risk customers by region
+          format: sql
+          query: |
+            SELECT
+              rfm.region_name,
+              MEASURE(rfm.total_customers_rfm)
+            FROM rfm
+            WHERE is_at_risk_customer = 1
+            GROUP BY 1;
+    tags:
+      - boolean
+      - at-risk
+      - churn
+    terms:
+      - rfm.is_at_risk
+      - retention.churn_flag
+
+  # ── number ──────────────────────────────────────────────────────────────────
+  - name: recency_days
+    description: Days elapsed since the customer's last order (lower = more recent)
+    tags:
+      - number
+      - recency
+      - rfm
+    terms:
+      - rfm.recency_days
+      - customer.days_since_last_order
+  - name: frequency_orders
+    description: Total qualifying orders placed by the customer (higher = more loyal)
+    tags:
+      - number
+      - frequency
+      - rfm
+    terms:
+      - rfm.frequency
+      - customer.order_count
+  - name: monetary_value
+    description: Gross lifetime revenue attributed to this customer (higher = more valuable)
+    tags:
+      - number
+      - monetary
+      - rfm
+    terms:
+      - rfm.monetary_value
+      - customer.lifetime_revenue
+  - name: recency_score
+    description: RFM recency component score (1–5; 5 = most recent)
+    behavior:
+      type: ordinal
+    tags:
+      - number
+      - score
+      - rfm
+    terms:
+      - rfm.recency_score
+  - name: frequency_score
+    description: RFM frequency component score (1–5; 5 = most frequent)
+    behavior:
+      type: ordinal
+    tags:
+      - number
+      - score
+      - rfm
+    terms:
+      - rfm.frequency_score
+  - name: monetary_score
+    description: RFM monetary component score (1–5; 5 = highest revenue)
+    behavior:
+      type: ordinal
+    tags:
+      - number
+      - score
+      - rfm
+    terms:
+      - rfm.monetary_score
+  - name: rfm_score
+    description: Composite RFM score (concatenation of R, F, M component scores)
+    behavior:
+      type: categorical
+    tags:
+      - score
+      - composite-score
+      - rfm
+    terms:
+      - rfm.composite_score
+
+measures:
+
+  - name: total_rfm_value
+    type: sum
+    expression: "{rfm.monetary_value}"
+    description: Total lifetime monetary value across all customers in scope
+    ai_context:
+      instructions: Primary monetary KPI for RFM segment revenue attribution.
+      synonyms:
+        - total revenue by segment
+        - segment monetary value
+        - lifetime value by RFM
+    tags:
+      - sum
+      - monetary
+      - revenue
+    terms:
+      - rfm.total_value
+      - retention.segment_revenue
+
+rollups:
+  - name: rfm_segments_by_region
+    measures:
+      - total_rfm_value
+    dimensions:
+      - region_name
+      - rfm_segment
+      - recommended_action
+      - is_at_risk_customer
+    time_dimension: last_order_date
+    granularity: month
+    description: >
+      Monthly RFM value by region, segment, recommended action, and at-risk flag
+      for retention campaign planning.
+
+joins:
+  - name: customer_profile
+    type: one_to_one
+    on: customer_id
+    skip_for_bi: true

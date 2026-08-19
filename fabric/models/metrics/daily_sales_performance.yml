@@ -1,0 +1,19 @@
+kind: metric
+name: daily_sales_performance
+owner: shreyasikarwartmdcio
+measure: daily_sales.total_daily_revenue
+ts: daily_sales.order_date
+granularity: day
+dimensions:
+  - name: region
+    ref: daily_sales.region_name
+  - name: category
+    ref: daily_sales.category
+description: Daily revenue trends by region and category.
+tags:
+  - sales
+  - revenue
+  - daily
+terms:
+  - sales.daily_performance
+  - metric.daily_revenue

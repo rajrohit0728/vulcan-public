@@ -1,0 +1,17 @@
+kind: metric
+name: fulfillment_conversion
+owner: shreyasikarwartmdcio
+measure: sales_funnel.total_orders_shipped
+ts: sales_funnel.funnel_date
+granularity: day
+dimensions:
+  - name: region
+    ref: sales_funnel.region_name
+description: Order-to-shipment conversion rate by region.
+tags:
+  - funnel
+  - fulfillment
+  - conversion
+terms:
+  - funnel.fulfillment_rate
+  - logistics.shipment_conversion

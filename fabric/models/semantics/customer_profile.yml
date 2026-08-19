@@ -1,0 +1,436 @@
+kind: semantic
+name: customer_profile
+depends_on: silverv1.dim_customer_profile
+owner: shreyasikarwartmdcio
+description: >
+  Retail customer dimension with lifetime purchase behavior, segmentation flags,
+  and boolean loyalty indicators. Measures focus on customer counts, lifetime
+  value, purchase frequency, recency, and acquisition trends.
+
+ai_context:
+  instructions: >
+    Retail customer profile semantic model. Use signup_date for cohort analysis,
+    customer_segment for RFM-style segmentation, and is_high_value_customer /
+    is_active_customer boolean flags for quick filtering. Join to daily_sales by
+    customer_id for transactional revenue metrics. Query via SQL API, REST API
+    (JSON), or GraphQL API.
+  synonyms:
+    - customer profile
+    - customer lifetime value
+    - retail customer
+    - buyer profile
+    - customer 360
+  examples:
+    - description: average LTV by customer segment
+      format: sql
+      query: |
+        SELECT
+          customer_profile.customer_segment,
+          MEASURE(customer_profile.total_lifetime_revenue)
+        FROM customer_profile
+        GROUP BY 1;
+    - description: high-value active customer count (REST API)
+      format: rest
+      query: |
+        {
+          "measures": ["customer_profile.total_customers"],
+          "segments": ["customer_profile.high_value_customers"]
+        }
+    - description: rolling 30-day new customer acquisitions (REST API)
+      format: rest
+      query: |
+        {
+          "measures": ["customer_profile.rolling_30d_new_customers"],
+          "timeDimensions": [
+            {
+              "dimension": "customer_profile.signup_date",
+              "granularity": "day",
+              "dateRange": "last 30 days"
+            }
+          ]
+        }
+    - description: customers by region with max LTV (GraphQL API)
+      format: graphql
+      query: |
+        {
+          vulcan {
+            customer_profile {
+              region_name
+              max_customer_ltv
+              total_customers
+            }
+          }
+        }
+
+dimensions:
+  # ── identifier ──────────────────────────────────────────────────────────────
+  - name: customer_id
+    description: Surrogate customer key
+    behavior:
+      type: identifier
+  - name: region_id
+    description: Region surrogate key (join to region dimension)
+    behavior:
+      type: identifier
+
+  # ── string ──────────────────────────────────────────────────────────────────
+  - name: customer_name
+    description: Full display name of the customer
+    behavior:
+      type: categorical
+    tags:
+      - pii
+      - customer
+    terms:
+      - customer.display_name
+  - name: email
+    description: Customer email address (PII — masked for restricted groups)
+    behavior:
+      type: categorical
+    tags:
+      - pii
+      - contact
+    terms:
+      - customer.email
+  - name: region_name
+    description: Geographic sales region (North, South, East, West)
+    behavior:
+      type: categorical
+    tags:
+      - geography
+      - region
+    terms:
+      - geography.region
+      - sales.territory
+  - name: customer_segment
+    description: >
+      Lifetime value segment: New, Low Value, Medium Value, High Value, or Churned.
+    behavior:
+      type: categorical
+    ai_context:
+      instructions: >
+        Primary segmentation axis for retail customer analytics. Combine with
+        is_high_value_customer boolean for precise filtering.
+      synonyms:
+        - customer tier
+        - value segment
+        - ltv bucket
+      examples:
+        - description: customer count by segment
+          format: sql
+          query: |
+            SELECT
+              customer_profile.customer_segment,
+              MEASURE(customer_profile.total_customers)
+            FROM customer_profile
+            GROUP BY 1;
+    tags:
+      - segment
+      - ltv
+      - retail
+    terms:
+      - customer.segment
+      - retail.ltv_segment
+  - name: favorite_category
+    description: Product category most frequently purchased by this customer
+    behavior:
+      type: categorical
+    tags:
+      - preference
+      - category
+      - merchandising
+    terms:
+      - customer.favorite_category
+      - product.preferred_category
+
+  # ── timestamp ───────────────────────────────────────────────────────────────
+  - name: signup_date
+    description: Date the customer registered (cohort anchor)
+    granularities:
+      - name: day
+        interval: 1 day
+      - name: week
+        interval: 1 week
+      - name: month
+        interval: 1 month
+    ai_context:
+      instructions: >
+        Primary time dimension for acquisition cohort analysis. Use with
+        rolling_30d_new_customers for new-customer trend reporting.
+      synonyms:
+        - registration date
+        - acquisition date
+        - signup timestamp
+      examples:
+        - description: weekly new customer acquisitions
+          format: rest
+          query: |
+            {
+              "measures": ["customer_profile.total_customers"],
+              "timeDimensions": [
+                {
+                  "dimension": "customer_profile.signup_date",
+                  "granularity": "week"
+                }
+              ]
+            }
+    tags:
+      - temporal
+      - acquisition
+      - cohort
+    terms:
+      - customer.signup_date
+      - acquisition.registration_date
+  - name: first_order_date
+    description: Timestamp of the customer's first qualifying order
+    granularities:
+      - name: day
+        interval: 1 day
+      - name: week
+        interval: 1 week
+      - name: month
+        interval: 1 month
+    tags:
+      - temporal
+      - order
+      - first-purchase
+    terms:
+      - customer.first_order_date
+      - retail.first_purchase
+  - name: last_order_date
+    description: Timestamp of the customer's most recent qualifying order
+    granularities:
+      - name: day
+        interval: 1 day
+      - name: week
+        interval: 1 week
+      - name: month
+        interval: 1 month
+    tags:
+      - temporal
+      - order
+      - recency
+    terms:
+      - customer.last_order_date
+      - retail.last_purchase
+
+  # ── boolean ─────────────────────────────────────────────────────────────────
+  - name: is_new_customer
+    description: >
+      True for customers who have placed no qualifying orders yet (segment = New).
+    behavior:
+      type: categorical
+    ai_context:
+      instructions: >
+        Use `WHERE is_new_customer = 1` to isolate unactivated registered
+        customers. Combine with signup_date for registration-to-first-order funnel.
+      synonyms:
+        - unactivated customer
+        - zero-order customer
+        - registered not purchased
+      examples:
+        - description: new (unactivated) customer count
+          format: sql
+          query: |
+            SELECT MEASURE(customer_profile.total_customers)
+            FROM customer_profile
+            WHERE is_new_customer = 1;
+    tags:
+      - boolean
+      - activation
+      - new-customer
+    terms:
+      - customer.is_new
+      - retail.unactivated
+  - name: is_high_value_customer
+    description: >
+      True for customers with lifetime revenue >= 1000 and active within 180 days.
+    behavior:
+      type: categorical
+    tags:
+      - boolean
+      - high-value
+      - segment
+    terms:
+      - customer.is_high_value
+      - retail.premium_customer
+  - name: is_active_customer
+    description: >
+      True for customers who placed a qualifying order within the last 90 days.
+    behavior:
+      type: categorical
+    tags:
+      - boolean
+      - active
+      - recency
+    terms:
+      - customer.is_active
+      - retail.active_buyer
+
+  # ── number ──────────────────────────────────────────────────────────────────
+  - name: days_since_first_order
+    description: Days elapsed since the customer's first order (0 for new customers)
+    tags:
+      - number
+      - recency
+      - tenure
+  - name: days_since_last_order
+    description: Days elapsed since the customer's last order (9999 for new customers)
+    tags:
+      - number
+      - recency
+      - churn-risk
+  - name: total_orders
+    description: Lifetime order count for this customer
+    tags:
+      - number
+      - frequency
+      - volume
+  - name: total_items_purchased
+    description: Lifetime units purchased across all orders
+    tags:
+      - number
+      - volume
+      - basket-size
+  - name: total_revenue
+    description: Gross lifetime revenue attributed to this customer
+    tags:
+      - number
+      - revenue
+      - ltv
+  - name: avg_order_value
+    description: Average order value across the customer's order history
+    tags:
+      - number
+      - basket-value
+      - aov
+  - name: total_shipments_received
+    description: Total shipment count received by this customer
+    tags:
+      - number
+      - fulfillment
+      - logistics
+
+measures:
+
+  - name: total_customers
+    type: count_distinct
+    expression: "{customer_profile.customer_id}"
+    description: Distinct registered customers
+    tags:
+      - count_distinct
+      - customers
+      - registration
+    terms:
+      - customer.total_customers
+      - retail.registered_customers
+
+  - name: total_lifetime_revenue
+    type: sum
+    expression: "{customer_profile.total_revenue}"
+    description: Total gross lifetime revenue across all customers in scope
+    ai_context:
+      instructions: Headline LTV revenue KPI; additive across customers and segments.
+      synonyms:
+        - total LTV
+        - lifetime value
+        - gross customer revenue
+      examples:
+        - description: total LTV by segment
+          format: sql
+          query: |
+            SELECT
+              customer_profile.customer_segment,
+              MEASURE(customer_profile.total_lifetime_revenue)
+            FROM customer_profile
+            GROUP BY 1;
+        - description: total LTV by segment (REST API)
+          format: rest
+          query: |
+            {
+              "measures": ["customer_profile.total_lifetime_revenue"],
+              "dimensions": ["customer_profile.customer_segment"]
+            }
+    tags:
+      - sum
+      - revenue
+      - ltv
+      - headline
+    terms:
+      - customer.total_ltv
+      - retail.lifetime_revenue
+
+  - name: total_orders_placed
+    type: sum
+    expression: "{customer_profile.total_orders}"
+    description: Total orders placed across all customers in scope
+    tags:
+      - sum
+      - orders
+      - volume
+    terms:
+      - customer.total_orders
+      - retail.order_volume
+
+  - name: orders_per_customer
+    type: number
+    expression: "SUM({customer_profile.total_orders}) / COUNT(DISTINCT {customer_profile.customer_id})"
+    description: Average orders per distinct customer in scope
+    tags:
+      - number
+      - orders
+      - customer
+    terms:
+      - customer.orders_per_customer
+      - retail.order_frequency
+
+  - name: total_items_sold
+    type: sum
+    expression: "{customer_profile.total_items_purchased}"
+    description: Total product units purchased across all customers
+    tags:
+      - sum
+      - units
+      - volume
+    terms:
+      - customer.total_units
+      - retail.unit_volume
+
+rollups:
+  - name: cohorts_segment
+    measures:
+      - total_customers
+      - total_lifetime_revenue
+      - total_orders_placed
+      - total_items_sold
+    dimensions:
+      - region_name
+      - customer_segment
+      - is_active_customer
+      - is_high_value_customer
+    time_dimension: signup_date
+    granularity: month
+    description: >
+      Monthly customer acquisition cohorts by region, value segment, active flag,
+      and high-value flag for retention and lifecycle dashboards.
+  - name: active_region
+    measures:
+      - total_customers
+      - total_lifetime_revenue
+    dimensions:
+      - region_name
+      - is_active_customer
+      - is_new_customer
+    description: >
+      Registered customer count and lifetime revenue by region and activation
+      flags for quick customer health checks.
+
+
+joins:
+  - name: rfm
+    type: one_to_one
+    expression: "{rfm.customer_id} = {customer_profile.customer_id}"
+
+  - name: sales_funnel
+    type: many_to_one
+    expression: "{sales_funnel.region_id} = {customer_profile.region_id}"

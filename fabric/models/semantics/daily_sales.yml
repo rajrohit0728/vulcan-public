@@ -1,0 +1,446 @@
+kind: semantic
+name: daily_sales
+depends_on: silverv1.fct_daily_sales
+owner: shreyasikarwartmdcio
+description: >
+  Retail daily sales fact — revenue, order volume, units sold, and shipment
+  metrics at the grain of order_date × region × customer × product.
+
+ai_context:
+  instructions: >
+    Daily retail sales semantic model. Default time dimension is order_date.
+    Use category and region_name for product/geography slices; has_shipment
+    boolean for fulfillment filtering. Rolling-window measures (7-day and 28-day)
+    require order_date as the time dimension.
+    Query via SQL API, REST API (JSON), or GraphQL API.
+  synonyms:
+    - daily revenue
+    - daily sales
+    - order performance
+    - retail transactions
+  examples:
+    - description: daily revenue by region
+      format: sql
+      query: |
+        SELECT
+          daily_sales.region_name,
+          daily_sales.order_date,
+          MEASURE(daily_sales.total_daily_revenue)
+        FROM daily_sales
+        GROUP BY 1, 2;
+    - description: 7-day rolling revenue by category (REST API)
+      format: rest
+      query: |
+        {
+          "measures": ["daily_sales.rolling_7d_revenue"],
+          "dimensions": ["daily_sales.category"],
+          "timeDimensions": [
+            {
+              "dimension": "daily_sales.order_date",
+              "granularity": "day",
+              "dateRange": "last 30 days"
+            }
+          ]
+        }
+    - description: order count by shipment status (GraphQL API)
+      format: graphql
+      query: |
+        {
+          vulcan {
+            daily_sales {
+              has_shipment
+              order_count
+              total_daily_revenue
+            }
+          }
+        }
+
+dimensions:
+  # ── string ──────────────────────────────────────────────────────────────────
+  - name: region_name
+    description: Geographic sales region (North, South, East, West)
+    behavior:
+      type: categorical
+    ai_context:
+      instructions: Primary geographic slice. Combine with category for region-category heatmaps.
+      synonyms:
+        - sales region
+        - territory
+        - geography
+      examples:
+        - description: revenue by region
+          format: sql
+          query: |
+            SELECT
+              daily_sales.region_name,
+              MEASURE(daily_sales.total_daily_revenue)
+            FROM daily_sales
+            GROUP BY 1;
+        - description: revenue by region (REST API)
+          format: rest
+          query: |
+            {
+              "measures": ["daily_sales.total_daily_revenue"],
+              "dimensions": ["daily_sales.region_name"]
+            }
+    tags:
+      - string
+      - geography
+      - region
+    terms:
+      - geography.region_name
+      - sales.territory
+
+  - name: category
+    description: Product category label for the order line (Widgets, Gadgets, etc.)
+    behavior:
+      type: categorical
+    ai_context:
+      instructions: Primary product category axis for merchandising and revenue mix analysis.
+      synonyms:
+        - product category
+        - merchandise category
+        - item category
+      examples:
+        - description: revenue by category
+          format: sql
+          query: |
+            SELECT
+              daily_sales.category,
+              MEASURE(daily_sales.total_daily_revenue)
+            FROM daily_sales
+            GROUP BY 1;
+    tags:
+      - string
+      - category
+      - merchandising
+    terms:
+      - product.category
+      - retail.merchandise_category
+
+  # ── timestamp ───────────────────────────────────────────────────────────────
+  - name: order_date
+    description: Transaction date (daily grain) — primary time dimension for trend analysis
+    granularities:
+      - name: day
+        interval: 1 day
+        ai_context:
+          instructions: >
+            Default grain. Use with rolling_7d_revenue for smoothed trend lines.
+          synonyms:
+            - daily
+            - transaction day
+          examples:
+            - description: daily revenue over last 7 days
+              format: rest
+              query: |
+                {
+                  "measures": ["daily_sales.total_daily_revenue"],
+                  "timeDimensions": [
+                    {
+                      "dimension": "daily_sales.order_date",
+                      "granularity": "day",
+                      "dateRange": "last 7 days"
+                    }
+                  ]
+                }
+      - name: week
+        interval: 1 week
+      - name: month
+        interval: 1 month
+    tags:
+      - timestamp
+      - temporal
+      - time-series
+    terms:
+      - sales.order_date
+      - retail.transaction_date
+
+  # ── boolean ─────────────────────────────────────────────────────────────────
+  - name: has_shipment
+    description: >
+      True if at least one order in this row grain was shipped. Enables
+      fulfillment-status slicing without joining the shipments table.
+    behavior:
+      type: categorical
+    ai_context:
+      instructions: >
+        Boolean shipment flag at daily-grain level. Use `WHERE has_shipment = 1`
+        to isolate shipped order rows; combine with shipment_to_order_ratio for
+        fulfillment performance.
+      synonyms:
+        - shipped flag
+        - shipment boolean
+        - fulfillment flag
+      examples:
+        - description: revenue for shipped vs unshipped rows
+          format: sql
+          query: |
+            SELECT
+              daily_sales.has_shipment,
+              MEASURE(daily_sales.total_daily_revenue)
+            FROM daily_sales
+            GROUP BY 1;
+        - description: revenue for shipped orders only (REST API)
+          format: rest
+          query: |
+            {
+              "measures": ["daily_sales.total_daily_revenue"],
+              "segments": ["daily_sales.shipped_orders"]
+            }
+    tags:
+      - boolean
+      - shipment
+      - fulfillment
+    terms:
+      - sales.has_shipment
+      - fulfillment.shipped_flag
+
+  # ── identifier ──────────────────────────────────────────────────────────────
+  - name: region_id
+    description: Numeric region key (join key for region dimension)
+    behavior:
+      type: identifier
+  - name: customer_id
+    description: Customer key (join to customer_profile)
+    behavior:
+      type: identifier
+  - name: product_id
+    description: Product key (join to product_profile)
+    behavior:
+      type: identifier
+
+  # ── number ──────────────────────────────────────────────────────────────────
+  - name: total_orders
+    description: Distinct order count at this daily grain row
+    tags:
+      - number
+      - orders
+      - volume
+  - name: total_items_sold
+    description: Units sold at this daily grain row
+    tags:
+      - number
+      - units
+      - volume
+  - name: total_revenue
+    description: Gross revenue from order line items at this grain
+    tags:
+      - number
+      - revenue
+      - financial
+  - name: avg_order_value
+    description: Revenue divided by order count at this grain
+    tags:
+      - number
+      - aov
+      - basket-value
+  - name: total_shipments
+    description: Distinct shipped orders at this grain
+    tags:
+      - number
+      - shipments
+      - fulfillment
+  - name: shipment_rate
+    description: Ratio of shipped orders to total orders (0–1) at this grain
+    tags:
+      - number
+      - rate
+      - fulfillment
+
+measures:
+  # ── sum ───────────────────────────────────────────────────────────────────────
+  - name: total_daily_revenue
+    type: sum
+    expression: "{daily_sales.total_revenue}"
+    description: Gross retail revenue summed across all order lines in scope
+    ai_context:
+      instructions: >
+        Primary retail revenue KPI. Additive across regions, categories, and dates.
+        Use with order_date time dimension for trend analysis.
+      synonyms:
+        - total revenue
+        - gross revenue
+        - sales revenue
+        - GMV
+      examples:
+        - description: revenue by region and category
+          format: sql
+          query: |
+            SELECT
+              daily_sales.region_name,
+              daily_sales.category,
+              MEASURE(daily_sales.total_daily_revenue)
+            FROM daily_sales
+            GROUP BY 1, 2;
+        - description: revenue by region and category (REST API)
+          format: rest
+          query: |
+            {
+              "measures": ["daily_sales.total_daily_revenue"],
+              "dimensions": [
+                "daily_sales.region_name",
+                "daily_sales.category"
+              ]
+            }
+    tags:
+      - sum
+      - revenue
+      - headline
+    terms:
+      - sales.total_revenue
+      - retail.gross_revenue
+
+  - name: total_daily_orders
+    type: sum
+    expression: "{daily_sales.total_orders}"
+    description: Total order count summed across rows in scope
+    tags:
+      - sum
+      - orders
+      - volume
+    terms:
+      - sales.total_orders
+      - retail.order_count
+
+  - name: total_daily_items
+    type: sum
+    expression: "{daily_sales.total_items_sold}"
+    description: Total units sold summed across rows in scope
+    tags:
+      - sum
+      - units
+      - volume
+    terms:
+      - sales.total_units
+      - retail.unit_volume
+
+  - name: total_shipments_count
+    type: sum
+    expression: "{daily_sales.total_shipments}"
+    description: Total shipped order count across rows in scope
+    tags:
+      - sum
+      - shipments
+      - fulfillment
+    terms:
+      - fulfillment.total_shipments
+      - sales.shipped_orders
+
+  - name: rolling_7d_revenue
+    type: sum
+    expression: "{daily_sales.total_revenue}"
+    rolling_window:
+      trailing: "7 days"
+      offset: end
+    description: >
+      Revenue over the trailing 7-day rolling window. Requires order_date as the
+      time dimension. Useful for smoothing daily volatility in retail revenue trends.
+    ai_context:
+      instructions: >
+        Always pair with order_date time dimension at day granularity. The window
+        trails from the current date endpoint; do not compare directly with point-in-time
+        total_daily_revenue values.
+      synonyms:
+        - 7-day rolling revenue
+        - weekly rolling revenue
+        - 7d revenue trend
+      caveats:
+        - Requires a time dimension (order_date) in the query.
+        - Do not sum this measure across time without understanding window overlap.
+      examples:
+        - description: 7-day rolling revenue by region
+          format: rest
+          query: |
+            {
+              "measures": ["daily_sales.rolling_7d_revenue"],
+              "dimensions": ["daily_sales.region_name"],
+              "timeDimensions": [
+                {
+                  "dimension": "daily_sales.order_date",
+                  "granularity": "day",
+                  "dateRange": "last 30 days"
+                }
+              ]
+            }
+    tags:
+      - rolling-window
+      - revenue
+      - trend
+    terms:
+      - sales.rolling_7d_revenue
+      - retail.weekly_rolling_revenue
+
+  - name: rolling_28d_orders
+    type: sum
+    expression: "{daily_sales.total_orders}"
+    rolling_window:
+      trailing: "28 days"
+      offset: end
+    description: >
+      Order volume over the trailing 28-day rolling window. Approximates a
+      monthly order cadence for retail trend comparisons.
+    ai_context:
+      instructions: >
+        Trailing 28-day order count. Requires order_date as the time dimension.
+        Use to compare month-over-month order volume without calendar month alignment.
+      synonyms:
+        - 28-day rolling orders
+        - monthly rolling orders
+        - 4-week order volume
+      caveats:
+        - Requires order_date time dimension in the query.
+    tags:
+      - rolling-window
+      - orders
+      - trend
+    terms:
+      - sales.rolling_28d_orders
+      - retail.monthly_rolling_orders
+
+rollups:
+  - name: rev_region_cat
+    measures:
+      - total_daily_revenue
+      - total_daily_orders
+      - total_daily_items
+      - total_shipments_count
+    dimensions:
+      - region_name
+      - category
+      - has_shipment
+    time_dimension: order_date
+    granularity: day
+    description: >
+      Daily revenue, order volume, item volume, and shipment count by region,
+      category, and shipment flag for fast day-grain retail performance queries.
+  - name: month_rev_region
+    measures:
+      - total_daily_revenue
+      - total_daily_orders
+      - total_shipments_count
+    dimensions:
+      - region_name
+    time_dimension: order_date
+    granularity: month
+    description: >
+      Monthly revenue and order activity by region, materialized from the daily
+      sales semantic model for dashboard and planning workloads.
+
+joins:
+  - name: customer_profile
+    type: many_to_one
+    on: customer_id
+    ai_context:
+      instructions: Join daily sales facts to customer attributes at customer grain.
+      synonyms:
+        - customer dimension
+        - buyer profile
+  # - name: product_profile
+  #   type: many_to_one
+  #   on: product_id
+  #   ai_context:
+  #     instructions: Join daily sales facts to product attributes at product grain.
+  #     synonyms:
+  #       - product dimension
+  #       - SKU profile
