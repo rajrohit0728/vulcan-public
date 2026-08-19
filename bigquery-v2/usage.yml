@@ -1,0 +1,22 @@
+good_for:
+  - title: Learning the full Vulcan feature set against Trino/BigQuery
+    details: >
+      A layered staging -> intermediate -> mart pipeline with dq, audits,
+      unit tests, macros, semantics, and metrics, all wired end-to-end
+      against a real Trino `bigquery` catalog.
+
+not_for:
+  - title: Production sales reporting
+    details: All data is mock/sample CSV seed data, not a real source system.
+
+caveats:
+  - title: Seed-driven, not federated
+    details: >
+      There is no external BigQuery source table read here — every staging
+      model is a `kind SEED` loading a mock CSV, since this is a demo project.
+    severity: low
+
+references:
+  - title: spark-usecase/lakehouse/s3/quick-sanity
+    url: https://example.com/documentation
+    type: doc

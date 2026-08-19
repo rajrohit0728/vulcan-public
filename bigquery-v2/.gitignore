@@ -1,0 +1,23 @@
+# Secrets / local environment
+.env
+*.p8
+
+# Local secret copies with real credentials (templates in trino/.artifacts/secrets/)
+
+# Vulcan / SQLMesh runtime
+.cache/
+.state*.db
+.logs/
+logs/
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+
+# macOS / IDE
+.DS_Store
+.idea/
+.vscode/

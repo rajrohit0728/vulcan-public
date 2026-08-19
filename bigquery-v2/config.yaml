@@ -1,0 +1,82 @@
+name: bigquery-trino
+display_name: "BigQuery Quick-Sanity Data Product"
+tenant: "default"
+description: >
+  Layered (staging -> intermediate -> mart) data product on the Trino
+  `bigqueryrr` catalog. Sources mock/sample data from CSV seeds (customers,
+  products, orders, order line items, a region-tier lookup) rather than an
+  external catalog, demonstrating dq checks, audits, unit tests, macros,
+  semantics, and metrics on top of a seed-driven pipeline. Modeled after
+  spark-usecase/lakehouse/s3/quick-sanity, adapted for Trino/BigQuery.
+discoverable: true
+version: "0.1.0"
+alignment: source_aligned
+domain: "default"
+
+# Optional categorization
+tags:
+  - trino
+  - bigquery
+  - demo
+  - lakehouse
+  - sales_analytics
+terms:
+  - glossary.data_product
+  - glossary.sales_operations
+
+users:
+  - username: "rohitrajtmdcio"
+    email: "rohitraj@tmdc.io"
+    type: "OWNER"
+
+notification_targets:
+  - type: console
+    notify_on:
+      - apply_start
+      - apply_end
+      - run_start
+      - run_end
+      - apply_failure
+      - run_failure
+      - audit_failure
+      - plan_change
+      - dq_start
+      - dq_end
+
+# --- Gateway Connection ---
+# Managed Trino: domain-def injects VULCAN__GATEWAYS__DEFAULT__CONNECTION__*
+# (host, user, catalog, port, …) at runtime. Keep gateway name `default`.
+gateways:
+  default:
+    connection:
+      type: trino
+
+default_gateway: default
+
+model_defaults:
+  dialect: trino
+  owner: rohitrajtmdcio
+  start: 2026-07-19 # Start date for backfill history
+  cron: '@daily'    # Run models daily at 12am UTC (can override per model)
+
+# --- Linting Rules ---
+# Enforce standards for your team
+linter:
+  enabled: true
+  rules:
+    - ambiguousorinvalidcolumn
+    - invalidselectstarexpansion
+    - noambiguousprojections
+  warn_rules:
+    - RequireGrainForAllModels
+    - RequireOwnerForAllModels
+    - RequireAssertionsForAllModels
+    - RequireDqForMartModels
+
+ignore_patterns:
+  - "*-deploy.yaml"
+  - "cluster/**"
+  - "dq/**"
+  - "usage.yml"
+  - "README.md"
+  - ".artefacts/**"

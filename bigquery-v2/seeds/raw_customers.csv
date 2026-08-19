@@ -1,0 +1,11 @@
+customer_id,name,email,region,customer_tier,signup_date
+1,Alice Johnson,alice.johnson@example.com,US-West,Gold,2024-01-12
+2,Bob Smith,bob.smith@example.com,US-East,Silver,2024-02-03
+3,Carla Diaz,carla.diaz@example.com,US-West,Platinum,2024-01-20
+4,Diego Patel,diego.patel@example.com,EU-West,Bronze,2024-03-11
+5,Emma Brown,emma.brown@example.com,US-East,Gold,2024-02-18
+6,Farhan Iqbal,farhan.iqbal@example.com,APAC,Silver,2024-04-02
+7,Grace Lee,grace.lee@example.com,APAC,Bronze,2024-04-15
+8,Hiroshi Sato,hiroshi.sato@example.com,APAC,Gold,2024-03-28
+9,Isabella Rossi,isabella.rossi@example.com,EU-West,Silver,2024-02-25
+10,Jamal Khan,jamal.khan@example.com,US-East,Bronze,2024-01-30

@@ -1,0 +1,48 @@
+kind: semantic
+name: order_lines
+depends_on: bigqueryrr.mart_v3_vnew.fct_order_lines
+description: |
+  Order-line grain fact. Many order lines belong to one customer
+  (order_lines.customer_id -> customers.customer_id).
+
+dimensions:
+  - order_item_id
+  - order_id
+  - order_date
+  - order_timestamp
+  - order_status
+  - channel
+  - customer_id
+  - region
+  - product_id
+  - category
+  - order_value_tier
+  - quantity
+  - discount_pct
+  - net_amount
+
+measures:
+  - name: line_count
+    type: count
+    expression: "{order_lines.order_item_id}"
+  - name: order_count
+    type: count_distinct
+    expression: "{order_lines.order_id}"
+  - name: total_net_amount
+    type: sum
+    expression: "{order_lines.net_amount}"
+  - name: total_quantity
+    type: sum
+    expression: "{order_lines.quantity}"
+  - name: avg_discount_pct
+    type: avg
+    expression: "{order_lines.discount_pct}"
+
+joins:
+  - name: customers
+    type: many_to_one
+    expression: "{order_lines.customer_id} = {customers.customer_id}"
+
+tags:
+  - sales
+  - orders
