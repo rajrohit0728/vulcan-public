@@ -1,0 +1,2406 @@
+time="2026-08-19T12:32:59+05:30" level=info msg="📃 log..."
+time="2026-08-19T12:32:59+05:30" level=info msg="📃 log...complete"
+
+           CONTAINER GROUP NAME           │     CONTAINER NAME      │ CONTAINER TYPE │ ERROR 
+──────────────────────────────────────────┼─────────────────────────┼────────────────┼───────
+ gcs-spark-dp-plan-9tqq-0818211203-driver │ spark-kubernetes-driver │ primary        │       
+
+-------------------LOGS-------------------
+Loaded state connection from /etc/dataos/secret/state_connection_config.yaml
+[38;20m2026-08-18 21:14:12,112 - MainThread - vulcan.core.config.connection - INFO - Loaded depot connection 'gcslhdepot' from /etc/dataos/secret/gcslhdepot_config.yaml (connection.py:869)[0m
+[38;20m2026-08-18 21:14:12,326 - MainThread - vulcan.core.prometheus - INFO - Core Prometheus push enabled (job=gcs-spark-dp, pushgateway=http://prometheus-pushgateway.intribeiks-0-core.svc.cluster.local:9091, tenant=ui-dev, data_product=gcs-spark-dp, version=0.1.0) (__init__.py:18)[0m
+26/08/18 21:14:15 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+[38;20m2026-08-18 21:14:49,430 - MainThread - vulcan.core.config.connection - INFO - Spark application id: spark-cb80f02f659d421faf4990a4014ab3ed (connection.py:664)[0m
+[38;20m2026-08-18 21:14:51,441 - MainThread - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:51,445 - MainThread - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:51,449 - MainThread - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:51,453 - MainThread - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:51,456 - MainThread - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:51,460 - MainThread - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:51,463 - MainThread - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:51,467 - MainThread - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:51,769 - Thread-1 - py4j.clientserver - INFO - Error while sending or receiving. (clientserver.py:505)[0m
+Traceback (most recent call last):
+  File "/opt/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/clientserver.py", line 503, in send_command
+    self.socket.sendall(command.encode("utf-8"))
+ConnectionResetError: [Errno 104] Connection reset by peer
+[38;20m2026-08-18 21:14:51,770 - Thread-1 - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:51,770 - Thread-1 - root - INFO - Exception while sending command. (java_gateway.py:1052)[0m
+Traceback (most recent call last):
+  File "/opt/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/clientserver.py", line 503, in send_command
+    self.socket.sendall(command.encode("utf-8"))
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/clientserver.py", line 506, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending
+[38;20m2026-08-18 21:14:51,831 - Thread-1 - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:52,211 - MainThread - vulcan.core.soda3.runner - INFO - [gcslhdepot.staging_v5_vnew.stg_customers] Soda Core 3.5.6 (runner.py:117)[0m
+[38;20m2026-08-18 21:14:52,222 - MainThread - vulcan.core.soda3.runner - INFO - [gcslhdepot.mart_v5_vnew.dim_products] Soda Core 3.5.6 (runner.py:117)[0m
+[38;20m2026-08-18 21:14:52,231 - MainThread - vulcan.core.soda3.runner - INFO - [gcslhdepot.mart_v5_vnew.customer_region_rank] Soda Core 3.5.6 (runner.py:117)[0m
+[38;20m2026-08-18 21:14:52,241 - MainThread - vulcan.core.soda3.runner - INFO - [gcslhdepot.mart_v5_vnew.dim_customers] Soda Core 3.5.6 (runner.py:117)[0m
+[38;20m2026-08-18 21:14:52,250 - MainThread - vulcan.core.soda3.runner - INFO - [gcslhdepot.mart_v5_vnew.mart_sales_summary] Soda Core 3.5.6 (runner.py:117)[0m
+[38;20m2026-08-18 21:14:52,413 - MainThread - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:52,419 - MainThread - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:52,425 - MainThread - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:52,430 - MainThread - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:52,434 - MainThread - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:52,439 - MainThread - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:52,443 - MainThread - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:52,448 - MainThread - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:52,763 - MainThread - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:52,767 - MainThread - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:52,771 - MainThread - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:52,775 - MainThread - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:52,779 - MainThread - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:52,783 - MainThread - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:52,786 - MainThread - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:52,790 - MainThread - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:54,937 - MainThread - vulcan.core.config.connection - INFO - Creating new DuckDB adapter for in-memory database (connection.py:257)[0m
+[38;20m2026-08-18 21:14:54,968 - MainThread - vulcan.core.config.connection - INFO - Creating new DuckDB adapter for in-memory database (connection.py:257)[0m
+[38;20m2026-08-18 21:14:54,969 - MainThread - vulcan.core.config.connection - INFO - Creating new DuckDB adapter for in-memory database (connection.py:257)[0m
+...**Successfully Ran `3` Tests Against `duckdb`**
+
+
+[38;20m2026-08-18 21:14:55,269 - MainThread - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:55,274 - MainThread - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:55,280 - MainThread - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:55,285 - MainThread - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:55,290 - MainThread - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:55,296 - MainThread - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:55,301 - MainThread - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:55,306 - MainThread - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+
+**Summary of differences from `prod`:**
+
+**Added Models:**
+- `intermediate_v5_vnew.int_customers_enriched`
+- `.... 10 more ....`
+
+- `staging_v5_vnew.stg_region_tier`
+
+**Removed Models:**
+- `intermediate_myx_vnew.int_customers_enriched`
+- `.... 10 more ....`
+
+- `staging_myx_vnew.stg_region_tier`
+
+**Directly Modified:**
+* `__virtual.customers` (Breaking)
+* `__virtual.order_lines` (Breaking)
+  Indirectly Modified Children:
+    - `__virtual.daily_revenue` (Indirect Breaking)
+    - `__virtual.orders_by_region` (Indirect Breaking)
+
+
+
+**Indirectly Modified:**
+- `__virtual.daily_revenue` (Indirect Breaking)
+- `__virtual.orders_by_region` (Indirect Breaking)
+```diff
+
+```
+
+```
+
+Directly Modified: __virtual.customers (Breaking)
+
+```
+```diff
+
+```
+
+```
+
+Directly Modified: __virtual.order_lines (Breaking)
+└── Indirectly Modified Children:
+    ├── __virtual.daily_revenue (Indirect Breaking)
+    └── __virtual.orders_by_region (Indirect Breaking)
+
+```
+
+**Models needing backfill:**
+* `intermediate_v5_vnew.int_customers_enriched`: [full refresh]
+- `.... 10 more ....`
+
+* `staging_v5_vnew.stg_region_tier`: [full refresh]
+[38;20m2026-08-18 21:14:56,078 - MainThread - vulcan.core.plan.evaluator - INFO - Evaluating plan stage PhysicalLayerSchemaCreationStage (evaluator.py:35)[0m
+[38;20m2026-08-18 21:14:56,080 - ThreadPoolExecutor-1_0 - vulcan.core.snapshot.evaluator - INFO - Creating schema '"gcslhdepot"."intermediate_v5_vnew"' (evaluator.py:231)[0m
+[38;20m2026-08-18 21:14:56,080 - ThreadPoolExecutor-1_1 - vulcan.core.snapshot.evaluator - INFO - Creating schema '"gcslhdepot"."staging_v5_vnew"' (evaluator.py:231)[0m
+[38;20m2026-08-18 21:14:56,081 - ThreadPoolExecutor-1_0 - vulcan.core.engine_adapter.base - INFO - [spark] Executing SQL: /* DataOS Vulcan 0.228.1.28; ui-dev/gcs-spark-dp/0.1.0; PLAN:01M0BBMC1RDNPVCFGNTNQ785SQ:rohitrajtmdcio */ CREATE SCHEMA IF NOT EXISTS `gcslhdepot`.`intermediate_v5_vnew` (base.py:464)[0m
+[38;20m2026-08-18 21:14:56,081 - ThreadPoolExecutor-1_2 - vulcan.core.snapshot.evaluator - INFO - Creating schema '"gcslhdepot"."mart_v5_vnew"' (evaluator.py:231)[0m
+[38;20m2026-08-18 21:14:56,082 - ThreadPoolExecutor-1_1 - vulcan.core.engine_adapter.base - INFO - [spark] Executing SQL: /* DataOS Vulcan 0.228.1.28; ui-dev/gcs-spark-dp/0.1.0; PLAN:01M0BBMC1RDNPVCFGNTNQ785SQ:rohitrajtmdcio */ CREATE SCHEMA IF NOT EXISTS `gcslhdepot`.`staging_v5_vnew` (base.py:464)[0m
+[38;20m2026-08-18 21:14:56,083 - ThreadPoolExecutor-1_2 - vulcan.core.engine_adapter.base - INFO - [spark] Executing SQL: /* DataOS Vulcan 0.228.1.28; ui-dev/gcs-spark-dp/0.1.0; PLAN:01M0BBMC1RDNPVCFGNTNQ785SQ:rohitrajtmdcio */ CREATE SCHEMA IF NOT EXISTS `gcslhdepot`.`mart_v5_vnew` (base.py:464)[0m
+[38;20m2026-08-18 21:14:56,835 - Thread-1 - py4j.clientserver - INFO - Error while sending or receiving. (clientserver.py:505)[0m
+Traceback (most recent call last):
+  File "/opt/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/clientserver.py", line 503, in send_command
+    self.socket.sendall(command.encode("utf-8"))
+ConnectionResetError: [Errno 104] Connection reset by peer
+[38;20m2026-08-18 21:14:56,835 - Thread-1 - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:56,836 - Thread-1 - root - INFO - Exception while sending command. (java_gateway.py:1052)[0m
+Traceback (most recent call last):
+  File "/opt/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/clientserver.py", line 503, in send_command
+    self.socket.sendall(command.encode("utf-8"))
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/clientserver.py", line 506, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending
+[38;20m2026-08-18 21:14:56,837 - Thread-1 - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:57,948 - Dummy-7 - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:57,948 - Dummy-8 - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:57,950 - Dummy-9 - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:57,950 - MainThread - vulcan.core.plan.evaluator - INFO - Evaluating plan stage BackfillStage (evaluator.py:35)[0m
+[38;20m2026-08-18 21:14:57,954 - ThreadPoolExecutor-2_0 - vulcan.core.snapshot.evaluator - INFO - Listing data objects in schema gcslhdepot.staging_v5_vnew (evaluator.py:253)[0m
+[38;20m2026-08-18 21:14:57,955 - ThreadPoolExecutor-2_0 - vulcan.core.engine_adapter.base - INFO - [spark] Executing SQL: /* DataOS Vulcan 0.228.1.28; ui-dev/gcs-spark-dp/0.1.0; PLAN:01M0BBMC1RDNPVCFGNTNQ785SQ:rohitrajtmdcio */ SHOW TABLE EXTENDED IN gcslhdepot.staging_v5_vnew LIKE 'stg_customers|stg_orders|stg_order_items|stg_region_tier|stg_products' (base.py:464)[0m
+[33;20m2026-08-18 21:14:58,154 - ThreadPoolExecutor-2_0 - vulcan.core.console - WARNING - 'SHOW TABLE EXTENDED IN gcslhdepot.staging_v5_vnew LIKE 'stg_customers|stg_orders|stg_order_items|stg' could not be semantically understood as it contains unsupported syntax, Vulcan will treat the command as is. Note that any references to the model's underlying physical table can't be resolved in this case, consider using Jinja as explained here Vulcan Documentation (console.py:636)[0m
+[WARNING] 'SHOW TABLE EXTENDED IN gcslhdepot.staging_v5_vnew LIKE 
+'stg_customers|stg_orders|stg_order_items|stg' could not be semantically 
+understood as it contains unsupported syntax, Vulcan will treat the command as 
+is. Note that any references to the model's underlying physical table can't be 
+resolved in this case, consider using Jinja as explained here Vulcan 
+Documentation
+[33;20m2026-08-18 21:14:58,156 - ThreadPoolExecutor-2_0 - vulcan.core.console - WARNING - 'SHOW TABLE EXTENDED IN gcslhdepot.staging_v5_vnew LIKE 'stg_customers|stg_orders|stg_order_items|stg' could not be semantically understood as it contains unsupported syntax, Vulcan will treat the command as is. Note that any references to the model's underlying physical table can't be resolved in this case, consider using Jinja as explained here Vulcan Documentation (console.py:636)[0m
+[WARNING] 'SHOW TABLE EXTENDED IN gcslhdepot.staging_v5_vnew LIKE 
+'stg_customers|stg_orders|stg_order_items|stg' could not be semantically 
+understood as it contains unsupported syntax, Vulcan will treat the command as 
+is. Note that any references to the model's underlying physical table can't be 
+resolved in this case, consider using Jinja as explained here Vulcan 
+Documentation
+[38;20m2026-08-18 21:14:58,169 - Dummy-11 - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:58,171 - ThreadPoolExecutor-3_0 - vulcan.core.snapshot.evaluator - INFO - Evaluating snapshot SnapshotId<"gcslhdepot"."staging_v5_vnew"."stg_customers": 1387459148> (evaluator.py:138)[0m
+[38;20m2026-08-18 21:14:58,172 - ThreadPoolExecutor-3_0 - vulcan.core.snapshot.evaluator - INFO - Creating table '"gcslhdepot"."staging_v5_vnew"."stg_customers"' (evaluator.py:332)[0m
+[38;20m2026-08-18 21:14:58,173 - ThreadPoolExecutor-3_1 - vulcan.core.snapshot.evaluator - INFO - Evaluating snapshot SnapshotId<"gcslhdepot"."staging_v5_vnew"."stg_order_items": 282283524> (evaluator.py:138)[0m
+[38;20m2026-08-18 21:14:58,174 - ThreadPoolExecutor-3_2 - vulcan.core.snapshot.evaluator - INFO - Evaluating snapshot SnapshotId<"gcslhdepot"."staging_v5_vnew"."stg_orders": 361836675> (evaluator.py:138)[0m
+[38;20m2026-08-18 21:14:58,175 - ThreadPoolExecutor-3_1 - vulcan.core.snapshot.evaluator - INFO - Creating table '"gcslhdepot"."staging_v5_vnew"."stg_order_items"' (evaluator.py:332)[0m
+[38;20m2026-08-18 21:14:58,176 - ThreadPoolExecutor-3_2 - vulcan.core.snapshot.evaluator - INFO - Creating table '"gcslhdepot"."staging_v5_vnew"."stg_orders"' (evaluator.py:332)[0m
+[38;20m2026-08-18 21:14:58,179 - ThreadPoolExecutor-3_3 - vulcan.core.snapshot.evaluator - INFO - Evaluating snapshot SnapshotId<"gcslhdepot"."staging_v5_vnew"."stg_products": 977776773> (evaluator.py:138)[0m
+[38;20m2026-08-18 21:14:58,179 - ThreadPoolExecutor-3_3 - vulcan.core.snapshot.evaluator - INFO - Creating table '"gcslhdepot"."staging_v5_vnew"."stg_products"' (evaluator.py:332)[0m
+[38;20m2026-08-18 21:14:58,182 - ThreadPoolExecutor-3_0 - vulcan.core.engine_adapter.base - INFO - [spark] Executing SQL: /* DataOS Vulcan 0.228.1.28; ui-dev/gcs-spark-dp/0.1.0; PLAN:01M0BBMC1RDNPVCFGNTNQ785SQ:rohitrajtmdcio */ CREATE TABLE IF NOT EXISTS `gcslhdepot`.`staging_v5_vnew`.`stg_customers` (`customer_id` INT, `name` STRING, `email` STRING, `region` STRING, `customer_tier` STRING, `signup_date` DATE) COMMENT 'Customer master data loaded from a mock CSV seed (sample/demo data, no external source system).' TBLPROPERTIES ('write.metadata.compression-codec'='gzip') (base.py:464)[0m
+[38;20m2026-08-18 21:14:58,185 - ThreadPoolExecutor-3_2 - vulcan.core.engine_adapter.base - INFO - [spark] Executing SQL: /* DataOS Vulcan 0.228.1.28; ui-dev/gcs-spark-dp/0.1.0; PLAN:01M0BBMC1RDNPVCFGNTNQ785SQ:rohitrajtmdcio */ CREATE TABLE IF NOT EXISTS `gcslhdepot`.`staging_v5_vnew`.`stg_orders` (`order_id` STRING, `customer_id` INT, `order_date` DATE, `order_status` STRING, `channel` STRING) COMMENT 'Order headers loaded from a mock CSV seed (sample/demo data, no external source system).' TBLPROPERTIES ('write.metadata.compression-codec'='gzip') (base.py:464)[0m
+[38;20m2026-08-18 21:14:58,229 - ThreadPoolExecutor-3_1 - vulcan.core.engine_adapter.base - INFO - [spark] Executing SQL: /* DataOS Vulcan 0.228.1.28; ui-dev/gcs-spark-dp/0.1.0; PLAN:01M0BBMC1RDNPVCFGNTNQ785SQ:rohitrajtmdcio */ CREATE TABLE IF NOT EXISTS `gcslhdepot`.`staging_v5_vnew`.`stg_order_items` (`order_item_id` STRING, `order_id` STRING, `product_id` STRING, `quantity` BIGINT, `unit_price` DOUBLE, `discount_pct` BIGINT) COMMENT 'Order line items loaded from a mock CSV seed (sample/demo data, no external source system).' TBLPROPERTIES ('write.metadata.compression-codec'='gzip') (base.py:464)[0m
+[38;20m2026-08-18 21:14:58,231 - ThreadPoolExecutor-3_3 - vulcan.core.engine_adapter.base - INFO - [spark] Executing SQL: /* DataOS Vulcan 0.228.1.28; ui-dev/gcs-spark-dp/0.1.0; PLAN:01M0BBMC1RDNPVCFGNTNQ785SQ:rohitrajtmdcio */ CREATE TABLE IF NOT EXISTS `gcslhdepot`.`staging_v5_vnew`.`stg_products` (`product_id` STRING, `product_name` STRING, `category` STRING, `brand` STRING, `unit_cost` DOUBLE, `list_price` DOUBLE) COMMENT 'Product catalog loaded from a mock CSV seed (sample/demo data, no external source system).' TBLPROPERTIES ('write.metadata.compression-codec'='gzip') (base.py:464)[0m
+[38;20m2026-08-18 21:14:59,653 - ThreadPoolExecutor-3_1 - vulcan.core.snapshot.evaluator - INFO - Evaluating snapshot SnapshotId<"gcslhdepot"."staging_v5_vnew"."stg_region_tier": 1585838473> (evaluator.py:138)[0m
+[38;20m2026-08-18 21:14:59,654 - ThreadPoolExecutor-3_1 - vulcan.core.snapshot.evaluator - INFO - Creating table '"gcslhdepot"."staging_v5_vnew"."stg_region_tier"' (evaluator.py:332)[0m
+[38;20m2026-08-18 21:14:59,656 - ThreadPoolExecutor-3_1 - vulcan.core.engine_adapter.base - INFO - [spark] Executing SQL: /* DataOS Vulcan 0.228.1.28; ui-dev/gcs-spark-dp/0.1.0; PLAN:01M0BBMC1RDNPVCFGNTNQ785SQ:rohitrajtmdcio */ CREATE TABLE IF NOT EXISTS `gcslhdepot`.`staging_v5_vnew`.`stg_region_tier` (`region` STRING, `region_tier` STRING, `priority_rank` INT) COMMENT 'Business tier/priority lookup for sales regions (hand-curated reference table, not derived from the customer/order seed data).' TBLPROPERTIES ('write.metadata.compression-codec'='gzip') (base.py:464)[0m
+[38;20m2026-08-18 21:14:59,981 - Dummy-12 - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:59,981 - Dummy-13 - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:59,981 - Dummy-14 - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+[38;20m2026-08-18 21:14:59,981 - Dummy-15 - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+Executing model batches ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100.0% • 5/5 • 0:00:02
+                                                                                
+
+[38;20m2026-08-18 21:14:59,986 - MainThread - vulcan.core.scheduler - INFO - Execution failed for node EvaluateNode(snapshot_name='"gcslhdepot"."staging_v5_vnew"."stg_order_items"', interval=(1704067200000, 1786665600000), batch_index=0) (scheduler.py:98)[0m
+Traceback (most recent call last):
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/utils/concurrency.py", line 24, in _process_node
+    self.fn(node)
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/scheduler.py", line 88, in run_node
+    else:target_table_exists=snapshot.snapshot_id not in snapshots_to_create or node.batch_index>0;audit_results=self.evaluate(snapshot=snapshot,environment_naming_info=environment_naming_info,start=start,end=end,execution_time=execution_time,deployability_index=deployability_index,batch_index=node.batch_index,allow_destructive_snapshots=allow_destructive_snapshots,allow_additive_snapshots=allow_additive_snapshots,target_table_exists=target_table_exists,selected_models=selected_models)
+                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/scheduler.py", line 48, in evaluate
+    def evaluate(self,snapshot:Snapshot,start:TimeLike,end:TimeLike,execution_time:TimeLike,deployability_index:DeployabilityIndex,batch_index:int,environment_naming_info:t.Optional[EnvironmentNamingInfo]=_A,allow_destructive_snapshots:t.Optional[t.Set[str]]=_A,allow_additive_snapshots:t.Optional[t.Set[str]]=_A,target_table_exists:t.Optional[bool]=_A,**kwargs:t.Any)->t.List[AuditResult]:validate_date_range(start,end);snapshots=parent_snapshots_by_name(snapshot,self.snapshots);is_deployable=deployability_index.is_deployable(snapshot);wap_id=self.snapshot_evaluator.evaluate(snapshot,start=start,end=end,execution_time=execution_time,snapshots=snapshots,allow_destructive_snapshots=allow_destructive_snapshots,allow_additive_snapshots=allow_additive_snapshots,deployability_index=deployability_index,batch_index=batch_index,target_table_exists=target_table_exists,**kwargs);audit_results=self._audit_snapshot(snapshot=snapshot,environment_naming_info=environment_naming_info,start=start,end=end,execution_time=execution_time,snapshots=snapshots,deployability_index=deployability_index,wap_id=wap_id,**kwargs);self.state_sync.add_interval(snapshot,start,end,is_dev=not is_deployable,last_altered_ts=now_timestamp());return audit_results
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/snapshot/evaluator.py", line 61, in evaluate
+    with self.execution_tracker.track_execution(SnapshotIdBatch(snapshot_id=snapshot.snapshot_id,batch_id=batch_index)):result=self._evaluate_snapshot(start=start,end=end,execution_time=execution_time,snapshot=snapshot,snapshots=snapshots,allow_destructive_snapshots=allow_destructive_snapshots or set(),allow_additive_snapshots=allow_additive_snapshots or set(),deployability_index=deployability_index,batch_index=batch_index,target_table_exists=target_table_exists,**kwargs)
+                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/snapshot/evaluator.py", line 147, in _evaluate_snapshot
+    elif should_create_empty_table or model.is_seed or model.kind.is_scd_type_2:self._execute_create(snapshot=snapshot,table_name=target_table_name,is_table_deployable=is_snapshot_deployable,deployability_index=deployability_index,create_render_kwargs=create_render_kwargs,rendered_physical_properties=rendered_physical_properties.copy(),dry_run=_B,run_pre_post_statements=_B);runtime_stage=RuntimeStage.EVALUATING;target_table_exists=_C
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/snapshot/evaluator.py", line 241, in _execute_create
+    evaluation_strategy.create(table_name=table_name,model=snapshot.model,is_table_deployable=is_table_deployable,skip_grants=skip_grants,render_kwargs=create_render_kwargs,is_snapshot_deployable=is_snapshot_deployable,is_snapshot_representative=is_snapshot_representative,dry_run=dry_run,physical_properties=rendered_physical_properties,snapshot=snapshot,deployability_index=deployability_index)
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/snapshot/evaluator.py", line 382, in create
+    super().create(table_name,model,is_table_deployable,render_kwargs,skip_grants=_C,**kwargs)
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/snapshot/evaluator.py", line 334, in create
+    self.adapter.create_table(table_name,target_columns_to_types=model.columns_to_types_or_raise,table_format=model.table_format,storage_format=model.storage_format,partitioned_by=model.partitioned_by,partition_interval_unit=model.partition_interval_unit,clustered_by=model.clustered_by,table_properties=physical_properties,table_description=model.description if is_table_deployable else _A,column_descriptions=model.column_descriptions if is_table_deployable else _A);dry_run=kwargs.get('dry_run',_C)or not is_table_deployable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/shared.py", line 122, in internal_wrapper
+    if catalog_support.is_full_support:return func(*list_args,**kwargs)
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/base.py", line 149, in create_table
+    def create_table(self,table_name:TableName,target_columns_to_types:t.Dict[str,exp.DataType],primary_key:t.Optional[t.Tuple[str,...]]=_A,exists:bool=_C,table_description:t.Optional[str]=_A,column_descriptions:t.Optional[t.Dict[str,str]]=_A,**kwargs:t.Any)->_A:self._create_table_from_columns(table_name,target_columns_to_types,primary_key,exists,table_description,column_descriptions,**kwargs)
+                                                                                                                                                                                                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/base.py", line 160, in _create_table_from_columns
+    schema=self._build_schema_exp(table,target_columns_to_types,column_descriptions,primary_key_expression);self._create_table(schema,_A,exists=exists,target_columns_to_types=target_columns_to_types,table_description=table_description,**kwargs)
+                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/spark.py", line 176, in _create_table
+    super()._create_table(table_name_or_schema,expression,exists=exists,replace=replace,target_columns_to_types=target_columns_to_types,table_description=table_description,column_descriptions=column_descriptions,track_rows_processed=track_rows_processed,**kwargs);table_name=table_name_or_schema.this if isinstance(table_name_or_schema,exp.Schema)else exp.to_table(table_name_or_schema)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/base.py", line 181, in _create_table
+    def _create_table(self,table_name_or_schema:t.Union[exp.Schema,TableName],expression:t.Optional[exp.Expression],exists:bool=_C,replace:bool=_B,target_columns_to_types:t.Optional[t.Dict[str,exp.DataType]]=_A,table_description:t.Optional[str]=_A,column_descriptions:t.Optional[t.Dict[str,str]]=_A,table_kind:t.Optional[str]=_A,track_rows_processed:bool=_C,**kwargs:t.Any)->_A:self.execute(self._build_create_table_exp(table_name_or_schema,expression=expression,exists=exists,replace=replace,target_columns_to_types=target_columns_to_types,table_description=table_description if self.COMMENT_CREATION_TABLE.supports_schema_def and self.comments_enabled else _A,table_kind=table_kind,**kwargs),track_rows_processed=track_rows_processed);table_name=table_name_or_schema.this if isinstance(table_name_or_schema,exp.Schema)else table_name_or_schema;self._clear_data_object_cache(table_name)
+                                                                                                                                                                                                                                                                                                                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/base.py", line 448, in execute
+    try:self._execute(sql,track_rows_processed,params=params,**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/base.py", line 489, in _execute
+    else:self.cursor.execute(sql,**kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/engines/spark/db_api/spark_session.py", line 12, in execute
+    self._last_df=self._spark.sql(query);self._last_output=_A;self._last_output_cursor=0
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/spark/python/pyspark/sql/session.py", line 1631, in sql
+    return DataFrame(self._jsparkSession.sql(sqlQuery, litArgs), self)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "/opt/spark/python/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+           ^^^^^^^^^^^
+  File "/opt/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/protocol.py", line 326, in get_return_value
+    raise Py4JJavaError(
+py4j.protocol.Py4JJavaError: An error occurred while calling o267.sql.
+: org.apache.iceberg.exceptions.ServiceFailureException: Server error: RuntimeIOException: Failed to get file system for path: gs://tmdc-dev/lhtest/staging_v5_vnew/stg_order_items/metadata/00000-a37696a7-763e-4ad5-a735-2bda230a227a.gz.metadata.json
+	at org.apache.iceberg.rest.ErrorHandlers$DefaultErrorHandler.accept(ErrorHandlers.java:350)
+	at org.apache.iceberg.rest.ErrorHandlers$TableErrorHandler.accept(ErrorHandlers.java:160)
+	at org.apache.iceberg.rest.ErrorHandlers$TableErrorHandler.accept(ErrorHandlers.java:142)
+	at org.apache.iceberg.rest.HTTPClient.throwFailure(HTTPClient.java:242)
+	at org.apache.iceberg.rest.HTTPClient.execute(HTTPClient.java:347)
+	at org.apache.iceberg.rest.HTTPClient.execute(HTTPClient.java:299)
+	at org.apache.iceberg.rest.BaseHTTPClient.post(BaseHTTPClient.java:112)
+	at org.apache.iceberg.rest.RESTClient.post(RESTClient.java:150)
+	at org.apache.iceberg.rest.RESTSessionCatalog$Builder.create(RESTSessionCatalog.java:972)
+	at org.apache.iceberg.CachingCatalog$CachingTableBuilder.lambda$create$0(CachingCatalog.java:272)
+	at com.github.benmanes.caffeine.cache.BoundedLocalCache.lambda$doComputeIfAbsent$14(BoundedLocalCache.java:2406)
+	at java.base/java.util.concurrent.ConcurrentHashMap.compute(ConcurrentHashMap.java:1916)
+	at com.github.benmanes.caffeine.cache.BoundedLocalCache.doComputeIfAbsent(BoundedLocalCache.java:2404)
+	at com.github.benmanes.caffeine.cache.BoundedLocalCache.computeIfAbsent(BoundedLocalCache.java:2387)
+	at com.github.benmanes.caffeine.cache.LocalCache.computeIfAbsent(LocalCache.java:108)
+	at com.github.benmanes.caffeine.cache.LocalManualCache.get(LocalManualCache.java:62)
+	at org.apache.iceberg.CachingCatalog$CachingTableBuilder.create(CachingCatalog.java:268)
+	at org.apache.iceberg.spark.SparkCatalog.createTable(SparkCatalog.java:257)
+	at org.apache.spark.sql.connector.catalog.TableCatalog.createTable(TableCatalog.java:223)
+	at org.apache.spark.sql.execution.datasources.v2.CreateTableExec.run(CreateTableExec.scala:44)
+	at org.apache.spark.sql.execution.datasources.v2.V2CommandExec.result$lzycompute(V2CommandExec.scala:43)
+	at org.apache.spark.sql.execution.datasources.v2.V2CommandExec.result(V2CommandExec.scala:43)
+	at org.apache.spark.sql.execution.datasources.v2.V2CommandExec.executeCollect(V2CommandExec.scala:49)
+	at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.$anonfun$applyOrElse$1(QueryExecution.scala:107)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$6(SQLExecution.scala:125)
+	at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:201)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$1(SQLExecution.scala:108)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:66)
+	at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.applyOrElse(QueryExecution.scala:107)
+	at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.applyOrElse(QueryExecution.scala:98)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$transformDownWithPruning$1(TreeNode.scala:461)
+	at org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(origin.scala:76)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.transformDownWithPruning(TreeNode.scala:461)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.org$apache$spark$sql$catalyst$plans$logical$AnalysisHelper$$super$transformDownWithPruning(LogicalPlan.scala:32)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPruning(AnalysisHelper.scala:267)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPruning$(AnalysisHelper.scala:263)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning(LogicalPlan.scala:32)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning(LogicalPlan.scala:32)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.transformDown(TreeNode.scala:437)
+	at org.apache.spark.sql.execution.QueryExecution.eagerlyExecuteCommands(QueryExecution.scala:98)
+	at org.apache.spark.sql.execution.QueryExecution.commandExecuted$lzycompute(QueryExecution.scala:85)
+	at org.apache.spark.sql.execution.QueryExecution.commandExecuted(QueryExecution.scala:83)
+	at org.apache.spark.sql.Dataset.<init>(Dataset.scala:220)
+	at org.apache.spark.sql.Dataset$.$anonfun$ofRows$2(Dataset.scala:100)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+	at org.apache.spark.sql.Dataset$.ofRows(Dataset.scala:97)
+	at org.apache.spark.sql.SparkSession.$anonfun$sql$1(SparkSession.scala:638)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+	at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:629)
+	at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:659)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+
+The above exception was the direct cause of the following exception:
+
+vulcan.utils.concurrency.NodeExecutionFailedError: Execution failed for node EvaluateNode(snapshot_name='"gcslhdepot"."staging_v5_vnew"."stg_order_items"', interval=(1704067200000, 1786665600000), batch_index=0)
+[38;20m2026-08-18 21:14:59,989 - MainThread - vulcan.core.scheduler - INFO - Execution failed for node EvaluateNode(snapshot_name='"gcslhdepot"."staging_v5_vnew"."stg_customers"', interval=(1704067200000, 1786665600000), batch_index=0) (scheduler.py:98)[0m
+Traceback (most recent call last):
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/utils/concurrency.py", line 24, in _process_node
+    self.fn(node)
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/scheduler.py", line 88, in run_node
+    else:target_table_exists=snapshot.snapshot_id not in snapshots_to_create or node.batch_index>0;audit_results=self.evaluate(snapshot=snapshot,environment_naming_info=environment_naming_info,start=start,end=end,execution_time=execution_time,deployability_index=deployability_index,batch_index=node.batch_index,allow_destructive_snapshots=allow_destructive_snapshots,allow_additive_snapshots=allow_additive_snapshots,target_table_exists=target_table_exists,selected_models=selected_models)
+                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/scheduler.py", line 48, in evaluate
+    def evaluate(self,snapshot:Snapshot,start:TimeLike,end:TimeLike,execution_time:TimeLike,deployability_index:DeployabilityIndex,batch_index:int,environment_naming_info:t.Optional[EnvironmentNamingInfo]=_A,allow_destructive_snapshots:t.Optional[t.Set[str]]=_A,allow_additive_snapshots:t.Optional[t.Set[str]]=_A,target_table_exists:t.Optional[bool]=_A,**kwargs:t.Any)->t.List[AuditResult]:validate_date_range(start,end);snapshots=parent_snapshots_by_name(snapshot,self.snapshots);is_deployable=deployability_index.is_deployable(snapshot);wap_id=self.snapshot_evaluator.evaluate(snapshot,start=start,end=end,execution_time=execution_time,snapshots=snapshots,allow_destructive_snapshots=allow_destructive_snapshots,allow_additive_snapshots=allow_additive_snapshots,deployability_index=deployability_index,batch_index=batch_index,target_table_exists=target_table_exists,**kwargs);audit_results=self._audit_snapshot(snapshot=snapshot,environment_naming_info=environment_naming_info,start=start,end=end,execution_time=execution_time,snapshots=snapshots,deployability_index=deployability_index,wap_id=wap_id,**kwargs);self.state_sync.add_interval(snapshot,start,end,is_dev=not is_deployable,last_altered_ts=now_timestamp());return audit_results
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/snapshot/evaluator.py", line 61, in evaluate
+    with self.execution_tracker.track_execution(SnapshotIdBatch(snapshot_id=snapshot.snapshot_id,batch_id=batch_index)):result=self._evaluate_snapshot(start=start,end=end,execution_time=execution_time,snapshot=snapshot,snapshots=snapshots,allow_destructive_snapshots=allow_destructive_snapshots or set(),allow_additive_snapshots=allow_additive_snapshots or set(),deployability_index=deployability_index,batch_index=batch_index,target_table_exists=target_table_exists,**kwargs)
+                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/snapshot/evaluator.py", line 147, in _evaluate_snapshot
+    elif should_create_empty_table or model.is_seed or model.kind.is_scd_type_2:self._execute_create(snapshot=snapshot,table_name=target_table_name,is_table_deployable=is_snapshot_deployable,deployability_index=deployability_index,create_render_kwargs=create_render_kwargs,rendered_physical_properties=rendered_physical_properties.copy(),dry_run=_B,run_pre_post_statements=_B);runtime_stage=RuntimeStage.EVALUATING;target_table_exists=_C
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/snapshot/evaluator.py", line 241, in _execute_create
+    evaluation_strategy.create(table_name=table_name,model=snapshot.model,is_table_deployable=is_table_deployable,skip_grants=skip_grants,render_kwargs=create_render_kwargs,is_snapshot_deployable=is_snapshot_deployable,is_snapshot_representative=is_snapshot_representative,dry_run=dry_run,physical_properties=rendered_physical_properties,snapshot=snapshot,deployability_index=deployability_index)
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/snapshot/evaluator.py", line 382, in create
+    super().create(table_name,model,is_table_deployable,render_kwargs,skip_grants=_C,**kwargs)
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/snapshot/evaluator.py", line 334, in create
+    self.adapter.create_table(table_name,target_columns_to_types=model.columns_to_types_or_raise,table_format=model.table_format,storage_format=model.storage_format,partitioned_by=model.partitioned_by,partition_interval_unit=model.partition_interval_unit,clustered_by=model.clustered_by,table_properties=physical_properties,table_description=model.description if is_table_deployable else _A,column_descriptions=model.column_descriptions if is_table_deployable else _A);dry_run=kwargs.get('dry_run',_C)or not is_table_deployable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/shared.py", line 122, in internal_wrapper
+    if catalog_support.is_full_support:return func(*list_args,**kwargs)
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/base.py", line 149, in create_table
+    def create_table(self,table_name:TableName,target_columns_to_types:t.Dict[str,exp.DataType],primary_key:t.Optional[t.Tuple[str,...]]=_A,exists:bool=_C,table_description:t.Optional[str]=_A,column_descriptions:t.Optional[t.Dict[str,str]]=_A,**kwargs:t.Any)->_A:self._create_table_from_columns(table_name,target_columns_to_types,primary_key,exists,table_description,column_descriptions,**kwargs)
+                                                                                                                                                                                                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/base.py", line 160, in _create_table_from_columns
+    schema=self._build_schema_exp(table,target_columns_to_types,column_descriptions,primary_key_expression);self._create_table(schema,_A,exists=exists,target_columns_to_types=target_columns_to_types,table_description=table_description,**kwargs)
+                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/spark.py", line 176, in _create_table
+    super()._create_table(table_name_or_schema,expression,exists=exists,replace=replace,target_columns_to_types=target_columns_to_types,table_description=table_description,column_descriptions=column_descriptions,track_rows_processed=track_rows_processed,**kwargs);table_name=table_name_or_schema.this if isinstance(table_name_or_schema,exp.Schema)else exp.to_table(table_name_or_schema)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/base.py", line 181, in _create_table
+    def _create_table(self,table_name_or_schema:t.Union[exp.Schema,TableName],expression:t.Optional[exp.Expression],exists:bool=_C,replace:bool=_B,target_columns_to_types:t.Optional[t.Dict[str,exp.DataType]]=_A,table_description:t.Optional[str]=_A,column_descriptions:t.Optional[t.Dict[str,str]]=_A,table_kind:t.Optional[str]=_A,track_rows_processed:bool=_C,**kwargs:t.Any)->_A:self.execute(self._build_create_table_exp(table_name_or_schema,expression=expression,exists=exists,replace=replace,target_columns_to_types=target_columns_to_types,table_description=table_description if self.COMMENT_CREATION_TABLE.supports_schema_def and self.comments_enabled else _A,table_kind=table_kind,**kwargs),track_rows_processed=track_rows_processed);table_name=table_name_or_schema.this if isinstance(table_name_or_schema,exp.Schema)else table_name_or_schema;self._clear_data_object_cache(table_name)
+                                                                                                                                                                                                                                                                                                                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/base.py", line 448, in execute
+    try:self._execute(sql,track_rows_processed,params=params,**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/base.py", line 489, in _execute
+    else:self.cursor.execute(sql,**kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/engines/spark/db_api/spark_session.py", line 12, in execute
+    self._last_df=self._spark.sql(query);self._last_output=_A;self._last_output_cursor=0
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/spark/python/pyspark/sql/session.py", line 1631, in sql
+    return DataFrame(self._jsparkSession.sql(sqlQuery, litArgs), self)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "/opt/spark/python/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+           ^^^^^^^^^^^
+  File "/opt/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/protocol.py", line 326, in get_return_value
+    raise Py4JJavaError(
+py4j.protocol.Py4JJavaError: An error occurred while calling o267.sql.
+: org.apache.iceberg.exceptions.ServiceFailureException: Server error: RuntimeIOException: Failed to get file system for path: gs://tmdc-dev/lhtest/staging_v5_vnew/stg_customers/metadata/00000-33dc99fc-c9dd-4726-ae9b-9fb4a6e7c157.gz.metadata.json
+	at org.apache.iceberg.rest.ErrorHandlers$DefaultErrorHandler.accept(ErrorHandlers.java:350)
+	at org.apache.iceberg.rest.ErrorHandlers$TableErrorHandler.accept(ErrorHandlers.java:160)
+	at org.apache.iceberg.rest.ErrorHandlers$TableErrorHandler.accept(ErrorHandlers.java:142)
+	at org.apache.iceberg.rest.HTTPClient.throwFailure(HTTPClient.java:242)
+	at org.apache.iceberg.rest.HTTPClient.execute(HTTPClient.java:347)
+	at org.apache.iceberg.rest.HTTPClient.execute(HTTPClient.java:299)
+	at org.apache.iceberg.rest.BaseHTTPClient.post(BaseHTTPClient.java:112)
+	at org.apache.iceberg.rest.RESTClient.post(RESTClient.java:150)
+	at org.apache.iceberg.rest.RESTSessionCatalog$Builder.create(RESTSessionCatalog.java:972)
+	at org.apache.iceberg.CachingCatalog$CachingTableBuilder.lambda$create$0(CachingCatalog.java:272)
+	at com.github.benmanes.caffeine.cache.BoundedLocalCache.lambda$doComputeIfAbsent$14(BoundedLocalCache.java:2406)
+	at java.base/java.util.concurrent.ConcurrentHashMap.compute(ConcurrentHashMap.java:1916)
+	at com.github.benmanes.caffeine.cache.BoundedLocalCache.doComputeIfAbsent(BoundedLocalCache.java:2404)
+	at com.github.benmanes.caffeine.cache.BoundedLocalCache.computeIfAbsent(BoundedLocalCache.java:2387)
+	at com.github.benmanes.caffeine.cache.LocalCache.computeIfAbsent(LocalCache.java:108)
+	at com.github.benmanes.caffeine.cache.LocalManualCache.get(LocalManualCache.java:62)
+	at org.apache.iceberg.CachingCatalog$CachingTableBuilder.create(CachingCatalog.java:268)
+	at org.apache.iceberg.spark.SparkCatalog.createTable(SparkCatalog.java:257)
+	at org.apache.spark.sql.connector.catalog.TableCatalog.createTable(TableCatalog.java:223)
+	at org.apache.spark.sql.execution.datasources.v2.CreateTableExec.run(CreateTableExec.scala:44)
+	at org.apache.spark.sql.execution.datasources.v2.V2CommandExec.result$lzycompute(V2CommandExec.scala:43)
+	at org.apache.spark.sql.execution.datasources.v2.V2CommandExec.result(V2CommandExec.scala:43)
+	at org.apache.spark.sql.execution.datasources.v2.V2CommandExec.executeCollect(V2CommandExec.scala:49)
+	at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.$anonfun$applyOrElse$1(QueryExecution.scala:107)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$6(SQLExecution.scala:125)
+	at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:201)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$1(SQLExecution.scala:108)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:66)
+	at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.applyOrElse(QueryExecution.scala:107)
+	at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.applyOrElse(QueryExecution.scala:98)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$transformDownWithPruning$1(TreeNode.scala:461)
+	at org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(origin.scala:76)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.transformDownWithPruning(TreeNode.scala:461)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.org$apache$spark$sql$catalyst$plans$logical$AnalysisHelper$$super$transformDownWithPruning(LogicalPlan.scala:32)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPruning(AnalysisHelper.scala:267)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPruning$(AnalysisHelper.scala:263)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning(LogicalPlan.scala:32)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning(LogicalPlan.scala:32)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.transformDown(TreeNode.scala:437)
+	at org.apache.spark.sql.execution.QueryExecution.eagerlyExecuteCommands(QueryExecution.scala:98)
+	at org.apache.spark.sql.execution.QueryExecution.commandExecuted$lzycompute(QueryExecution.scala:85)
+	at org.apache.spark.sql.execution.QueryExecution.commandExecuted(QueryExecution.scala:83)
+	at org.apache.spark.sql.Dataset.<init>(Dataset.scala:220)
+	at org.apache.spark.sql.Dataset$.$anonfun$ofRows$2(Dataset.scala:100)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+	at org.apache.spark.sql.Dataset$.ofRows(Dataset.scala:97)
+	at org.apache.spark.sql.SparkSession.$anonfun$sql$1(SparkSession.scala:638)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+	at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:629)
+	at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:659)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+
+The above exception was the direct cause of the following exception:
+
+vulcan.utils.concurrency.NodeExecutionFailedError: Execution failed for node EvaluateNode(snapshot_name='"gcslhdepot"."staging_v5_vnew"."stg_customers"', interval=(1704067200000, 1786665600000), batch_index=0)
+[38;20m2026-08-18 21:14:59,990 - MainThread - vulcan.core.scheduler - INFO - Execution failed for node EvaluateNode(snapshot_name='"gcslhdepot"."staging_v5_vnew"."stg_orders"', interval=(1704067200000, 1786665600000), batch_index=0) (scheduler.py:98)[0m
+Traceback (most recent call last):
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/utils/concurrency.py", line 24, in _process_node
+    self.fn(node)
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/scheduler.py", line 88, in run_node
+    else:target_table_exists=snapshot.snapshot_id not in snapshots_to_create or node.batch_index>0;audit_results=self.evaluate(snapshot=snapshot,environment_naming_info=environment_naming_info,start=start,end=end,execution_time=execution_time,deployability_index=deployability_index,batch_index=node.batch_index,allow_destructive_snapshots=allow_destructive_snapshots,allow_additive_snapshots=allow_additive_snapshots,target_table_exists=target_table_exists,selected_models=selected_models)
+                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/scheduler.py", line 48, in evaluate
+    def evaluate(self,snapshot:Snapshot,start:TimeLike,end:TimeLike,execution_time:TimeLike,deployability_index:DeployabilityIndex,batch_index:int,environment_naming_info:t.Optional[EnvironmentNamingInfo]=_A,allow_destructive_snapshots:t.Optional[t.Set[str]]=_A,allow_additive_snapshots:t.Optional[t.Set[str]]=_A,target_table_exists:t.Optional[bool]=_A,**kwargs:t.Any)->t.List[AuditResult]:validate_date_range(start,end);snapshots=parent_snapshots_by_name(snapshot,self.snapshots);is_deployable=deployability_index.is_deployable(snapshot);wap_id=self.snapshot_evaluator.evaluate(snapshot,start=start,end=end,execution_time=execution_time,snapshots=snapshots,allow_destructive_snapshots=allow_destructive_snapshots,allow_additive_snapshots=allow_additive_snapshots,deployability_index=deployability_index,batch_index=batch_index,target_table_exists=target_table_exists,**kwargs);audit_results=self._audit_snapshot(snapshot=snapshot,environment_naming_info=environment_naming_info,start=start,end=end,execution_time=execution_time,snapshots=snapshots,deployability_index=deployability_index,wap_id=wap_id,**kwargs);self.state_sync.add_interval(snapshot,start,end,is_dev=not is_deployable,last_altered_ts=now_timestamp());return audit_results
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/snapshot/evaluator.py", line 61, in evaluate
+    with self.execution_tracker.track_execution(SnapshotIdBatch(snapshot_id=snapshot.snapshot_id,batch_id=batch_index)):result=self._evaluate_snapshot(start=start,end=end,execution_time=execution_time,snapshot=snapshot,snapshots=snapshots,allow_destructive_snapshots=allow_destructive_snapshots or set(),allow_additive_snapshots=allow_additive_snapshots or set(),deployability_index=deployability_index,batch_index=batch_index,target_table_exists=target_table_exists,**kwargs)
+                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/snapshot/evaluator.py", line 147, in _evaluate_snapshot
+    elif should_create_empty_table or model.is_seed or model.kind.is_scd_type_2:self._execute_create(snapshot=snapshot,table_name=target_table_name,is_table_deployable=is_snapshot_deployable,deployability_index=deployability_index,create_render_kwargs=create_render_kwargs,rendered_physical_properties=rendered_physical_properties.copy(),dry_run=_B,run_pre_post_statements=_B);runtime_stage=RuntimeStage.EVALUATING;target_table_exists=_C
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/snapshot/evaluator.py", line 241, in _execute_create
+    evaluation_strategy.create(table_name=table_name,model=snapshot.model,is_table_deployable=is_table_deployable,skip_grants=skip_grants,render_kwargs=create_render_kwargs,is_snapshot_deployable=is_snapshot_deployable,is_snapshot_representative=is_snapshot_representative,dry_run=dry_run,physical_properties=rendered_physical_properties,snapshot=snapshot,deployability_index=deployability_index)
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/snapshot/evaluator.py", line 382, in create
+    super().create(table_name,model,is_table_deployable,render_kwargs,skip_grants=_C,**kwargs)
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/snapshot/evaluator.py", line 334, in create
+    self.adapter.create_table(table_name,target_columns_to_types=model.columns_to_types_or_raise,table_format=model.table_format,storage_format=model.storage_format,partitioned_by=model.partitioned_by,partition_interval_unit=model.partition_interval_unit,clustered_by=model.clustered_by,table_properties=physical_properties,table_description=model.description if is_table_deployable else _A,column_descriptions=model.column_descriptions if is_table_deployable else _A);dry_run=kwargs.get('dry_run',_C)or not is_table_deployable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/shared.py", line 122, in internal_wrapper
+    if catalog_support.is_full_support:return func(*list_args,**kwargs)
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/base.py", line 149, in create_table
+    def create_table(self,table_name:TableName,target_columns_to_types:t.Dict[str,exp.DataType],primary_key:t.Optional[t.Tuple[str,...]]=_A,exists:bool=_C,table_description:t.Optional[str]=_A,column_descriptions:t.Optional[t.Dict[str,str]]=_A,**kwargs:t.Any)->_A:self._create_table_from_columns(table_name,target_columns_to_types,primary_key,exists,table_description,column_descriptions,**kwargs)
+                                                                                                                                                                                                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/base.py", line 160, in _create_table_from_columns
+    schema=self._build_schema_exp(table,target_columns_to_types,column_descriptions,primary_key_expression);self._create_table(schema,_A,exists=exists,target_columns_to_types=target_columns_to_types,table_description=table_description,**kwargs)
+                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/spark.py", line 176, in _create_table
+    super()._create_table(table_name_or_schema,expression,exists=exists,replace=replace,target_columns_to_types=target_columns_to_types,table_description=table_description,column_descriptions=column_descriptions,track_rows_processed=track_rows_processed,**kwargs);table_name=table_name_or_schema.this if isinstance(table_name_or_schema,exp.Schema)else exp.to_table(table_name_or_schema)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/base.py", line 181, in _create_table
+    def _create_table(self,table_name_or_schema:t.Union[exp.Schema,TableName],expression:t.Optional[exp.Expression],exists:bool=_C,replace:bool=_B,target_columns_to_types:t.Optional[t.Dict[str,exp.DataType]]=_A,table_description:t.Optional[str]=_A,column_descriptions:t.Optional[t.Dict[str,str]]=_A,table_kind:t.Optional[str]=_A,track_rows_processed:bool=_C,**kwargs:t.Any)->_A:self.execute(self._build_create_table_exp(table_name_or_schema,expression=expression,exists=exists,replace=replace,target_columns_to_types=target_columns_to_types,table_description=table_description if self.COMMENT_CREATION_TABLE.supports_schema_def and self.comments_enabled else _A,table_kind=table_kind,**kwargs),track_rows_processed=track_rows_processed);table_name=table_name_or_schema.this if isinstance(table_name_or_schema,exp.Schema)else table_name_or_schema;self._clear_data_object_cache(table_name)
+                                                                                                                                                                                                                                                                                                                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/base.py", line 448, in execute
+    try:self._execute(sql,track_rows_processed,params=params,**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/base.py", line 489, in _execute
+    else:self.cursor.execute(sql,**kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/engines/spark/db_api/spark_session.py", line 12, in execute
+    self._last_df=self._spark.sql(query);self._last_output=_A;self._last_output_cursor=0
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/spark/python/pyspark/sql/session.py", line 1631, in sql
+    return DataFrame(self._jsparkSession.sql(sqlQuery, litArgs), self)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "/opt/spark/python/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+           ^^^^^^^^^^^
+  File "/opt/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/protocol.py", line 326, in get_return_value
+    raise Py4JJavaError(
+py4j.protocol.Py4JJavaError: An error occurred while calling o267.sql.
+: org.apache.iceberg.exceptions.ServiceFailureException: Server error: RuntimeIOException: Failed to get file system for path: gs://tmdc-dev/lhtest/staging_v5_vnew/stg_orders/metadata/00000-4238d565-74df-4568-a174-0ab4c5158b33.gz.metadata.json
+	at org.apache.iceberg.rest.ErrorHandlers$DefaultErrorHandler.accept(ErrorHandlers.java:350)
+	at org.apache.iceberg.rest.ErrorHandlers$TableErrorHandler.accept(ErrorHandlers.java:160)
+	at org.apache.iceberg.rest.ErrorHandlers$TableErrorHandler.accept(ErrorHandlers.java:142)
+	at org.apache.iceberg.rest.HTTPClient.throwFailure(HTTPClient.java:242)
+	at org.apache.iceberg.rest.HTTPClient.execute(HTTPClient.java:347)
+	at org.apache.iceberg.rest.HTTPClient.execute(HTTPClient.java:299)
+	at org.apache.iceberg.rest.BaseHTTPClient.post(BaseHTTPClient.java:112)
+	at org.apache.iceberg.rest.RESTClient.post(RESTClient.java:150)
+	at org.apache.iceberg.rest.RESTSessionCatalog$Builder.create(RESTSessionCatalog.java:972)
+	at org.apache.iceberg.CachingCatalog$CachingTableBuilder.lambda$create$0(CachingCatalog.java:272)
+	at com.github.benmanes.caffeine.cache.BoundedLocalCache.lambda$doComputeIfAbsent$14(BoundedLocalCache.java:2406)
+	at java.base/java.util.concurrent.ConcurrentHashMap.compute(ConcurrentHashMap.java:1916)
+	at com.github.benmanes.caffeine.cache.BoundedLocalCache.doComputeIfAbsent(BoundedLocalCache.java:2404)
+	at com.github.benmanes.caffeine.cache.BoundedLocalCache.computeIfAbsent(BoundedLocalCache.java:2387)
+	at com.github.benmanes.caffeine.cache.LocalCache.computeIfAbsent(LocalCache.java:108)
+	at com.github.benmanes.caffeine.cache.LocalManualCache.get(LocalManualCache.java:62)
+	at org.apache.iceberg.CachingCatalog$CachingTableBuilder.create(CachingCatalog.java:268)
+	at org.apache.iceberg.spark.SparkCatalog.createTable(SparkCatalog.java:257)
+	at org.apache.spark.sql.connector.catalog.TableCatalog.createTable(TableCatalog.java:223)
+	at org.apache.spark.sql.execution.datasources.v2.CreateTableExec.run(CreateTableExec.scala:44)
+	at org.apache.spark.sql.execution.datasources.v2.V2CommandExec.result$lzycompute(V2CommandExec.scala:43)
+	at org.apache.spark.sql.execution.datasources.v2.V2CommandExec.result(V2CommandExec.scala:43)
+	at org.apache.spark.sql.execution.datasources.v2.V2CommandExec.executeCollect(V2CommandExec.scala:49)
+	at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.$anonfun$applyOrElse$1(QueryExecution.scala:107)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$6(SQLExecution.scala:125)
+	at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:201)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$1(SQLExecution.scala:108)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:66)
+	at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.applyOrElse(QueryExecution.scala:107)
+	at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.applyOrElse(QueryExecution.scala:98)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$transformDownWithPruning$1(TreeNode.scala:461)
+	at org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(origin.scala:76)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.transformDownWithPruning(TreeNode.scala:461)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.org$apache$spark$sql$catalyst$plans$logical$AnalysisHelper$$super$transformDownWithPruning(LogicalPlan.scala:32)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPruning(AnalysisHelper.scala:267)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPruning$(AnalysisHelper.scala:263)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning(LogicalPlan.scala:32)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning(LogicalPlan.scala:32)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.transformDown(TreeNode.scala:437)
+	at org.apache.spark.sql.execution.QueryExecution.eagerlyExecuteCommands(QueryExecution.scala:98)
+	at org.apache.spark.sql.execution.QueryExecution.commandExecuted$lzycompute(QueryExecution.scala:85)
+	at org.apache.spark.sql.execution.QueryExecution.commandExecuted(QueryExecution.scala:83)
+	at org.apache.spark.sql.Dataset.<init>(Dataset.scala:220)
+	at org.apache.spark.sql.Dataset$.$anonfun$ofRows$2(Dataset.scala:100)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+	at org.apache.spark.sql.Dataset$.ofRows(Dataset.scala:97)
+	at org.apache.spark.sql.SparkSession.$anonfun$sql$1(SparkSession.scala:638)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+	at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:629)
+	at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:659)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+
+The above exception was the direct cause of the following exception:
+
+vulcan.utils.concurrency.NodeExecutionFailedError: Execution failed for node EvaluateNode(snapshot_name='"gcslhdepot"."staging_v5_vnew"."stg_orders"', interval=(1704067200000, 1786665600000), batch_index=0)
+[38;20m2026-08-18 21:14:59,991 - MainThread - vulcan.core.scheduler - INFO - Execution failed for node EvaluateNode(snapshot_name='"gcslhdepot"."staging_v5_vnew"."stg_products"', interval=(1704067200000, 1786665600000), batch_index=0) (scheduler.py:98)[0m
+Traceback (most recent call last):
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/utils/concurrency.py", line 24, in _process_node
+    self.fn(node)
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/scheduler.py", line 88, in run_node
+    else:target_table_exists=snapshot.snapshot_id not in snapshots_to_create or node.batch_index>0;audit_results=self.evaluate(snapshot=snapshot,environment_naming_info=environment_naming_info,start=start,end=end,execution_time=execution_time,deployability_index=deployability_index,batch_index=node.batch_index,allow_destructive_snapshots=allow_destructive_snapshots,allow_additive_snapshots=allow_additive_snapshots,target_table_exists=target_table_exists,selected_models=selected_models)
+                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/scheduler.py", line 48, in evaluate
+    def evaluate(self,snapshot:Snapshot,start:TimeLike,end:TimeLike,execution_time:TimeLike,deployability_index:DeployabilityIndex,batch_index:int,environment_naming_info:t.Optional[EnvironmentNamingInfo]=_A,allow_destructive_snapshots:t.Optional[t.Set[str]]=_A,allow_additive_snapshots:t.Optional[t.Set[str]]=_A,target_table_exists:t.Optional[bool]=_A,**kwargs:t.Any)->t.List[AuditResult]:validate_date_range(start,end);snapshots=parent_snapshots_by_name(snapshot,self.snapshots);is_deployable=deployability_index.is_deployable(snapshot);wap_id=self.snapshot_evaluator.evaluate(snapshot,start=start,end=end,execution_time=execution_time,snapshots=snapshots,allow_destructive_snapshots=allow_destructive_snapshots,allow_additive_snapshots=allow_additive_snapshots,deployability_index=deployability_index,batch_index=batch_index,target_table_exists=target_table_exists,**kwargs);audit_results=self._audit_snapshot(snapshot=snapshot,environment_naming_info=environment_naming_info,start=start,end=end,execution_time=execution_time,snapshots=snapshots,deployability_index=deployability_index,wap_id=wap_id,**kwargs);self.state_sync.add_interval(snapshot,start,end,is_dev=not is_deployable,last_altered_ts=now_timestamp());return audit_results
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/snapshot/evaluator.py", line 61, in evaluate
+    with self.execution_tracker.track_execution(SnapshotIdBatch(snapshot_id=snapshot.snapshot_id,batch_id=batch_index)):result=self._evaluate_snapshot(start=start,end=end,execution_time=execution_time,snapshot=snapshot,snapshots=snapshots,allow_destructive_snapshots=allow_destructive_snapshots or set(),allow_additive_snapshots=allow_additive_snapshots or set(),deployability_index=deployability_index,batch_index=batch_index,target_table_exists=target_table_exists,**kwargs)
+                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/snapshot/evaluator.py", line 147, in _evaluate_snapshot
+    elif should_create_empty_table or model.is_seed or model.kind.is_scd_type_2:self._execute_create(snapshot=snapshot,table_name=target_table_name,is_table_deployable=is_snapshot_deployable,deployability_index=deployability_index,create_render_kwargs=create_render_kwargs,rendered_physical_properties=rendered_physical_properties.copy(),dry_run=_B,run_pre_post_statements=_B);runtime_stage=RuntimeStage.EVALUATING;target_table_exists=_C
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/snapshot/evaluator.py", line 241, in _execute_create
+    evaluation_strategy.create(table_name=table_name,model=snapshot.model,is_table_deployable=is_table_deployable,skip_grants=skip_grants,render_kwargs=create_render_kwargs,is_snapshot_deployable=is_snapshot_deployable,is_snapshot_representative=is_snapshot_representative,dry_run=dry_run,physical_properties=rendered_physical_properties,snapshot=snapshot,deployability_index=deployability_index)
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/snapshot/evaluator.py", line 382, in create
+    super().create(table_name,model,is_table_deployable,render_kwargs,skip_grants=_C,**kwargs)
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/snapshot/evaluator.py", line 334, in create
+    self.adapter.create_table(table_name,target_columns_to_types=model.columns_to_types_or_raise,table_format=model.table_format,storage_format=model.storage_format,partitioned_by=model.partitioned_by,partition_interval_unit=model.partition_interval_unit,clustered_by=model.clustered_by,table_properties=physical_properties,table_description=model.description if is_table_deployable else _A,column_descriptions=model.column_descriptions if is_table_deployable else _A);dry_run=kwargs.get('dry_run',_C)or not is_table_deployable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/shared.py", line 122, in internal_wrapper
+    if catalog_support.is_full_support:return func(*list_args,**kwargs)
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/base.py", line 149, in create_table
+    def create_table(self,table_name:TableName,target_columns_to_types:t.Dict[str,exp.DataType],primary_key:t.Optional[t.Tuple[str,...]]=_A,exists:bool=_C,table_description:t.Optional[str]=_A,column_descriptions:t.Optional[t.Dict[str,str]]=_A,**kwargs:t.Any)->_A:self._create_table_from_columns(table_name,target_columns_to_types,primary_key,exists,table_description,column_descriptions,**kwargs)
+                                                                                                                                                                                                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/base.py", line 160, in _create_table_from_columns
+    schema=self._build_schema_exp(table,target_columns_to_types,column_descriptions,primary_key_expression);self._create_table(schema,_A,exists=exists,target_columns_to_types=target_columns_to_types,table_description=table_description,**kwargs)
+                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/spark.py", line 176, in _create_table
+    super()._create_table(table_name_or_schema,expression,exists=exists,replace=replace,target_columns_to_types=target_columns_to_types,table_description=table_description,column_descriptions=column_descriptions,track_rows_processed=track_rows_processed,**kwargs);table_name=table_name_or_schema.this if isinstance(table_name_or_schema,exp.Schema)else exp.to_table(table_name_or_schema)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/base.py", line 181, in _create_table
+    def _create_table(self,table_name_or_schema:t.Union[exp.Schema,TableName],expression:t.Optional[exp.Expression],exists:bool=_C,replace:bool=_B,target_columns_to_types:t.Optional[t.Dict[str,exp.DataType]]=_A,table_description:t.Optional[str]=_A,column_descriptions:t.Optional[t.Dict[str,str]]=_A,table_kind:t.Optional[str]=_A,track_rows_processed:bool=_C,**kwargs:t.Any)->_A:self.execute(self._build_create_table_exp(table_name_or_schema,expression=expression,exists=exists,replace=replace,target_columns_to_types=target_columns_to_types,table_description=table_description if self.COMMENT_CREATION_TABLE.supports_schema_def and self.comments_enabled else _A,table_kind=table_kind,**kwargs),track_rows_processed=track_rows_processed);table_name=table_name_or_schema.this if isinstance(table_name_or_schema,exp.Schema)else table_name_or_schema;self._clear_data_object_cache(table_name)
+                                                                                                                                                                                                                                                                                                                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/base.py", line 448, in execute
+    try:self._execute(sql,track_rows_processed,params=params,**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/base.py", line 489, in _execute
+    else:self.cursor.execute(sql,**kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/engines/spark/db_api/spark_session.py", line 12, in execute
+    self._last_df=self._spark.sql(query);self._last_output=_A;self._last_output_cursor=0
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/spark/python/pyspark/sql/session.py", line 1631, in sql
+    return DataFrame(self._jsparkSession.sql(sqlQuery, litArgs), self)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "/opt/spark/python/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+           ^^^^^^^^^^^
+  File "/opt/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/protocol.py", line 326, in get_return_value
+    raise Py4JJavaError(
+py4j.protocol.Py4JJavaError: An error occurred while calling o267.sql.
+: org.apache.iceberg.exceptions.ServiceFailureException: Server error: RuntimeIOException: Failed to get file system for path: gs://tmdc-dev/lhtest/staging_v5_vnew/stg_products/metadata/00000-06882234-ff2a-4250-89dd-8ebf96851bf8.gz.metadata.json
+	at org.apache.iceberg.rest.ErrorHandlers$DefaultErrorHandler.accept(ErrorHandlers.java:350)
+	at org.apache.iceberg.rest.ErrorHandlers$TableErrorHandler.accept(ErrorHandlers.java:160)
+	at org.apache.iceberg.rest.ErrorHandlers$TableErrorHandler.accept(ErrorHandlers.java:142)
+	at org.apache.iceberg.rest.HTTPClient.throwFailure(HTTPClient.java:242)
+	at org.apache.iceberg.rest.HTTPClient.execute(HTTPClient.java:347)
+	at org.apache.iceberg.rest.HTTPClient.execute(HTTPClient.java:299)
+	at org.apache.iceberg.rest.BaseHTTPClient.post(BaseHTTPClient.java:112)
+	at org.apache.iceberg.rest.RESTClient.post(RESTClient.java:150)
+	at org.apache.iceberg.rest.RESTSessionCatalog$Builder.create(RESTSessionCatalog.java:972)
+	at org.apache.iceberg.CachingCatalog$CachingTableBuilder.lambda$create$0(CachingCatalog.java:272)
+	at com.github.benmanes.caffeine.cache.BoundedLocalCache.lambda$doComputeIfAbsent$14(BoundedLocalCache.java:2406)
+	at java.base/java.util.concurrent.ConcurrentHashMap.compute(ConcurrentHashMap.java:1916)
+	at com.github.benmanes.caffeine.cache.BoundedLocalCache.doComputeIfAbsent(BoundedLocalCache.java:2404)
+	at com.github.benmanes.caffeine.cache.BoundedLocalCache.computeIfAbsent(BoundedLocalCache.java:2387)
+	at com.github.benmanes.caffeine.cache.LocalCache.computeIfAbsent(LocalCache.java:108)
+	at com.github.benmanes.caffeine.cache.LocalManualCache.get(LocalManualCache.java:62)
+	at org.apache.iceberg.CachingCatalog$CachingTableBuilder.create(CachingCatalog.java:268)
+	at org.apache.iceberg.spark.SparkCatalog.createTable(SparkCatalog.java:257)
+	at org.apache.spark.sql.connector.catalog.TableCatalog.createTable(TableCatalog.java:223)
+	at org.apache.spark.sql.execution.datasources.v2.CreateTableExec.run(CreateTableExec.scala:44)
+	at org.apache.spark.sql.execution.datasources.v2.V2CommandExec.result$lzycompute(V2CommandExec.scala:43)
+	at org.apache.spark.sql.execution.datasources.v2.V2CommandExec.result(V2CommandExec.scala:43)
+	at org.apache.spark.sql.execution.datasources.v2.V2CommandExec.executeCollect(V2CommandExec.scala:49)
+	at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.$anonfun$applyOrElse$1(QueryExecution.scala:107)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$6(SQLExecution.scala:125)
+	at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:201)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$1(SQLExecution.scala:108)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:66)
+	at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.applyOrElse(QueryExecution.scala:107)
+	at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.applyOrElse(QueryExecution.scala:98)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$transformDownWithPruning$1(TreeNode.scala:461)
+	at org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(origin.scala:76)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.transformDownWithPruning(TreeNode.scala:461)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.org$apache$spark$sql$catalyst$plans$logical$AnalysisHelper$$super$transformDownWithPruning(LogicalPlan.scala:32)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPruning(AnalysisHelper.scala:267)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPruning$(AnalysisHelper.scala:263)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning(LogicalPlan.scala:32)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning(LogicalPlan.scala:32)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.transformDown(TreeNode.scala:437)
+	at org.apache.spark.sql.execution.QueryExecution.eagerlyExecuteCommands(QueryExecution.scala:98)
+	at org.apache.spark.sql.execution.QueryExecution.commandExecuted$lzycompute(QueryExecution.scala:85)
+	at org.apache.spark.sql.execution.QueryExecution.commandExecuted(QueryExecution.scala:83)
+	at org.apache.spark.sql.Dataset.<init>(Dataset.scala:220)
+	at org.apache.spark.sql.Dataset$.$anonfun$ofRows$2(Dataset.scala:100)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+	at org.apache.spark.sql.Dataset$.ofRows(Dataset.scala:97)
+	at org.apache.spark.sql.SparkSession.$anonfun$sql$1(SparkSession.scala:638)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+	at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:629)
+	at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:659)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+
+The above exception was the direct cause of the following exception:
+
+vulcan.utils.concurrency.NodeExecutionFailedError: Execution failed for node EvaluateNode(snapshot_name='"gcslhdepot"."staging_v5_vnew"."stg_products"', interval=(1704067200000, 1786665600000), batch_index=0)
+[38;20m2026-08-18 21:14:59,993 - MainThread - vulcan.core.scheduler - INFO - Execution failed for node EvaluateNode(snapshot_name='"gcslhdepot"."staging_v5_vnew"."stg_region_tier"', interval=(1704067200000, 1786665600000), batch_index=0) (scheduler.py:98)[0m
+Traceback (most recent call last):
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/utils/concurrency.py", line 24, in _process_node
+    self.fn(node)
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/scheduler.py", line 88, in run_node
+    else:target_table_exists=snapshot.snapshot_id not in snapshots_to_create or node.batch_index>0;audit_results=self.evaluate(snapshot=snapshot,environment_naming_info=environment_naming_info,start=start,end=end,execution_time=execution_time,deployability_index=deployability_index,batch_index=node.batch_index,allow_destructive_snapshots=allow_destructive_snapshots,allow_additive_snapshots=allow_additive_snapshots,target_table_exists=target_table_exists,selected_models=selected_models)
+                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/scheduler.py", line 48, in evaluate
+    def evaluate(self,snapshot:Snapshot,start:TimeLike,end:TimeLike,execution_time:TimeLike,deployability_index:DeployabilityIndex,batch_index:int,environment_naming_info:t.Optional[EnvironmentNamingInfo]=_A,allow_destructive_snapshots:t.Optional[t.Set[str]]=_A,allow_additive_snapshots:t.Optional[t.Set[str]]=_A,target_table_exists:t.Optional[bool]=_A,**kwargs:t.Any)->t.List[AuditResult]:validate_date_range(start,end);snapshots=parent_snapshots_by_name(snapshot,self.snapshots);is_deployable=deployability_index.is_deployable(snapshot);wap_id=self.snapshot_evaluator.evaluate(snapshot,start=start,end=end,execution_time=execution_time,snapshots=snapshots,allow_destructive_snapshots=allow_destructive_snapshots,allow_additive_snapshots=allow_additive_snapshots,deployability_index=deployability_index,batch_index=batch_index,target_table_exists=target_table_exists,**kwargs);audit_results=self._audit_snapshot(snapshot=snapshot,environment_naming_info=environment_naming_info,start=start,end=end,execution_time=execution_time,snapshots=snapshots,deployability_index=deployability_index,wap_id=wap_id,**kwargs);self.state_sync.add_interval(snapshot,start,end,is_dev=not is_deployable,last_altered_ts=now_timestamp());return audit_results
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/snapshot/evaluator.py", line 61, in evaluate
+    with self.execution_tracker.track_execution(SnapshotIdBatch(snapshot_id=snapshot.snapshot_id,batch_id=batch_index)):result=self._evaluate_snapshot(start=start,end=end,execution_time=execution_time,snapshot=snapshot,snapshots=snapshots,allow_destructive_snapshots=allow_destructive_snapshots or set(),allow_additive_snapshots=allow_additive_snapshots or set(),deployability_index=deployability_index,batch_index=batch_index,target_table_exists=target_table_exists,**kwargs)
+                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/snapshot/evaluator.py", line 147, in _evaluate_snapshot
+    elif should_create_empty_table or model.is_seed or model.kind.is_scd_type_2:self._execute_create(snapshot=snapshot,table_name=target_table_name,is_table_deployable=is_snapshot_deployable,deployability_index=deployability_index,create_render_kwargs=create_render_kwargs,rendered_physical_properties=rendered_physical_properties.copy(),dry_run=_B,run_pre_post_statements=_B);runtime_stage=RuntimeStage.EVALUATING;target_table_exists=_C
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/snapshot/evaluator.py", line 241, in _execute_create
+    evaluation_strategy.create(table_name=table_name,model=snapshot.model,is_table_deployable=is_table_deployable,skip_grants=skip_grants,render_kwargs=create_render_kwargs,is_snapshot_deployable=is_snapshot_deployable,is_snapshot_representative=is_snapshot_representative,dry_run=dry_run,physical_properties=rendered_physical_properties,snapshot=snapshot,deployability_index=deployability_index)
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/snapshot/evaluator.py", line 382, in create
+    super().create(table_name,model,is_table_deployable,render_kwargs,skip_grants=_C,**kwargs)
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/snapshot/evaluator.py", line 334, in create
+    self.adapter.create_table(table_name,target_columns_to_types=model.columns_to_types_or_raise,table_format=model.table_format,storage_format=model.storage_format,partitioned_by=model.partitioned_by,partition_interval_unit=model.partition_interval_unit,clustered_by=model.clustered_by,table_properties=physical_properties,table_description=model.description if is_table_deployable else _A,column_descriptions=model.column_descriptions if is_table_deployable else _A);dry_run=kwargs.get('dry_run',_C)or not is_table_deployable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/shared.py", line 122, in internal_wrapper
+    if catalog_support.is_full_support:return func(*list_args,**kwargs)
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/base.py", line 149, in create_table
+    def create_table(self,table_name:TableName,target_columns_to_types:t.Dict[str,exp.DataType],primary_key:t.Optional[t.Tuple[str,...]]=_A,exists:bool=_C,table_description:t.Optional[str]=_A,column_descriptions:t.Optional[t.Dict[str,str]]=_A,**kwargs:t.Any)->_A:self._create_table_from_columns(table_name,target_columns_to_types,primary_key,exists,table_description,column_descriptions,**kwargs)
+                                                                                                                                                                                                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/base.py", line 160, in _create_table_from_columns
+    schema=self._build_schema_exp(table,target_columns_to_types,column_descriptions,primary_key_expression);self._create_table(schema,_A,exists=exists,target_columns_to_types=target_columns_to_types,table_description=table_description,**kwargs)
+                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/spark.py", line 176, in _create_table
+    super()._create_table(table_name_or_schema,expression,exists=exists,replace=replace,target_columns_to_types=target_columns_to_types,table_description=table_description,column_descriptions=column_descriptions,track_rows_processed=track_rows_processed,**kwargs);table_name=table_name_or_schema.this if isinstance(table_name_or_schema,exp.Schema)else exp.to_table(table_name_or_schema)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/base.py", line 181, in _create_table
+    def _create_table(self,table_name_or_schema:t.Union[exp.Schema,TableName],expression:t.Optional[exp.Expression],exists:bool=_C,replace:bool=_B,target_columns_to_types:t.Optional[t.Dict[str,exp.DataType]]=_A,table_description:t.Optional[str]=_A,column_descriptions:t.Optional[t.Dict[str,str]]=_A,table_kind:t.Optional[str]=_A,track_rows_processed:bool=_C,**kwargs:t.Any)->_A:self.execute(self._build_create_table_exp(table_name_or_schema,expression=expression,exists=exists,replace=replace,target_columns_to_types=target_columns_to_types,table_description=table_description if self.COMMENT_CREATION_TABLE.supports_schema_def and self.comments_enabled else _A,table_kind=table_kind,**kwargs),track_rows_processed=track_rows_processed);table_name=table_name_or_schema.this if isinstance(table_name_or_schema,exp.Schema)else table_name_or_schema;self._clear_data_object_cache(table_name)
+                                                                                                                                                                                                                                                                                                                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/base.py", line 448, in execute
+    try:self._execute(sql,track_rows_processed,params=params,**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/engine_adapter/base.py", line 489, in _execute
+    else:self.cursor.execute(sql,**kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/engines/spark/db_api/spark_session.py", line 12, in execute
+    self._last_df=self._spark.sql(query);self._last_output=_A;self._last_output_cursor=0
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/spark/python/pyspark/sql/session.py", line 1631, in sql
+    return DataFrame(self._jsparkSession.sql(sqlQuery, litArgs), self)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+                   ^^^^^^^^^^^^^^^^^
+  File "/opt/spark/python/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+           ^^^^^^^^^^^
+  File "/opt/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/protocol.py", line 326, in get_return_value
+    raise Py4JJavaError(
+py4j.protocol.Py4JJavaError: An error occurred while calling o267.sql.
+: org.apache.iceberg.exceptions.ServiceFailureException: Server error: RuntimeIOException: Failed to get file system for path: gs://tmdc-dev/lhtest/staging_v5_vnew/stg_region_tier/metadata/00000-a3743a69-01a4-4eb7-bf02-4eade2978dc3.gz.metadata.json
+	at org.apache.iceberg.rest.ErrorHandlers$DefaultErrorHandler.accept(ErrorHandlers.java:350)
+	at org.apache.iceberg.rest.ErrorHandlers$TableErrorHandler.accept(ErrorHandlers.java:160)
+	at org.apache.iceberg.rest.ErrorHandlers$TableErrorHandler.accept(ErrorHandlers.java:142)
+	at org.apache.iceberg.rest.HTTPClient.throwFailure(HTTPClient.java:242)
+	at org.apache.iceberg.rest.HTTPClient.execute(HTTPClient.java:347)
+	at org.apache.iceberg.rest.HTTPClient.execute(HTTPClient.java:299)
+	at org.apache.iceberg.rest.BaseHTTPClient.post(BaseHTTPClient.java:112)
+	at org.apache.iceberg.rest.RESTClient.post(RESTClient.java:150)
+	at org.apache.iceberg.rest.RESTSessionCatalog$Builder.create(RESTSessionCatalog.java:972)
+	at org.apache.iceberg.CachingCatalog$CachingTableBuilder.lambda$create$0(CachingCatalog.java:272)
+	at com.github.benmanes.caffeine.cache.BoundedLocalCache.lambda$doComputeIfAbsent$14(BoundedLocalCache.java:2406)
+	at java.base/java.util.concurrent.ConcurrentHashMap.compute(ConcurrentHashMap.java:1916)
+	at com.github.benmanes.caffeine.cache.BoundedLocalCache.doComputeIfAbsent(BoundedLocalCache.java:2404)
+	at com.github.benmanes.caffeine.cache.BoundedLocalCache.computeIfAbsent(BoundedLocalCache.java:2387)
+	at com.github.benmanes.caffeine.cache.LocalCache.computeIfAbsent(LocalCache.java:108)
+	at com.github.benmanes.caffeine.cache.LocalManualCache.get(LocalManualCache.java:62)
+	at org.apache.iceberg.CachingCatalog$CachingTableBuilder.create(CachingCatalog.java:268)
+	at org.apache.iceberg.spark.SparkCatalog.createTable(SparkCatalog.java:257)
+	at org.apache.spark.sql.connector.catalog.TableCatalog.createTable(TableCatalog.java:223)
+	at org.apache.spark.sql.execution.datasources.v2.CreateTableExec.run(CreateTableExec.scala:44)
+	at org.apache.spark.sql.execution.datasources.v2.V2CommandExec.result$lzycompute(V2CommandExec.scala:43)
+	at org.apache.spark.sql.execution.datasources.v2.V2CommandExec.result(V2CommandExec.scala:43)
+	at org.apache.spark.sql.execution.datasources.v2.V2CommandExec.executeCollect(V2CommandExec.scala:49)
+	at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.$anonfun$applyOrElse$1(QueryExecution.scala:107)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$6(SQLExecution.scala:125)
+	at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:201)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$1(SQLExecution.scala:108)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:66)
+	at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.applyOrElse(QueryExecution.scala:107)
+	at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.applyOrElse(QueryExecution.scala:98)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$transformDownWithPruning$1(TreeNode.scala:461)
+	at org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(origin.scala:76)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.transformDownWithPruning(TreeNode.scala:461)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.org$apache$spark$sql$catalyst$plans$logical$AnalysisHelper$$super$transformDownWithPruning(LogicalPlan.scala:32)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPruning(AnalysisHelper.scala:267)
+	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPruning$(AnalysisHelper.scala:263)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning(LogicalPlan.scala:32)
+	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning(LogicalPlan.scala:32)
+	at org.apache.spark.sql.catalyst.trees.TreeNode.transformDown(TreeNode.scala:437)
+	at org.apache.spark.sql.execution.QueryExecution.eagerlyExecuteCommands(QueryExecution.scala:98)
+	at org.apache.spark.sql.execution.QueryExecution.commandExecuted$lzycompute(QueryExecution.scala:85)
+	at org.apache.spark.sql.execution.QueryExecution.commandExecuted(QueryExecution.scala:83)
+	at org.apache.spark.sql.Dataset.<init>(Dataset.scala:220)
+	at org.apache.spark.sql.Dataset$.$anonfun$ofRows$2(Dataset.scala:100)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+	at org.apache.spark.sql.Dataset$.ofRows(Dataset.scala:97)
+	at org.apache.spark.sql.SparkSession.$anonfun$sql$1(SparkSession.scala:638)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+	at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:629)
+	at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:659)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+
+The above exception was the direct cause of the following exception:
+
+vulcan.utils.concurrency.NodeExecutionFailedError: Execution failed for node EvaluateNode(snapshot_name='"gcslhdepot"."staging_v5_vnew"."stg_region_tier"', interval=(1704067200000, 1786665600000), batch_index=0)
+
+Failed models
+
+  "gcslhdepot"."staging_v5_vnew"."stg_order_items"
+
+    Py4JJavaError:
+      An error occurred while calling o267.sql.
+      : org.apache.iceberg.exceptions.ServiceFailureException: Server error: 
+RuntimeIOException: Failed to get file system for path: 
+gs://tmdc-dev/lhtest/staging_v5_vnew/stg_order_items/metadata/00000-a37696a7-763
+e-4ad5-a735-2bda230a227a.gz.metadata.json
+        at 
+org.apache.iceberg.rest.ErrorHandlers$DefaultErrorHandler.accept(ErrorHandlers.j
+ava:350)
+        at 
+org.apache.iceberg.rest.ErrorHandlers$TableErrorHandler.accept(ErrorHandlers.jav
+a:160)
+        at 
+org.apache.iceberg.rest.ErrorHandlers$TableErrorHandler.accept(ErrorHandlers.jav
+a:142)
+        at org.apache.iceberg.rest.HTTPClient.throwFailure(HTTPClient.java:242)
+        at org.apache.iceberg.rest.HTTPClient.execute(HTTPClient.java:347)
+        at org.apache.iceberg.rest.HTTPClient.execute(HTTPClient.java:299)
+        at org.apache.iceberg.rest.BaseHTTPClient.post(BaseHTTPClient.java:112)
+        at org.apache.iceberg.rest.RESTClient.post(RESTClient.java:150)
+        at 
+org.apache.iceberg.rest.RESTSessionCatalog$Builder.create(RESTSessionCatalog.jav
+a:972)
+        at 
+org.apache.iceberg.CachingCatalog$CachingTableBuilder.lambda$create$0(CachingCat
+alog.java:272)
+        at 
+com.github.benmanes.caffeine.cache.BoundedLocalCache.lambda$doComputeIfAbsent$14
+(BoundedLocalCache.java:2406)
+        at 
+java.base/java.util.concurrent.ConcurrentHashMap.compute(ConcurrentHashMap.java:
+1916)
+        at 
+com.github.benmanes.caffeine.cache.BoundedLocalCache.doComputeIfAbsent(BoundedLo
+calCache.java:2404)
+        at 
+com.github.benmanes.caffeine.cache.BoundedLocalCache.computeIfAbsent(BoundedLoca
+lCache.java:2387)
+        at 
+com.github.benmanes.caffeine.cache.LocalCache.computeIfAbsent(LocalCache.java:10
+8)
+        at 
+com.github.benmanes.caffeine.cache.LocalManualCache.get(LocalManualCache.java:62
+)
+        at 
+org.apache.iceberg.CachingCatalog$CachingTableBuilder.create(CachingCatalog.java
+:268)
+        at 
+org.apache.iceberg.spark.SparkCatalog.createTable(SparkCatalog.java:257)
+        at 
+org.apache.spark.sql.connector.catalog.TableCatalog.createTable(TableCatalog.jav
+a:223)
+        at 
+org.apache.spark.sql.execution.datasources.v2.CreateTableExec.run(CreateTableExe
+c.scala:44)
+        at 
+org.apache.spark.sql.execution.datasources.v2.V2CommandExec.result$lzycompute(V2
+CommandExec.scala:43)
+        at 
+org.apache.spark.sql.execution.datasources.v2.V2CommandExec.result(V2CommandExec
+.scala:43)
+        at 
+org.apache.spark.sql.execution.datasources.v2.V2CommandExec.executeCollect(V2Com
+mandExec.scala:49)
+        at 
+org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.
+$anonfun$applyOrElse$1(QueryExecution.scala:107)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$6(SQLEx
+ecution.scala:125)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.
+scala:201)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$1(SQLEx
+ecution.scala:108)
+        at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.sca
+la:66)
+        at 
+org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.
+applyOrElse(QueryExecution.scala:107)
+        at 
+org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.
+applyOrElse(QueryExecution.scala:98)
+        at 
+org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$transformDownWithPruning$1
+(TreeNode.scala:461)
+        at 
+org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(origin.scala:76)
+        at 
+org.apache.spark.sql.catalyst.trees.TreeNode.transformDownWithPruning(TreeNode.s
+cala:461)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.org$apache$spark$sql$cat
+alyst$plans$logical$AnalysisHelper$$super$transformDownWithPruning(LogicalPlan.s
+cala:32)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPrun
+ing(AnalysisHelper.scala:267)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPrun
+ing$(AnalysisHelper.scala:263)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning
+(LogicalPlan.scala:32)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning
+(LogicalPlan.scala:32)
+        at 
+org.apache.spark.sql.catalyst.trees.TreeNode.transformDown(TreeNode.scala:437)
+        at 
+org.apache.spark.sql.execution.QueryExecution.eagerlyExecuteCommands(QueryExecut
+ion.scala:98)
+        at 
+org.apache.spark.sql.execution.QueryExecution.commandExecuted$lzycompute(QueryEx
+ecution.scala:85)
+        at 
+org.apache.spark.sql.execution.QueryExecution.commandExecuted(QueryExecution.sca
+la:83)
+        at org.apache.spark.sql.Dataset.<init>(Dataset.scala:220)
+        at org.apache.spark.sql.Dataset$.$anonfun$ofRows$2(Dataset.scala:100)
+        at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+        at org.apache.spark.sql.Dataset$.ofRows(Dataset.scala:97)
+        at 
+org.apache.spark.sql.SparkSession.$anonfun$sql$1(SparkSession.scala:638)
+        at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+        at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:629)
+        at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:659)
+        at 
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at 
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAcces
+sorImpl.java:77)
+        at 
+java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMet
+hodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+        at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+        at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+        at py4j.Gateway.invoke(Gateway.java:282)
+        at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+        at py4j.commands.CallCommand.execute(CallCommand.java:79)
+        at 
+py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+        at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+        at java.base/java.lang.Thread.run(Thread.java:840)
+      
+  "gcslhdepot"."staging_v5_vnew"."stg_customers"
+
+    Py4JJavaError:
+      An error occurred while calling o267.sql.
+      : org.apache.iceberg.exceptions.ServiceFailureException: Server error: 
+RuntimeIOException: Failed to get file system for path: 
+gs://tmdc-dev/lhtest/staging_v5_vnew/stg_customers/metadata/00000-33dc99fc-c9dd-
+4726-ae9b-9fb4a6e7c157.gz.metadata.json
+        at 
+org.apache.iceberg.rest.ErrorHandlers$DefaultErrorHandler.accept(ErrorHandlers.j
+ava:350)
+        at 
+org.apache.iceberg.rest.ErrorHandlers$TableErrorHandler.accept(ErrorHandlers.jav
+a:160)
+        at 
+org.apache.iceberg.rest.ErrorHandlers$TableErrorHandler.accept(ErrorHandlers.jav
+a:142)
+        at org.apache.iceberg.rest.HTTPClient.throwFailure(HTTPClient.java:242)
+        at org.apache.iceberg.rest.HTTPClient.execute(HTTPClient.java:347)
+        at org.apache.iceberg.rest.HTTPClient.execute(HTTPClient.java:299)
+        at org.apache.iceberg.rest.BaseHTTPClient.post(BaseHTTPClient.java:112)
+        at org.apache.iceberg.rest.RESTClient.post(RESTClient.java:150)
+        at 
+org.apache.iceberg.rest.RESTSessionCatalog$Builder.create(RESTSessionCatalog.jav
+a:972)
+        at 
+org.apache.iceberg.CachingCatalog$CachingTableBuilder.lambda$create$0(CachingCat
+alog.java:272)
+        at 
+com.github.benmanes.caffeine.cache.BoundedLocalCache.lambda$doComputeIfAbsent$14
+(BoundedLocalCache.java:2406)
+        at 
+java.base/java.util.concurrent.ConcurrentHashMap.compute(ConcurrentHashMap.java:
+1916)
+        at 
+com.github.benmanes.caffeine.cache.BoundedLocalCache.doComputeIfAbsent(BoundedLo
+calCache.java:2404)
+        at 
+com.github.benmanes.caffeine.cache.BoundedLocalCache.computeIfAbsent(BoundedLoca
+lCache.java:2387)
+        at 
+com.github.benmanes.caffeine.cache.LocalCache.computeIfAbsent(LocalCache.java:10
+8)
+        at 
+com.github.benmanes.caffeine.cache.LocalManualCache.get(LocalManualCache.java:62
+)
+        at 
+org.apache.iceberg.CachingCatalog$CachingTableBuilder.create(CachingCatalog.java
+:268)
+        at 
+org.apache.iceberg.spark.SparkCatalog.createTable(SparkCatalog.java:257)
+        at 
+org.apache.spark.sql.connector.catalog.TableCatalog.createTable(TableCatalog.jav
+a:223)
+        at 
+org.apache.spark.sql.execution.datasources.v2.CreateTableExec.run(CreateTableExe
+c.scala:44)
+        at 
+org.apache.spark.sql.execution.datasources.v2.V2CommandExec.result$lzycompute(V2
+CommandExec.scala:43)
+        at 
+org.apache.spark.sql.execution.datasources.v2.V2CommandExec.result(V2CommandExec
+.scala:43)
+        at 
+org.apache.spark.sql.execution.datasources.v2.V2CommandExec.executeCollect(V2Com
+mandExec.scala:49)
+        at 
+org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.
+$anonfun$applyOrElse$1(QueryExecution.scala:107)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$6(SQLEx
+ecution.scala:125)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.
+scala:201)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$1(SQLEx
+ecution.scala:108)
+        at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.sca
+la:66)
+        at 
+org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.
+applyOrElse(QueryExecution.scala:107)
+        at 
+org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.
+applyOrElse(QueryExecution.scala:98)
+        at 
+org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$transformDownWithPruning$1
+(TreeNode.scala:461)
+        at 
+org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(origin.scala:76)
+        at 
+org.apache.spark.sql.catalyst.trees.TreeNode.transformDownWithPruning(TreeNode.s
+cala:461)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.org$apache$spark$sql$cat
+alyst$plans$logical$AnalysisHelper$$super$transformDownWithPruning(LogicalPlan.s
+cala:32)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPrun
+ing(AnalysisHelper.scala:267)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPrun
+ing$(AnalysisHelper.scala:263)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning
+(LogicalPlan.scala:32)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning
+(LogicalPlan.scala:32)
+        at 
+org.apache.spark.sql.catalyst.trees.TreeNode.transformDown(TreeNode.scala:437)
+        at 
+org.apache.spark.sql.execution.QueryExecution.eagerlyExecuteCommands(QueryExecut
+ion.scala:98)
+        at 
+org.apache.spark.sql.execution.QueryExecution.commandExecuted$lzycompute(QueryEx
+ecution.scala:85)
+        at 
+org.apache.spark.sql.execution.QueryExecution.commandExecuted(QueryExecution.sca
+la:83)
+        at org.apache.spark.sql.Dataset.<init>(Dataset.scala:220)
+        at org.apache.spark.sql.Dataset$.$anonfun$ofRows$2(Dataset.scala:100)
+        at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+        at org.apache.spark.sql.Dataset$.ofRows(Dataset.scala:97)
+        at 
+org.apache.spark.sql.SparkSession.$anonfun$sql$1(SparkSession.scala:638)
+        at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+        at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:629)
+        at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:659)
+        at 
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at 
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAcces
+sorImpl.java:77)
+        at 
+java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMet
+hodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+        at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+        at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+        at py4j.Gateway.invoke(Gateway.java:282)
+        at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+        at py4j.commands.CallCommand.execute(CallCommand.java:79)
+        at 
+py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+        at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+        at java.base/java.lang.Thread.run(Thread.java:840)
+      
+  "gcslhdepot"."staging_v5_vnew"."stg_orders"
+
+    Py4JJavaError:
+      An error occurred while calling o267.sql.
+      : org.apache.iceberg.exceptions.ServiceFailureException: Server error: 
+RuntimeIOException: Failed to get file system for path: 
+gs://tmdc-dev/lhtest/staging_v5_vnew/stg_orders/metadata/00000-4238d565-74df-456
+8-a174-0ab4c5158b33.gz.metadata.json
+        at 
+org.apache.iceberg.rest.ErrorHandlers$DefaultErrorHandler.accept(ErrorHandlers.j
+ava:350)
+        at 
+org.apache.iceberg.rest.ErrorHandlers$TableErrorHandler.accept(ErrorHandlers.jav
+a:160)
+        at 
+org.apache.iceberg.rest.ErrorHandlers$TableErrorHandler.accept(ErrorHandlers.jav
+a:142)
+        at org.apache.iceberg.rest.HTTPClient.throwFailure(HTTPClient.java:242)
+        at org.apache.iceberg.rest.HTTPClient.execute(HTTPClient.java:347)
+        at org.apache.iceberg.rest.HTTPClient.execute(HTTPClient.java:299)
+        at org.apache.iceberg.rest.BaseHTTPClient.post(BaseHTTPClient.java:112)
+        at org.apache.iceberg.rest.RESTClient.post(RESTClient.java:150)
+        at 
+org.apache.iceberg.rest.RESTSessionCatalog$Builder.create(RESTSessionCatalog.jav
+a:972)
+        at 
+org.apache.iceberg.CachingCatalog$CachingTableBuilder.lambda$create$0(CachingCat
+alog.java:272)
+        at 
+com.github.benmanes.caffeine.cache.BoundedLocalCache.lambda$doComputeIfAbsent$14
+(BoundedLocalCache.java:2406)
+        at 
+java.base/java.util.concurrent.ConcurrentHashMap.compute(ConcurrentHashMap.java:
+1916)
+        at 
+com.github.benmanes.caffeine.cache.BoundedLocalCache.doComputeIfAbsent(BoundedLo
+calCache.java:2404)
+        at 
+com.github.benmanes.caffeine.cache.BoundedLocalCache.computeIfAbsent(BoundedLoca
+lCache.java:2387)
+        at 
+com.github.benmanes.caffeine.cache.LocalCache.computeIfAbsent(LocalCache.java:10
+8)
+        at 
+com.github.benmanes.caffeine.cache.LocalManualCache.get(LocalManualCache.java:62
+)
+        at 
+org.apache.iceberg.CachingCatalog$CachingTableBuilder.create(CachingCatalog.java
+:268)
+        at 
+org.apache.iceberg.spark.SparkCatalog.createTable(SparkCatalog.java:257)
+        at 
+org.apache.spark.sql.connector.catalog.TableCatalog.createTable(TableCatalog.jav
+a:223)
+        at 
+org.apache.spark.sql.execution.datasources.v2.CreateTableExec.run(CreateTableExe
+c.scala:44)
+        at 
+org.apache.spark.sql.execution.datasources.v2.V2CommandExec.result$lzycompute(V2
+CommandExec.scala:43)
+        at 
+org.apache.spark.sql.execution.datasources.v2.V2CommandExec.result(V2CommandExec
+.scala:43)
+        at 
+org.apache.spark.sql.execution.datasources.v2.V2CommandExec.executeCollect(V2Com
+mandExec.scala:49)
+        at 
+org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.
+$anonfun$applyOrElse$1(QueryExecution.scala:107)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$6(SQLEx
+ecution.scala:125)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.
+scala:201)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$1(SQLEx
+ecution.scala:108)
+        at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.sca
+la:66)
+        at 
+org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.
+applyOrElse(QueryExecution.scala:107)
+        at 
+org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.
+applyOrElse(QueryExecution.scala:98)
+        at 
+org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$transformDownWithPruning$1
+(TreeNode.scala:461)
+        at 
+org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(origin.scala:76)
+        at 
+org.apache.spark.sql.catalyst.trees.TreeNode.transformDownWithPruning(TreeNode.s
+cala:461)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.org$apache$spark$sql$cat
+alyst$plans$logical$AnalysisHelper$$super$transformDownWithPruning(LogicalPlan.s
+cala:32)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPrun
+ing(AnalysisHelper.scala:267)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPrun
+ing$(AnalysisHelper.scala:263)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning
+(LogicalPlan.scala:32)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning
+(LogicalPlan.scala:32)
+        at 
+org.apache.spark.sql.catalyst.trees.TreeNode.transformDown(TreeNode.scala:437)
+        at 
+org.apache.spark.sql.execution.QueryExecution.eagerlyExecuteCommands(QueryExecut
+ion.scala:98)
+        at 
+org.apache.spark.sql.execution.QueryExecution.commandExecuted$lzycompute(QueryEx
+ecution.scala:85)
+        at 
+org.apache.spark.sql.execution.QueryExecution.commandExecuted(QueryExecution.sca
+la:83)
+        at org.apache.spark.sql.Dataset.<init>(Dataset.scala:220)
+        at org.apache.spark.sql.Dataset$.$anonfun$ofRows$2(Dataset.scala:100)
+        at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+        at org.apache.spark.sql.Dataset$.ofRows(Dataset.scala:97)
+        at 
+org.apache.spark.sql.SparkSession.$anonfun$sql$1(SparkSession.scala:638)
+        at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+        at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:629)
+        at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:659)
+        at 
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at 
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAcces
+sorImpl.java:77)
+        at 
+java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMet
+hodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+        at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+        at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+        at py4j.Gateway.invoke(Gateway.java:282)
+        at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+        at py4j.commands.CallCommand.execute(CallCommand.java:79)
+        at 
+py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+        at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+        at java.base/java.lang.Thread.run(Thread.java:840)
+      
+  "gcslhdepot"."staging_v5_vnew"."stg_products"
+
+    Py4JJavaError:
+      An error occurred while calling o267.sql.
+      : org.apache.iceberg.exceptions.ServiceFailureException: Server error: 
+RuntimeIOException: Failed to get file system for path: 
+gs://tmdc-dev/lhtest/staging_v5_vnew/stg_products/metadata/00000-06882234-ff2a-4
+250-89dd-8ebf96851bf8.gz.metadata.json
+        at 
+org.apache.iceberg.rest.ErrorHandlers$DefaultErrorHandler.accept(ErrorHandlers.j
+ava:350)
+        at 
+org.apache.iceberg.rest.ErrorHandlers$TableErrorHandler.accept(ErrorHandlers.jav
+a:160)
+        at 
+org.apache.iceberg.rest.ErrorHandlers$TableErrorHandler.accept(ErrorHandlers.jav
+a:142)
+        at org.apache.iceberg.rest.HTTPClient.throwFailure(HTTPClient.java:242)
+        at org.apache.iceberg.rest.HTTPClient.execute(HTTPClient.java:347)
+        at org.apache.iceberg.rest.HTTPClient.execute(HTTPClient.java:299)
+        at org.apache.iceberg.rest.BaseHTTPClient.post(BaseHTTPClient.java:112)
+        at org.apache.iceberg.rest.RESTClient.post(RESTClient.java:150)
+        at 
+org.apache.iceberg.rest.RESTSessionCatalog$Builder.create(RESTSessionCatalog.jav
+a:972)
+        at 
+org.apache.iceberg.CachingCatalog$CachingTableBuilder.lambda$create$0(CachingCat
+alog.java:272)
+        at 
+com.github.benmanes.caffeine.cache.BoundedLocalCache.lambda$doComputeIfAbsent$14
+(BoundedLocalCache.java:2406)
+        at 
+java.base/java.util.concurrent.ConcurrentHashMap.compute(ConcurrentHashMap.java:
+1916)
+        at 
+com.github.benmanes.caffeine.cache.BoundedLocalCache.doComputeIfAbsent(BoundedLo
+calCache.java:2404)
+        at 
+com.github.benmanes.caffeine.cache.BoundedLocalCache.computeIfAbsent(BoundedLoca
+lCache.java:2387)
+        at 
+com.github.benmanes.caffeine.cache.LocalCache.computeIfAbsent(LocalCache.java:10
+8)
+        at 
+com.github.benmanes.caffeine.cache.LocalManualCache.get(LocalManualCache.java:62
+)
+        at 
+org.apache.iceberg.CachingCatalog$CachingTableBuilder.create(CachingCatalog.java
+:268)
+        at 
+org.apache.iceberg.spark.SparkCatalog.createTable(SparkCatalog.java:257)
+        at 
+org.apache.spark.sql.connector.catalog.TableCatalog.createTable(TableCatalog.jav
+a:223)
+        at 
+org.apache.spark.sql.execution.datasources.v2.CreateTableExec.run(CreateTableExe
+c.scala:44)
+        at 
+org.apache.spark.sql.execution.datasources.v2.V2CommandExec.result$lzycompute(V2
+CommandExec.scala:43)
+        at 
+org.apache.spark.sql.execution.datasources.v2.V2CommandExec.result(V2CommandExec
+.scala:43)
+        at 
+org.apache.spark.sql.execution.datasources.v2.V2CommandExec.executeCollect(V2Com
+mandExec.scala:49)
+        at 
+org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.
+$anonfun$applyOrElse$1(QueryExecution.scala:107)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$6(SQLEx
+ecution.scala:125)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.
+scala:201)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$1(SQLEx
+ecution.scala:108)
+        at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.sca
+la:66)
+        at 
+org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.
+applyOrElse(QueryExecution.scala:107)
+        at 
+org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.
+applyOrElse(QueryExecution.scala:98)
+        at 
+org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$transformDownWithPruning$1
+(TreeNode.scala:461)
+        at 
+org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(origin.scala:76)
+        at 
+org.apache.spark.sql.catalyst.trees.TreeNode.transformDownWithPruning(TreeNode.s
+cala:461)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.org$apache$spark$sql$cat
+alyst$plans$logical$AnalysisHelper$$super$transformDownWithPruning(LogicalPlan.s
+cala:32)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPrun
+ing(AnalysisHelper.scala:267)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPrun
+ing$(AnalysisHelper.scala:263)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning
+(LogicalPlan.scala:32)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning
+(LogicalPlan.scala:32)
+        at 
+org.apache.spark.sql.catalyst.trees.TreeNode.transformDown(TreeNode.scala:437)
+        at 
+org.apache.spark.sql.execution.QueryExecution.eagerlyExecuteCommands(QueryExecut
+ion.scala:98)
+        at 
+org.apache.spark.sql.execution.QueryExecution.commandExecuted$lzycompute(QueryEx
+ecution.scala:85)
+        at 
+org.apache.spark.sql.execution.QueryExecution.commandExecuted(QueryExecution.sca
+la:83)
+        at org.apache.spark.sql.Dataset.<init>(Dataset.scala:220)
+        at org.apache.spark.sql.Dataset$.$anonfun$ofRows$2(Dataset.scala:100)
+        at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+        at org.apache.spark.sql.Dataset$.ofRows(Dataset.scala:97)
+        at 
+org.apache.spark.sql.SparkSession.$anonfun$sql$1(SparkSession.scala:638)
+        at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+        at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:629)
+        at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:659)
+        at 
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at 
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAcces
+sorImpl.java:77)
+        at 
+java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMet
+hodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+        at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+        at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+        at py4j.Gateway.invoke(Gateway.java:282)
+        at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+        at py4j.commands.CallCommand.execute(CallCommand.java:79)
+        at 
+py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+        at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+        at java.base/java.lang.Thread.run(Thread.java:840)
+      
+  "gcslhdepot"."staging_v5_vnew"."stg_region_tier"
+
+    Py4JJavaError:
+      An error occurred while calling o267.sql.
+      : org.apache.iceberg.exceptions.ServiceFailureException: Server error: 
+RuntimeIOException: Failed to get file system for path: 
+gs://tmdc-dev/lhtest/staging_v5_vnew/stg_region_tier/metadata/00000-a3743a69-01a
+4-4eb7-bf02-4eade2978dc3.gz.metadata.json
+        at 
+org.apache.iceberg.rest.ErrorHandlers$DefaultErrorHandler.accept(ErrorHandlers.j
+ava:350)
+        at 
+org.apache.iceberg.rest.ErrorHandlers$TableErrorHandler.accept(ErrorHandlers.jav
+a:160)
+        at 
+org.apache.iceberg.rest.ErrorHandlers$TableErrorHandler.accept(ErrorHandlers.jav
+a:142)
+        at org.apache.iceberg.rest.HTTPClient.throwFailure(HTTPClient.java:242)
+        at org.apache.iceberg.rest.HTTPClient.execute(HTTPClient.java:347)
+        at org.apache.iceberg.rest.HTTPClient.execute(HTTPClient.java:299)
+        at org.apache.iceberg.rest.BaseHTTPClient.post(BaseHTTPClient.java:112)
+        at org.apache.iceberg.rest.RESTClient.post(RESTClient.java:150)
+        at 
+org.apache.iceberg.rest.RESTSessionCatalog$Builder.create(RESTSessionCatalog.jav
+a:972)
+        at 
+org.apache.iceberg.CachingCatalog$CachingTableBuilder.lambda$create$0(CachingCat
+alog.java:272)
+        at 
+com.github.benmanes.caffeine.cache.BoundedLocalCache.lambda$doComputeIfAbsent$14
+(BoundedLocalCache.java:2406)
+        at 
+java.base/java.util.concurrent.ConcurrentHashMap.compute(ConcurrentHashMap.java:
+1916)
+        at 
+com.github.benmanes.caffeine.cache.BoundedLocalCache.doComputeIfAbsent(BoundedLo
+calCache.java:2404)
+        at 
+com.github.benmanes.caffeine.cache.BoundedLocalCache.computeIfAbsent(BoundedLoca
+lCache.java:2387)
+        at 
+com.github.benmanes.caffeine.cache.LocalCache.computeIfAbsent(LocalCache.java:10
+8)
+        at 
+com.github.benmanes.caffeine.cache.LocalManualCache.get(LocalManualCache.java:62
+)
+        at 
+org.apache.iceberg.CachingCatalog$CachingTableBuilder.create(CachingCatalog.java
+:268)
+        at 
+org.apache.iceberg.spark.SparkCatalog.createTable(SparkCatalog.java:257)
+        at 
+org.apache.spark.sql.connector.catalog.TableCatalog.createTable(TableCatalog.jav
+a:223)
+        at 
+org.apache.spark.sql.execution.datasources.v2.CreateTableExec.run(CreateTableExe
+c.scala:44)
+        at 
+org.apache.spark.sql.execution.datasources.v2.V2CommandExec.result$lzycompute(V2
+CommandExec.scala:43)
+        at 
+org.apache.spark.sql.execution.datasources.v2.V2CommandExec.result(V2CommandExec
+.scala:43)
+        at 
+org.apache.spark.sql.execution.datasources.v2.V2CommandExec.executeCollect(V2Com
+mandExec.scala:49)
+        at 
+org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.
+$anonfun$applyOrElse$1(QueryExecution.scala:107)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$6(SQLEx
+ecution.scala:125)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.
+scala:201)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$1(SQLEx
+ecution.scala:108)
+        at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.sca
+la:66)
+        at 
+org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.
+applyOrElse(QueryExecution.scala:107)
+        at 
+org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.
+applyOrElse(QueryExecution.scala:98)
+        at 
+org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$transformDownWithPruning$1
+(TreeNode.scala:461)
+        at 
+org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(origin.scala:76)
+        at 
+org.apache.spark.sql.catalyst.trees.TreeNode.transformDownWithPruning(TreeNode.s
+cala:461)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.org$apache$spark$sql$cat
+alyst$plans$logical$AnalysisHelper$$super$transformDownWithPruning(LogicalPlan.s
+cala:32)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPrun
+ing(AnalysisHelper.scala:267)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPrun
+ing$(AnalysisHelper.scala:263)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning
+(LogicalPlan.scala:32)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning
+(LogicalPlan.scala:32)
+        at 
+org.apache.spark.sql.catalyst.trees.TreeNode.transformDown(TreeNode.scala:437)
+        at 
+org.apache.spark.sql.execution.QueryExecution.eagerlyExecuteCommands(QueryExecut
+ion.scala:98)
+        at 
+org.apache.spark.sql.execution.QueryExecution.commandExecuted$lzycompute(QueryEx
+ecution.scala:85)
+        at 
+org.apache.spark.sql.execution.QueryExecution.commandExecuted(QueryExecution.sca
+la:83)
+        at org.apache.spark.sql.Dataset.<init>(Dataset.scala:220)
+        at org.apache.spark.sql.Dataset$.$anonfun$ofRows$2(Dataset.scala:100)
+        at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+        at org.apache.spark.sql.Dataset$.ofRows(Dataset.scala:97)
+        at 
+org.apache.spark.sql.SparkSession.$anonfun$sql$1(SparkSession.scala:638)
+        at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+        at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:629)
+        at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:659)
+        at 
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at 
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAcces
+sorImpl.java:77)
+        at 
+java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMet
+hodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+        at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+        at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+        at py4j.Gateway.invoke(Gateway.java:282)
+        at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+        at py4j.commands.CallCommand.execute(CallCommand.java:79)
+        at 
+py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+        at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+        at java.base/java.lang.Thread.run(Thread.java:840)
+      
+**Failed models**
+* `"gcslhdepot"."staging_v5_vnew"."stg_order_items"`
+
+  ```
+    Py4JJavaError:
+      An error occurred while calling o267.sql.
+      : org.apache.iceberg.exceptions.ServiceFailureException: Server error: 
+RuntimeIOException: Failed to get file system for path: 
+gs://tmdc-dev/lhtest/staging_v5_vnew/stg_order_items/metadata/00000-a37696a7-763
+e-4ad5-a735-2bda230a227a.gz.metadata.json
+        at 
+org.apache.iceberg.rest.ErrorHandlers$DefaultErrorHandler.accept(ErrorHandlers.j
+ava:350)
+        at 
+org.apache.iceberg.rest.ErrorHandlers$TableErrorHandler.accept(ErrorHandlers.jav
+a:160)
+        at 
+org.apache.iceberg.rest.ErrorHandlers$TableErrorHandler.accept(ErrorHandlers.jav
+a:142)
+        at org.apache.iceberg.rest.HTTPClient.throwFailure(HTTPClient.java:242)
+        at org.apache.iceberg.rest.HTTPClient.execute(HTTPClient.java:347)
+        at org.apache.iceberg.rest.HTTPClient.execute(HTTPClient.java:299)
+        at org.apache.iceberg.rest.BaseHTTPClient.post(BaseHTTPClient.java:112)
+        at org.apache.iceberg.rest.RESTClient.post(RESTClient.java:150)
+        at 
+org.apache.iceberg.rest.RESTSessionCatalog$Builder.create(RESTSessionCatalog.jav
+a:972)
+        at 
+org.apache.iceberg.CachingCatalog$CachingTableBuilder.lambda$create$0(CachingCat
+alog.java:272)
+        at 
+com.github.benmanes.caffeine.cache.BoundedLocalCache.lambda$doComputeIfAbsent$14
+(BoundedLocalCache.java:2406)
+        at 
+java.base/java.util.concurrent.ConcurrentHashMap.compute(ConcurrentHashMap.java:
+1916)
+        at 
+com.github.benmanes.caffeine.cache.BoundedLocalCache.doComputeIfAbsent(BoundedLo
+calCache.java:2404)
+        at 
+com.github.benmanes.caffeine.cache.BoundedLocalCache.computeIfAbsent(BoundedLoca
+lCache.java:2387)
+        at 
+com.github.benmanes.caffeine.cache.LocalCache.computeIfAbsent(LocalCache.java:10
+8)
+        at 
+com.github.benmanes.caffeine.cache.LocalManualCache.get(LocalManualCache.java:62
+)
+        at 
+org.apache.iceberg.CachingCatalog$CachingTableBuilder.create(CachingCatalog.java
+:268)
+        at 
+org.apache.iceberg.spark.SparkCatalog.createTable(SparkCatalog.java:257)
+        at 
+org.apache.spark.sql.connector.catalog.TableCatalog.createTable(TableCatalog.jav
+a:223)
+        at 
+org.apache.spark.sql.execution.datasources.v2.CreateTableExec.run(CreateTableExe
+c.scala:44)
+        at 
+org.apache.spark.sql.execution.datasources.v2.V2CommandExec.result$lzycompute(V2
+CommandExec.scala:43)
+        at 
+org.apache.spark.sql.execution.datasources.v2.V2CommandExec.result(V2CommandExec
+.scala:43)
+        at 
+org.apache.spark.sql.execution.datasources.v2.V2CommandExec.executeCollect(V2Com
+mandExec.scala:49)
+        at 
+org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.
+$anonfun$applyOrElse$1(QueryExecution.scala:107)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$6(SQLEx
+ecution.scala:125)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.
+scala:201)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$1(SQLEx
+ecution.scala:108)
+        at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.sca
+la:66)
+        at 
+org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.
+applyOrElse(QueryExecution.scala:107)
+        at 
+org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.
+applyOrElse(QueryExecution.scala:98)
+        at 
+org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$transformDownWithPruning$1
+(TreeNode.scala:461)
+        at 
+org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(origin.scala:76)
+        at 
+org.apache.spark.sql.catalyst.trees.TreeNode.transformDownWithPruning(TreeNode.s
+cala:461)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.org$apache$spark$sql$cat
+alyst$plans$logical$AnalysisHelper$$super$transformDownWithPruning(LogicalPlan.s
+cala:32)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPrun
+ing(AnalysisHelper.scala:267)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPrun
+ing$(AnalysisHelper.scala:263)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning
+(LogicalPlan.scala:32)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning
+(LogicalPlan.scala:32)
+        at 
+org.apache.spark.sql.catalyst.trees.TreeNode.transformDown(TreeNode.scala:437)
+        at 
+org.apache.spark.sql.execution.QueryExecution.eagerlyExecuteCommands(QueryExecut
+ion.scala:98)
+        at 
+org.apache.spark.sql.execution.QueryExecution.commandExecuted$lzycompute(QueryEx
+ecution.scala:85)
+        at 
+org.apache.spark.sql.execution.QueryExecution.commandExecuted(QueryExecution.sca
+la:83)
+        at org.apache.spark.sql.Dataset.<init>(Dataset.scala:220)
+        at org.apache.spark.sql.Dataset$.$anonfun$ofRows$2(Dataset.scala:100)
+        at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+        at org.apache.spark.sql.Dataset$.ofRows(Dataset.scala:97)
+        at 
+org.apache.spark.sql.SparkSession.$anonfun$sql$1(SparkSession.scala:638)
+        at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+        at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:629)
+        at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:659)
+        at 
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at 
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAcces
+sorImpl.java:77)
+        at 
+java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMet
+hodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+        at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+        at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+        at py4j.Gateway.invoke(Gateway.java:282)
+        at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+        at py4j.commands.CallCommand.execute(CallCommand.java:79)
+        at 
+py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+        at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+        at java.base/java.lang.Thread.run(Thread.java:840)
+      
+  ```
+* `"gcslhdepot"."staging_v5_vnew"."stg_customers"`
+
+  ```
+    Py4JJavaError:
+      An error occurred while calling o267.sql.
+      : org.apache.iceberg.exceptions.ServiceFailureException: Server error: 
+RuntimeIOException: Failed to get file system for path: 
+gs://tmdc-dev/lhtest/staging_v5_vnew/stg_customers/metadata/00000-33dc99fc-c9dd-
+4726-ae9b-9fb4a6e7c157.gz.metadata.json
+        at 
+org.apache.iceberg.rest.ErrorHandlers$DefaultErrorHandler.accept(ErrorHandlers.j
+ava:350)
+        at 
+org.apache.iceberg.rest.ErrorHandlers$TableErrorHandler.accept(ErrorHandlers.jav
+a:160)
+        at 
+org.apache.iceberg.rest.ErrorHandlers$TableErrorHandler.accept(ErrorHandlers.jav
+a:142)
+        at org.apache.iceberg.rest.HTTPClient.throwFailure(HTTPClient.java:242)
+        at org.apache.iceberg.rest.HTTPClient.execute(HTTPClient.java:347)
+        at org.apache.iceberg.rest.HTTPClient.execute(HTTPClient.java:299)
+        at org.apache.iceberg.rest.BaseHTTPClient.post(BaseHTTPClient.java:112)
+        at org.apache.iceberg.rest.RESTClient.post(RESTClient.java:150)
+        at 
+org.apache.iceberg.rest.RESTSessionCatalog$Builder.create(RESTSessionCatalog.jav
+a:972)
+        at 
+org.apache.iceberg.CachingCatalog$CachingTableBuilder.lambda$create$0(CachingCat
+alog.java:272)
+        at 
+com.github.benmanes.caffeine.cache.BoundedLocalCache.lambda$doComputeIfAbsent$14
+(BoundedLocalCache.java:2406)
+        at 
+java.base/java.util.concurrent.ConcurrentHashMap.compute(ConcurrentHashMap.java:
+1916)
+        at 
+com.github.benmanes.caffeine.cache.BoundedLocalCache.doComputeIfAbsent(BoundedLo
+calCache.java:2404)
+        at 
+com.github.benmanes.caffeine.cache.BoundedLocalCache.computeIfAbsent(BoundedLoca
+lCache.java:2387)
+        at 
+com.github.benmanes.caffeine.cache.LocalCache.computeIfAbsent(LocalCache.java:10
+8)
+        at 
+com.github.benmanes.caffeine.cache.LocalManualCache.get(LocalManualCache.java:62
+)
+        at 
+org.apache.iceberg.CachingCatalog$CachingTableBuilder.create(CachingCatalog.java
+:268)
+        at 
+org.apache.iceberg.spark.SparkCatalog.createTable(SparkCatalog.java:257)
+        at 
+org.apache.spark.sql.connector.catalog.TableCatalog.createTable(TableCatalog.jav
+a:223)
+        at 
+org.apache.spark.sql.execution.datasources.v2.CreateTableExec.run(CreateTableExe
+c.scala:44)
+        at 
+org.apache.spark.sql.execution.datasources.v2.V2CommandExec.result$lzycompute(V2
+CommandExec.scala:43)
+        at 
+org.apache.spark.sql.execution.datasources.v2.V2CommandExec.result(V2CommandExec
+.scala:43)
+        at 
+org.apache.spark.sql.execution.datasources.v2.V2CommandExec.executeCollect(V2Com
+mandExec.scala:49)
+        at 
+org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.
+$anonfun$applyOrElse$1(QueryExecution.scala:107)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$6(SQLEx
+ecution.scala:125)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.
+scala:201)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$1(SQLEx
+ecution.scala:108)
+        at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.sca
+la:66)
+        at 
+org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.
+applyOrElse(QueryExecution.scala:107)
+        at 
+org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.
+applyOrElse(QueryExecution.scala:98)
+        at 
+org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$transformDownWithPruning$1
+(TreeNode.scala:461)
+        at 
+org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(origin.scala:76)
+        at 
+org.apache.spark.sql.catalyst.trees.TreeNode.transformDownWithPruning(TreeNode.s
+cala:461)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.org$apache$spark$sql$cat
+alyst$plans$logical$AnalysisHelper$$super$transformDownWithPruning(LogicalPlan.s
+cala:32)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPrun
+ing(AnalysisHelper.scala:267)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPrun
+ing$(AnalysisHelper.scala:263)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning
+(LogicalPlan.scala:32)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning
+(LogicalPlan.scala:32)
+        at 
+org.apache.spark.sql.catalyst.trees.TreeNode.transformDown(TreeNode.scala:437)
+        at 
+org.apache.spark.sql.execution.QueryExecution.eagerlyExecuteCommands(QueryExecut
+ion.scala:98)
+        at 
+org.apache.spark.sql.execution.QueryExecution.commandExecuted$lzycompute(QueryEx
+ecution.scala:85)
+        at 
+org.apache.spark.sql.execution.QueryExecution.commandExecuted(QueryExecution.sca
+la:83)
+        at org.apache.spark.sql.Dataset.<init>(Dataset.scala:220)
+        at org.apache.spark.sql.Dataset$.$anonfun$ofRows$2(Dataset.scala:100)
+        at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+        at org.apache.spark.sql.Dataset$.ofRows(Dataset.scala:97)
+        at 
+org.apache.spark.sql.SparkSession.$anonfun$sql$1(SparkSession.scala:638)
+        at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+        at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:629)
+        at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:659)
+        at 
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at 
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAcces
+sorImpl.java:77)
+        at 
+java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMet
+hodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+        at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+        at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+        at py4j.Gateway.invoke(Gateway.java:282)
+        at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+        at py4j.commands.CallCommand.execute(CallCommand.java:79)
+        at 
+py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+        at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+        at java.base/java.lang.Thread.run(Thread.java:840)
+      
+  ```
+* `"gcslhdepot"."staging_v5_vnew"."stg_orders"`
+
+  ```
+    Py4JJavaError:
+      An error occurred while calling o267.sql.
+      : org.apache.iceberg.exceptions.ServiceFailureException: Server error: 
+RuntimeIOException: Failed to get file system for path: 
+gs://tmdc-dev/lhtest/staging_v5_vnew/stg_orders/metadata/00000-4238d565-74df-456
+8-a174-0ab4c5158b33.gz.metadata.json
+        at 
+org.apache.iceberg.rest.ErrorHandlers$DefaultErrorHandler.accept(ErrorHandlers.j
+ava:350)
+        at 
+org.apache.iceberg.rest.ErrorHandlers$TableErrorHandler.accept(ErrorHandlers.jav
+a:160)
+        at 
+org.apache.iceberg.rest.ErrorHandlers$TableErrorHandler.accept(ErrorHandlers.jav
+a:142)
+        at org.apache.iceberg.rest.HTTPClient.throwFailure(HTTPClient.java:242)
+        at org.apache.iceberg.rest.HTTPClient.execute(HTTPClient.java:347)
+        at org.apache.iceberg.rest.HTTPClient.execute(HTTPClient.java:299)
+        at org.apache.iceberg.rest.BaseHTTPClient.post(BaseHTTPClient.java:112)
+        at org.apache.iceberg.rest.RESTClient.post(RESTClient.java:150)
+        at 
+org.apache.iceberg.rest.RESTSessionCatalog$Builder.create(RESTSessionCatalog.jav
+a:972)
+        at 
+org.apache.iceberg.CachingCatalog$CachingTableBuilder.lambda$create$0(CachingCat
+alog.java:272)
+        at 
+com.github.benmanes.caffeine.cache.BoundedLocalCache.lambda$doComputeIfAbsent$14
+(BoundedLocalCache.java:2406)
+        at 
+java.base/java.util.concurrent.ConcurrentHashMap.compute(ConcurrentHashMap.java:
+1916)
+        at 
+com.github.benmanes.caffeine.cache.BoundedLocalCache.doComputeIfAbsent(BoundedLo
+calCache.java:2404)
+        at 
+com.github.benmanes.caffeine.cache.BoundedLocalCache.computeIfAbsent(BoundedLoca
+lCache.java:2387)
+        at 
+com.github.benmanes.caffeine.cache.LocalCache.computeIfAbsent(LocalCache.java:10
+8)
+        at 
+com.github.benmanes.caffeine.cache.LocalManualCache.get(LocalManualCache.java:62
+)
+        at 
+org.apache.iceberg.CachingCatalog$CachingTableBuilder.create(CachingCatalog.java
+:268)
+        at 
+org.apache.iceberg.spark.SparkCatalog.createTable(SparkCatalog.java:257)
+        at 
+org.apache.spark.sql.connector.catalog.TableCatalog.createTable(TableCatalog.jav
+a:223)
+        at 
+org.apache.spark.sql.execution.datasources.v2.CreateTableExec.run(CreateTableExe
+c.scala:44)
+        at 
+org.apache.spark.sql.execution.datasources.v2.V2CommandExec.result$lzycompute(V2
+CommandExec.scala:43)
+        at 
+org.apache.spark.sql.execution.datasources.v2.V2CommandExec.result(V2CommandExec
+.scala:43)
+        at 
+org.apache.spark.sql.execution.datasources.v2.V2CommandExec.executeCollect(V2Com
+mandExec.scala:49)
+        at 
+org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.
+$anonfun$applyOrElse$1(QueryExecution.scala:107)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$6(SQLEx
+ecution.scala:125)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.
+scala:201)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$1(SQLEx
+ecution.scala:108)
+        at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.sca
+la:66)
+        at 
+org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.
+applyOrElse(QueryExecution.scala:107)
+        at 
+org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.
+applyOrElse(QueryExecution.scala:98)
+        at 
+org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$transformDownWithPruning$1
+(TreeNode.scala:461)
+        at 
+org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(origin.scala:76)
+        at 
+org.apache.spark.sql.catalyst.trees.TreeNode.transformDownWithPruning(TreeNode.s
+cala:461)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.org$apache$spark$sql$cat
+alyst$plans$logical$AnalysisHelper$$super$transformDownWithPruning(LogicalPlan.s
+cala:32)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPrun
+ing(AnalysisHelper.scala:267)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPrun
+ing$(AnalysisHelper.scala:263)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning
+(LogicalPlan.scala:32)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning
+(LogicalPlan.scala:32)
+        at 
+org.apache.spark.sql.catalyst.trees.TreeNode.transformDown(TreeNode.scala:437)
+        at 
+org.apache.spark.sql.execution.QueryExecution.eagerlyExecuteCommands(QueryExecut
+ion.scala:98)
+        at 
+org.apache.spark.sql.execution.QueryExecution.commandExecuted$lzycompute(QueryEx
+ecution.scala:85)
+        at 
+org.apache.spark.sql.execution.QueryExecution.commandExecuted(QueryExecution.sca
+la:83)
+        at org.apache.spark.sql.Dataset.<init>(Dataset.scala:220)
+        at org.apache.spark.sql.Dataset$.$anonfun$ofRows$2(Dataset.scala:100)
+        at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+        at org.apache.spark.sql.Dataset$.ofRows(Dataset.scala:97)
+        at 
+org.apache.spark.sql.SparkSession.$anonfun$sql$1(SparkSession.scala:638)
+        at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+        at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:629)
+        at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:659)
+        at 
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at 
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAcces
+sorImpl.java:77)
+        at 
+java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMet
+hodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+        at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+        at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+        at py4j.Gateway.invoke(Gateway.java:282)
+        at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+        at py4j.commands.CallCommand.execute(CallCommand.java:79)
+        at 
+py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+        at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+        at java.base/java.lang.Thread.run(Thread.java:840)
+      
+  ```
+* `"gcslhdepot"."staging_v5_vnew"."stg_products"`
+
+  ```
+    Py4JJavaError:
+      An error occurred while calling o267.sql.
+      : org.apache.iceberg.exceptions.ServiceFailureException: Server error: 
+RuntimeIOException: Failed to get file system for path: 
+gs://tmdc-dev/lhtest/staging_v5_vnew/stg_products/metadata/00000-06882234-ff2a-4
+250-89dd-8ebf96851bf8.gz.metadata.json
+        at 
+org.apache.iceberg.rest.ErrorHandlers$DefaultErrorHandler.accept(ErrorHandlers.j
+ava:350)
+        at 
+org.apache.iceberg.rest.ErrorHandlers$TableErrorHandler.accept(ErrorHandlers.jav
+a:160)
+        at 
+org.apache.iceberg.rest.ErrorHandlers$TableErrorHandler.accept(ErrorHandlers.jav
+a:142)
+        at org.apache.iceberg.rest.HTTPClient.throwFailure(HTTPClient.java:242)
+        at org.apache.iceberg.rest.HTTPClient.execute(HTTPClient.java:347)
+        at org.apache.iceberg.rest.HTTPClient.execute(HTTPClient.java:299)
+        at org.apache.iceberg.rest.BaseHTTPClient.post(BaseHTTPClient.java:112)
+        at org.apache.iceberg.rest.RESTClient.post(RESTClient.java:150)
+        at 
+org.apache.iceberg.rest.RESTSessionCatalog$Builder.create(RESTSessionCatalog.jav
+a:972)
+        at 
+org.apache.iceberg.CachingCatalog$CachingTableBuilder.lambda$create$0(CachingCat
+alog.java:272)
+        at 
+com.github.benmanes.caffeine.cache.BoundedLocalCache.lambda$doComputeIfAbsent$14
+(BoundedLocalCache.java:2406)
+        at 
+java.base/java.util.concurrent.ConcurrentHashMap.compute(ConcurrentHashMap.java:
+1916)
+        at 
+com.github.benmanes.caffeine.cache.BoundedLocalCache.doComputeIfAbsent(BoundedLo
+calCache.java:2404)
+        at 
+com.github.benmanes.caffeine.cache.BoundedLocalCache.computeIfAbsent(BoundedLoca
+lCache.java:2387)
+        at 
+com.github.benmanes.caffeine.cache.LocalCache.computeIfAbsent(LocalCache.java:10
+8)
+        at 
+com.github.benmanes.caffeine.cache.LocalManualCache.get(LocalManualCache.java:62
+)
+        at 
+org.apache.iceberg.CachingCatalog$CachingTableBuilder.create(CachingCatalog.java
+:268)
+        at 
+org.apache.iceberg.spark.SparkCatalog.createTable(SparkCatalog.java:257)
+        at 
+org.apache.spark.sql.connector.catalog.TableCatalog.createTable(TableCatalog.jav
+a:223)
+        at 
+org.apache.spark.sql.execution.datasources.v2.CreateTableExec.run(CreateTableExe
+c.scala:44)
+        at 
+org.apache.spark.sql.execution.datasources.v2.V2CommandExec.result$lzycompute(V2
+CommandExec.scala:43)
+        at 
+org.apache.spark.sql.execution.datasources.v2.V2CommandExec.result(V2CommandExec
+.scala:43)
+        at 
+org.apache.spark.sql.execution.datasources.v2.V2CommandExec.executeCollect(V2Com
+mandExec.scala:49)
+        at 
+org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.
+$anonfun$applyOrElse$1(QueryExecution.scala:107)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$6(SQLEx
+ecution.scala:125)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.
+scala:201)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$1(SQLEx
+ecution.scala:108)
+        at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.sca
+la:66)
+        at 
+org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.
+applyOrElse(QueryExecution.scala:107)
+        at 
+org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.
+applyOrElse(QueryExecution.scala:98)
+        at 
+org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$transformDownWithPruning$1
+(TreeNode.scala:461)
+        at 
+org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(origin.scala:76)
+        at 
+org.apache.spark.sql.catalyst.trees.TreeNode.transformDownWithPruning(TreeNode.s
+cala:461)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.org$apache$spark$sql$cat
+alyst$plans$logical$AnalysisHelper$$super$transformDownWithPruning(LogicalPlan.s
+cala:32)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPrun
+ing(AnalysisHelper.scala:267)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPrun
+ing$(AnalysisHelper.scala:263)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning
+(LogicalPlan.scala:32)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning
+(LogicalPlan.scala:32)
+        at 
+org.apache.spark.sql.catalyst.trees.TreeNode.transformDown(TreeNode.scala:437)
+        at 
+org.apache.spark.sql.execution.QueryExecution.eagerlyExecuteCommands(QueryExecut
+ion.scala:98)
+        at 
+org.apache.spark.sql.execution.QueryExecution.commandExecuted$lzycompute(QueryEx
+ecution.scala:85)
+        at 
+org.apache.spark.sql.execution.QueryExecution.commandExecuted(QueryExecution.sca
+la:83)
+        at org.apache.spark.sql.Dataset.<init>(Dataset.scala:220)
+        at org.apache.spark.sql.Dataset$.$anonfun$ofRows$2(Dataset.scala:100)
+        at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+        at org.apache.spark.sql.Dataset$.ofRows(Dataset.scala:97)
+        at 
+org.apache.spark.sql.SparkSession.$anonfun$sql$1(SparkSession.scala:638)
+        at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+        at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:629)
+        at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:659)
+        at 
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at 
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAcces
+sorImpl.java:77)
+        at 
+java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMet
+hodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+        at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+        at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+        at py4j.Gateway.invoke(Gateway.java:282)
+        at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+        at py4j.commands.CallCommand.execute(CallCommand.java:79)
+        at 
+py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+        at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+        at java.base/java.lang.Thread.run(Thread.java:840)
+      
+  ```
+* `"gcslhdepot"."staging_v5_vnew"."stg_region_tier"`
+
+  ```
+    Py4JJavaError:
+      An error occurred while calling o267.sql.
+      : org.apache.iceberg.exceptions.ServiceFailureException: Server error: 
+RuntimeIOException: Failed to get file system for path: 
+gs://tmdc-dev/lhtest/staging_v5_vnew/stg_region_tier/metadata/00000-a3743a69-01a
+4-4eb7-bf02-4eade2978dc3.gz.metadata.json
+        at 
+org.apache.iceberg.rest.ErrorHandlers$DefaultErrorHandler.accept(ErrorHandlers.j
+ava:350)
+        at 
+org.apache.iceberg.rest.ErrorHandlers$TableErrorHandler.accept(ErrorHandlers.jav
+a:160)
+        at 
+org.apache.iceberg.rest.ErrorHandlers$TableErrorHandler.accept(ErrorHandlers.jav
+a:142)
+        at org.apache.iceberg.rest.HTTPClient.throwFailure(HTTPClient.java:242)
+        at org.apache.iceberg.rest.HTTPClient.execute(HTTPClient.java:347)
+        at org.apache.iceberg.rest.HTTPClient.execute(HTTPClient.java:299)
+        at org.apache.iceberg.rest.BaseHTTPClient.post(BaseHTTPClient.java:112)
+        at org.apache.iceberg.rest.RESTClient.post(RESTClient.java:150)
+        at 
+org.apache.iceberg.rest.RESTSessionCatalog$Builder.create(RESTSessionCatalog.jav
+a:972)
+        at 
+org.apache.iceberg.CachingCatalog$CachingTableBuilder.lambda$create$0(CachingCat
+alog.java:272)
+        at 
+com.github.benmanes.caffeine.cache.BoundedLocalCache.lambda$doComputeIfAbsent$14
+(BoundedLocalCache.java:2406)
+        at 
+java.base/java.util.concurrent.ConcurrentHashMap.compute(ConcurrentHashMap.java:
+1916)
+        at 
+com.github.benmanes.caffeine.cache.BoundedLocalCache.doComputeIfAbsent(BoundedLo
+calCache.java:2404)
+        at 
+com.github.benmanes.caffeine.cache.BoundedLocalCache.computeIfAbsent(BoundedLoca
+lCache.java:2387)
+        at 
+com.github.benmanes.caffeine.cache.LocalCache.computeIfAbsent(LocalCache.java:10
+8)
+        at 
+com.github.benmanes.caffeine.cache.LocalManualCache.get(LocalManualCache.java:62
+)
+        at 
+org.apache.iceberg.CachingCatalog$CachingTableBuilder.create(CachingCatalog.java
+:268)
+        at 
+org.apache.iceberg.spark.SparkCatalog.createTable(SparkCatalog.java:257)
+        at 
+org.apache.spark.sql.connector.catalog.TableCatalog.createTable(TableCatalog.jav
+a:223)
+        at 
+org.apache.spark.sql.execution.datasources.v2.CreateTableExec.run(CreateTableExe
+c.scala:44)
+        at 
+org.apache.spark.sql.execution.datasources.v2.V2CommandExec.result$lzycompute(V2
+CommandExec.scala:43)
+        at 
+org.apache.spark.sql.execution.datasources.v2.V2CommandExec.result(V2CommandExec
+.scala:43)
+        at 
+org.apache.spark.sql.execution.datasources.v2.V2CommandExec.executeCollect(V2Com
+mandExec.scala:49)
+        at 
+org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.
+$anonfun$applyOrElse$1(QueryExecution.scala:107)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$6(SQLEx
+ecution.scala:125)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.
+scala:201)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$1(SQLEx
+ecution.scala:108)
+        at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+        at 
+org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.sca
+la:66)
+        at 
+org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.
+applyOrElse(QueryExecution.scala:107)
+        at 
+org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.
+applyOrElse(QueryExecution.scala:98)
+        at 
+org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$transformDownWithPruning$1
+(TreeNode.scala:461)
+        at 
+org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(origin.scala:76)
+        at 
+org.apache.spark.sql.catalyst.trees.TreeNode.transformDownWithPruning(TreeNode.s
+cala:461)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.org$apache$spark$sql$cat
+alyst$plans$logical$AnalysisHelper$$super$transformDownWithPruning(LogicalPlan.s
+cala:32)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPrun
+ing(AnalysisHelper.scala:267)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPrun
+ing$(AnalysisHelper.scala:263)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning
+(LogicalPlan.scala:32)
+        at 
+org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning
+(LogicalPlan.scala:32)
+        at 
+org.apache.spark.sql.catalyst.trees.TreeNode.transformDown(TreeNode.scala:437)
+        at 
+org.apache.spark.sql.execution.QueryExecution.eagerlyExecuteCommands(QueryExecut
+ion.scala:98)
+        at 
+org.apache.spark.sql.execution.QueryExecution.commandExecuted$lzycompute(QueryEx
+ecution.scala:85)
+        at 
+org.apache.spark.sql.execution.QueryExecution.commandExecuted(QueryExecution.sca
+la:83)
+        at org.apache.spark.sql.Dataset.<init>(Dataset.scala:220)
+        at org.apache.spark.sql.Dataset$.$anonfun$ofRows$2(Dataset.scala:100)
+        at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+        at org.apache.spark.sql.Dataset$.ofRows(Dataset.scala:97)
+        at 
+org.apache.spark.sql.SparkSession.$anonfun$sql$1(SparkSession.scala:638)
+        at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:900)
+        at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:629)
+        at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:659)
+        at 
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at 
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAcces
+sorImpl.java:77)
+        at 
+java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMet
+hodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+        at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+        at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+        at py4j.Gateway.invoke(Gateway.java:282)
+        at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+        at py4j.commands.CallCommand.execute(CallCommand.java:79)
+        at 
+py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+        at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+        at java.base/java.lang.Thread.run(Thread.java:840)
+      
+  ```
+
+[38;20m2026-08-18 21:15:00,382 - MainThread - vulcan.core.context - INFO - Plan application failed. (context.py:490)[0m
+Traceback (most recent call last):
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/context.py", line 489, in apply
+    try:self._apply(plan,circuit_breaker)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/context.py", line 660, in _apply
+    def _apply(self,plan:Plan,circuit_breaker:t.Optional[t.Callable[[],bool]])->_A:self._scheduler.create_plan_evaluator(self).evaluate(plan.to_evaluatable(),circuit_breaker=circuit_breaker)
+                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/plan/evaluator.py", line 29, in evaluate
+    try:plan_stages=stages.build_plan_stages(plan,self.state_sync,self.default_catalog);self._evaluate_stages(plan_stages,plan)
+                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/plan/evaluator.py", line 35, in _evaluate_stages
+    logger.info('Evaluating plan stage %s',stage_name);handler=getattr(self,handler_name);handler(stage,plan)
+                                                                                          ^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.11/site-packages/vulcan/core/plan/evaluator.py", line 67, in visit_backfill_stage
+    if errors:raise PlanError(_C)
+              ^^^^^^^^^^^^^^^^^^^
+vulcan.utils.errors.PlanError: Plan application failed.
+26/08/18 21:15:00 WARN ExecutorPodsWatchSnapshotSource: Kubernetes client has been closed.
+Plan application failed.
+[38;20m2026-08-18 21:15:01,188 - MainThread - py4j.clientserver - INFO - Closing down clientserver connection (clientserver.py:543)[0m
+
+           CONTAINER GROUP NAME           │             CONTAINER NAME             │ CONTAINER TYPE │ ERROR 
+──────────────────────────────────────────┼────────────────────────────────────────┼────────────────┼───────
+ gcs-spark-dp-plan-9tqq-0818211203-driver │ gcs-spark-dp-plan-9tqq-git-sync-driver │ initSideCar    │       
+
+-------------------LOGS-------------------
+INFO: detected pid 1, running init handler
+{"logger":"","ts":"2026-08-18 21:14:03.212737","caller":{"file":"main.go","line":646},"level":0,"msg":"starting up","version":"v4.7.0","pid":13,"uid":65533,"gid":65533,"home":"/tmp","flags":["--depth=100","--one-time=true","--ref=main","--repo=https://github.com/rajrohit0728/vulcan-public","--root=/etc/dataos/work","--submodules=off"]}
+{"logger":"","ts":"2026-08-18 21:14:03.214957","caller":{"file":"main.go","line":752},"level":0,"msg":"git version","version":"git version 2.47.3"}
+{"logger":"","ts":"2026-08-18 21:14:03.224796","caller":{"file":"main.go","line":1277},"level":0,"msg":"repo directory was empty or failed checks","path":"/etc/dataos/work"}
+{"logger":"","ts":"2026-08-18 21:14:03.224911","caller":{"file":"main.go","line":1287},"level":0,"msg":"initializing repo directory","path":"/etc/dataos/work"}
+{"logger":"","ts":"2026-08-18 21:14:09.127076","caller":{"file":"main.go","line":1815},"level":0,"msg":"update required","ref":"main","local":"","remote":"627320f3653d2a39469ff36863cd87cba75f6c7b","syncCount":0}
+{"logger":"","ts":"2026-08-18 21:14:09.145901","caller":{"file":"main.go","line":1861},"level":0,"msg":"updated successfully","ref":"main","remote":"627320f3653d2a39469ff36863cd87cba75f6c7b","syncCount":1}
+{"logger":"","ts":"2026-08-18 21:14:09.146024","caller":{"file":"main.go","line":1013},"level":0,"msg":"exiting after one sync","status":0}

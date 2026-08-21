@@ -13,16 +13,15 @@ tags:
   - iceberg
 spec:
   runAsUser: rohitrajtmdcio
-  compute: ui-dev-compute
+  compute: engineering-compute
   engine: spark
-  objectStoreConnection: ui-dev:vulcan-object-store-sec-gcs
+  objectStoreConnection: engineering:vulcan-object-store-sec-gcs
   repo:
     url: https://github.com/rajrohit0728/vulcan-public
     syncFlags:
       - "--ref=main"
       - "--submodules=off"
     baseDir: vulcan-public/gcs-quick-sanity
-    # secretId: ui-dev:git-sync-rr
   depots:
     - dataos://gcslhdepot?purpose=rw
   workflow:
