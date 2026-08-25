@@ -1,5 +1,5 @@
 MODEL (
-  name abfsslhdepotrr.staging_v6_vnew.stg_products,
+  name abfsslhdepotrr.staging_v7_vnew.stg_products,
   kind SEED (
     path '../../seeds/raw_products.csv'
   ),

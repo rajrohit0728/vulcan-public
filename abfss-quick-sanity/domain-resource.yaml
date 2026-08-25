@@ -1,5 +1,5 @@
 version: v1alpha
-type: custom-cloud
+type: cloud
 name: abfss-spark-dp
 description: |
   Layered (staging -> intermediate -> mart) Spark + Iceberg ABFSS lakehouse data
@@ -13,16 +13,16 @@ tags:
   - iceberg
 spec:
   runAsUser: rohitrajtmdcio
-  compute: ui-dev-compute
+  compute: vulcan-compute
   engine: spark
-  objectStoreConnection: ui-dev:vulcan-object-store-sec-abfss
+  objectStoreConnection: vulcan:vulcan-object-store-sec-abfss
   repo:
     url: https://github.com/rajrohit0728/vulcan-public
     syncFlags:
       - "--ref=main"
       - "--submodules=off"
     baseDir: vulcan-public/abfss-quick-sanity
-    # secretId: ui-dev:git-sync-rr
+    secretId: vulcan:git-sync-rr
   depots:
     - dataos://abfsslhdepotrr?purpose=rw
   workflow:

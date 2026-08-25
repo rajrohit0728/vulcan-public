@@ -1,10 +1,10 @@
 MODEL (
-  name abfsslhdepotrr.mart_v7_vnew.mart_sales_summary,
+  name abfsslhdepotrr.trino_fed_v1.mart_sales_summary,
   kind FULL,
   owner 'rohitrajtmdcio',
   grains (order_date, region, category),
-  tags ('mart', 'summary', 'sales'),
-  description 'Daily revenue rollup by customer region and product category (sanity check).',
+  tags ('mart', 'summary', 'sales', 'federated', 'cross-engine'),
+  description 'Spark FULL copy of Trino-materialized abfsslhdepotrr.abfss_fed_v1.mart_sales_summary — DATAOS-4249 cross-engine read check: proves a Trino-written gzip-metadata Iceberg table is readable by Spark.',
   columns (
     order_date       DATE,
     region           VARCHAR,
@@ -24,9 +24,8 @@ SELECT
   order_date,
   region,
   category,
-  COUNT(DISTINCT order_id) AS order_count,
-  COUNT(*) AS line_count,
-  CAST(SUM(quantity) AS DECIMAL(12, 2)) AS total_quantity,
-  CAST(SUM(net_amount) AS DECIMAL(14, 2)) AS total_net_amount_usd
-FROM abfsslhdepotrr.mart_v7_vnew.fct_order_lines
-GROUP BY order_date, region, category;
+  order_count,
+  line_count,
+  total_quantity,
+  total_net_amount_usd
+FROM abfsslhdepotrr.abfss_fed_v1.mart_sales_summary;

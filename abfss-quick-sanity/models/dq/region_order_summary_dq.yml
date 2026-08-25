@@ -1,6 +1,6 @@
 kind: dq
 name: region_order_summary_dq
-depends_on: abfsslhdepotrr.mart_v6_vnew.region_order_summary
+depends_on: abfsslhdepotrr.mart_v7_vnew.region_order_summary
 
 profiles:
   - customer_count

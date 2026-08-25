@@ -1,6 +1,6 @@
 kind: dq
 name: customer_region_rank_dq
-depends_on: abfsslhdepotrr.mart_v6_vnew.customer_region_rank
+depends_on: abfsslhdepotrr.mart_v7_vnew.customer_region_rank
 
 profiles:
   - total_spent
@@ -25,7 +25,7 @@ rules:
       dimension: validity
       fail query: |
         SELECT customer_id, total_spent
-        FROM abfsslhdepotrr.mart_v6_vnew.customer_region_rank
+        FROM abfsslhdepotrr.mart_v7_vnew.customer_region_rank
         WHERE total_spent < 0
       samples limit: 5
       description: "total_spent should not be negative"

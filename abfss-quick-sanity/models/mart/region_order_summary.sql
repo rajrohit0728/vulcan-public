@@ -1,5 +1,5 @@
 MODEL (
-  name abfsslhdepotrr.mart_v6_vnew.region_order_summary,
+  name abfsslhdepotrr.mart_v7_vnew.region_order_summary,
   kind FULL,
   owner 'rohitrajtmdcio',
   grain region,
@@ -25,5 +25,5 @@ SELECT
   CAST(
     SUM(net_amount) / NULLIF(COUNT(DISTINCT order_id), 0) AS DECIMAL(14, 2)
   ) AS avg_order_value
-FROM abfsslhdepotrr.mart_v6_vnew.fct_order_lines
+FROM abfsslhdepotrr.mart_v7_vnew.fct_order_lines
 GROUP BY region;
