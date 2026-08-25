@@ -1,10 +1,10 @@
 MODEL (
-  name abfsslhdepotrr.mart_v4_vnew.abfss_mart_sales_summary,
-  kind VIEW,
+  name abfsslhdepotrr.abfss_fed_v1.mart_sales_summary,
+  kind FULL,
   owner 'rohitrajtmdcio',
   grains (order_date, region, category),
-  tags ('mart', 'view', 'depot', 'federated', 'abfss'),
-  description 'Trino-federated view over the Spark-materialized Iceberg table abfsslhdepotrr.mart_v6_vnew.mart_sales_summary (abfss-spark-dp).',
+  tags ('federated', 'abfss', 'summary', 'sales'),
+  description 'FULL copy of Spark-materialized abfsslhdepotrr.mart_v6_vnew.mart_sales_summary (abfss-spark-dp).',
   columns (
     order_date           DATE,
     region               VARCHAR,
@@ -13,6 +13,10 @@ MODEL (
     line_count           INT,
     total_quantity       DECIMAL(12, 2),
     total_net_amount_usd DECIMAL(14, 2)
+  ),
+  assertions (
+    not_null(columns := (order_date, region, category)),
+    no_negative_total_net_amount
   )
 );
 

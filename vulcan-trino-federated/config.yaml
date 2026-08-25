@@ -4,8 +4,8 @@ tenant: "default"
 description: >
   Layered (staging -> intermediate -> mart) data product on the Trino
   `bigqueryrr` catalog, with read-only mart views exposed on the
-  `abfsslhdepotrr` Iceberg depot. Also federates the Spark-materialized
-  `abfsslhdepotrr.mart_v6_vnew.mart_sales_summary` table from abfss-spark-dp.
+  `abfsslhdepotrr` Iceberg depot. Also materializes two Spark ABFSS tables
+  into `abfsslhdepotrr.abfss_fed_v1` (dim_customers, mart_sales_summary).
   Sources mock/sample data from CSV seeds (customers, products, orders, order
   line items, a region-tier lookup) rather than an external catalog,
   demonstrating dq checks, audits, unit tests, macros, semantics, and metrics

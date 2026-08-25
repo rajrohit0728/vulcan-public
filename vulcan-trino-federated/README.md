@@ -30,7 +30,8 @@ bigquery/
 │   ├── staging/                  # kind SEED, one per CSV (typed, asserted)
 │   ├── intermediate/             # kind FULL, joined/enriched
 │   ├── mart/                     # kind FULL tables on bigqueryrr
-│   ├── mart_views/               # kind VIEW on abfsslhdepotrr (BigQuery marts + Spark Iceberg)
+│   ├── mart_views/               # kind VIEW on abfsslhdepotrr (federates to bigqueryrr marts)
+│   ├── federated/                # kind FULL on abfsslhdepotrr.abfss_fed_v1 (Spark ABFSS tables)
 │   ├── dq/                       # kind: dq — Soda-style rules + column profiles
 │   ├── semantics/                # kind: semantic — dimensions/measures/joins
 │   └── metrics/                  # kind: metric — business metrics over semantics
@@ -80,11 +81,13 @@ depot-facing views over the BigQuery marts above (`SELECT * FROM
 bigqueryrr.mart_v4_vnew.<model>`). Semantics and Explore consumers query
 these views; DQ/tests target the underlying `bigqueryrr` tables.
 
-One extra view federates a table that Spark already materialized on the
-same depot in `abfss-quick-sanity` (schema `mart_v6_vnew`), so this DP
-does not recreate it:
+**Federated ABFSS** (`abfsslhdepotrr.abfss_fed_v1`, `kind FULL`) — physical
+Iceberg copies of two Spark-materialized tables from `abfss-quick-sanity`
+(`mart_v6_vnew`). Trino CTAS-es them into a dedicated schema so they do
+not collide with Spark's tables or the BigQuery mart views:
 
-- `abfss_mart_sales_summary` → `abfsslhdepotrr.mart_v6_vnew.mart_sales_summary`
+- `dim_customers` → `abfsslhdepotrr.mart_v6_vnew.dim_customers`
+- `mart_sales_summary` → `abfsslhdepotrr.mart_v6_vnew.mart_sales_summary`
 
 **Semantics** (`models/semantics/`, `kind: semantic`): `customers` and
 `order_lines` (joins `many_to_one` to `customers`) — every entity here is
@@ -155,5 +158,6 @@ Ad-hoc sanity check after `run`:
 
 ```bash
 vulcan fetchdf "select * from abfsslhdepotrr.mart_v4_vnew.mart_sales_summary order by total_net_amount_usd desc limit 10"
-vulcan fetchdf "select * from abfsslhdepotrr.mart_v4_vnew.abfss_mart_sales_summary order by total_net_amount_usd desc limit 10"
+vulcan fetchdf "select * from abfsslhdepotrr.abfss_fed_v1.mart_sales_summary order by total_net_amount_usd desc limit 10"
+vulcan fetchdf "select * from abfsslhdepotrr.abfss_fed_v1.dim_customers limit 10"
 ```
