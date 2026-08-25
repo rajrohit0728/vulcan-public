@@ -30,7 +30,7 @@ bigquery/
 │   ├── staging/                  # kind SEED, one per CSV (typed, asserted)
 │   ├── intermediate/             # kind FULL, joined/enriched
 │   ├── mart/                     # kind FULL tables on bigqueryrr
-│   ├── mart_views/               # kind VIEW on abfsslhdepotrr (federates to bigqueryrr marts)
+│   ├── mart_views/               # kind VIEW on abfsslhdepotrr (BigQuery marts + Spark Iceberg)
 │   ├── dq/                       # kind: dq — Soda-style rules + column profiles
 │   ├── semantics/                # kind: semantic — dimensions/measures/joins
 │   └── metrics/                  # kind: metric — business metrics over semantics
@@ -79,6 +79,12 @@ premium/standard/basic/micro), both used in `int_order_lines_enriched`.
 depot-facing views over the BigQuery marts above (`SELECT * FROM
 bigqueryrr.mart_v4_vnew.<model>`). Semantics and Explore consumers query
 these views; DQ/tests target the underlying `bigqueryrr` tables.
+
+One extra view federates a table that Spark already materialized on the
+same depot in `abfss-quick-sanity` (schema `mart_v6_vnew`), so this DP
+does not recreate it:
+
+- `abfss_mart_sales_summary` → `abfsslhdepotrr.mart_v6_vnew.mart_sales_summary`
 
 **Semantics** (`models/semantics/`, `kind: semantic`): `customers` and
 `order_lines` (joins `many_to_one` to `customers`) — every entity here is
@@ -149,4 +155,5 @@ Ad-hoc sanity check after `run`:
 
 ```bash
 vulcan fetchdf "select * from abfsslhdepotrr.mart_v4_vnew.mart_sales_summary order by total_net_amount_usd desc limit 10"
+vulcan fetchdf "select * from abfsslhdepotrr.mart_v4_vnew.abfss_mart_sales_summary order by total_net_amount_usd desc limit 10"
 ```

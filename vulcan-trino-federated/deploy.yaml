@@ -9,9 +9,10 @@ tags:
   - secret-catalog
 description: >
   Managed Trino demo — BigQuery catalog via trino.catalog.config secret,
-  plus abfsslhdepotrr depot for mart views over BigQuery tables. Quick-sanity
-  layered pipeline with CSV seeds, dq, audits, tests, macros, semantics,
-  and metrics.
+  plus abfsslhdepotrr depot for mart views over BigQuery tables and a
+  federated view over Spark-materialized Iceberg mart_sales_summary.
+  Quick-sanity layered pipeline with CSV seeds, dq, audits, tests, macros,
+  semantics, and metrics.
 spec:
   runAsUser: "rohitrajtmdcio"
   compute: engineering-compute
@@ -25,7 +26,8 @@ spec:
     # secretId: engineering:git-sync-rr
 
   # BigQuery catalog from trino.catalog.config; abfsslhdepotrr depot hosts
-  # read-only mart views that federate to bigqueryrr tables.
+  # read-only mart views that federate to bigqueryrr tables, plus a view over
+  # Spark-materialized abfsslhdepotrr.mart_v6_vnew.mart_sales_summary.
   depots:
     - dataos://abfsslhdepotrr?purpose=rw
   trino:
