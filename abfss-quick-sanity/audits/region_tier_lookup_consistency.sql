@@ -8,6 +8,6 @@ AUDIT (
 -- ever removed or miswired.
 SELECT c.*
 FROM @this_model AS c
-LEFT JOIN abfsslhdepotrr.staging_v7_vnew.stg_region_tier AS t
+LEFT JOIN abfsslhdepotrr.staging_v8_vnew.stg_region_tier AS t
   ON c.region = t.region
 WHERE t.region IS NULL

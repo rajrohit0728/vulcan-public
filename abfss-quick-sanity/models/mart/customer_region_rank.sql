@@ -1,5 +1,5 @@
 MODEL (
-  name abfsslhdepotrr.mart_v7_vnew.customer_region_rank,
+  name abfsslhdepotrr.mart_v8_vnew.customer_region_rank,
   kind FULL,
   owner 'rohitrajtmdcio',
   grain customer_id,
@@ -28,8 +28,8 @@ FROM (
     c.customer_id,
     c.region,
     CAST(COALESCE(SUM(f.net_amount), 0) AS DECIMAL(14, 2)) AS total_spent
-  FROM abfsslhdepotrr.mart_v7_vnew.dim_customers AS c
-  LEFT JOIN abfsslhdepotrr.mart_v7_vnew.fct_order_lines AS f
+  FROM abfsslhdepotrr.mart_v8_vnew.dim_customers AS c
+  LEFT JOIN abfsslhdepotrr.mart_v8_vnew.fct_order_lines AS f
     ON c.customer_id = f.customer_id
   GROUP BY c.customer_id, c.region
 ) AS base;

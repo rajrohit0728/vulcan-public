@@ -1,6 +1,6 @@
 version: v1alpha
 type: cloud
-name: abfss-spark-dp
+name: abfss-spark-dp7
 description: |
   Layered (staging -> intermediate -> mart) Spark + Iceberg ABFSS lakehouse data
   product. Sources mock/sample data from CSV seeds (customers, products,

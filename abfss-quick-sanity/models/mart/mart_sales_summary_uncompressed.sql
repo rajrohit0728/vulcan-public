@@ -1,10 +1,13 @@
 MODEL (
-  name abfsslhdepotrr.mart_v8_vnew.mart_sales_summary,
+  name abfsslhdepotrr.compression_none_v1.mart_sales_summary,
   kind FULL,
   owner 'rohitrajtmdcio',
   grains (order_date, region, category),
-  tags ('mart', 'summary', 'sales'),
-  description 'Daily revenue rollup by customer region and product category (sanity check).',
+  tags ('mart', 'summary', 'sales', 'compression-check'),
+  description 'DATAOS-4249 edge case: same shape as mart_sales_summary but with write.metadata.compression-codec explicitly set to none via physical_properties, to confirm the model-level override beats the engine-adapter gzip default.',
+  physical_properties (
+    'write.metadata.compression-codec' = 'none'
+  ),
   columns (
     order_date       DATE,
     region           VARCHAR,

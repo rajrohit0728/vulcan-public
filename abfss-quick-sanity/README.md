@@ -49,7 +49,7 @@ system: 10 customers, 8 products, 20 orders, 23 order line items, plus
 `starburst`'s `market_segment_tier.csv` pattern of joining a seed-backed
 reference table into the pipeline like any other source.
 
-**Staging** (`abfsslhdepotrr.staging_v7_vnew`, `kind SEED`) — one seed model per CSV,
+**Staging** (`abfsslhdepotrr.staging_v8_vnew`, `kind SEED`) — one seed model per CSV,
 typed and asserted: `stg_customers`, `stg_products`, `stg_orders`,
 `stg_order_items`, `stg_region_tier`.
 
@@ -58,12 +58,12 @@ discount_pct)` (line revenue after a percentage discount) and
 `@order_value_tier(amount_col)` (classifies a line's `net_amount` into
 premium/standard/basic/micro), both used in `int_order_lines_enriched`.
 
-**Intermediate** (`abfsslhdepotrr.intermediate_v7_vnew`, `kind FULL`):
+**Intermediate** (`abfsslhdepotrr.intermediate_v8_vnew`, `kind FULL`):
 - `int_customers_enriched` — customers + the `stg_region_tier` seed lookup
 - `int_order_lines_enriched` — order items + orders + customers + products,
   computing `net_amount`/`order_value_tier` via the macros above
 
-**Mart** (`abfsslhdepotrr.mart_v7_vnew`, `kind FULL`) — consumption-ready:
+**Mart** (`abfsslhdepotrr.mart_v8_vnew`, `kind FULL`) — consumption-ready:
 - `dim_customers`, `dim_products` (the latter adds a computed `margin_pct`)
 - `fct_order_lines` — order-line grain fact, excludes cancelled orders, adds
   an `order_timestamp` (`TIMESTAMP`) alongside `order_date` (`DATE`) —
@@ -146,7 +146,7 @@ vulcan run       # materializes staging seeds + intermediate/mart tables
 Ad-hoc sanity check after `run`:
 
 ```bash
-vulcan fetchdf "select * from abfsslhdepotrr.mart_v7_vnew.mart_sales_summary order by total_net_amount_usd desc limit 10"
+vulcan fetchdf "select * from abfsslhdepotrr.mart_v8_vnew.mart_sales_summary order by total_net_amount_usd desc limit 10"
 ```
 
 ## Deploy
