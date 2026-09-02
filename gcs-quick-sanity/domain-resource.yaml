@@ -1,6 +1,6 @@
 version: v1alpha
-type: custom-cloud
-name: gcs-spark-dp
+type: cloud
+name: gcs-spark-dpv1
 description: |
   Layered (staging -> intermediate -> mart) Spark + Iceberg GCS lakehouse data
   product. Sources mock/sample data from CSV seeds (customers, products,
@@ -22,6 +22,7 @@ spec:
       - "--ref=main"
       - "--submodules=off"
     baseDir: vulcan-public/gcs-quick-sanity
+    secretId: engineering:git-sync-rr
   depots:
     - dataos://gcslhdepot?purpose=rw
   workflow:

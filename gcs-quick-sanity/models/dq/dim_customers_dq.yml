@@ -1,6 +1,6 @@
 kind: dq
 name: dim_customers_dq
-depends_on: gcslhdepot.mart_v5_vnew.dim_customers
+depends_on: gcslhdepot.mart_v6_vnew.dim_customers
 
 profiles:
   - region

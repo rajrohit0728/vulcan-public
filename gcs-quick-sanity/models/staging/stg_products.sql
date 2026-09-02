@@ -1,5 +1,5 @@
 MODEL (
-  name gcslhdepot.staging_v5_vnew.stg_products,
+  name gcslhdepot.staging_v6_vnew.stg_products,
   kind SEED (
     path '../../seeds/raw_products.csv'
   ),

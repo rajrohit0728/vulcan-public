@@ -1,6 +1,6 @@
 kind: semantic
 name: order_lines
-depends_on: gcslhdepot.mart_v5_vnew.fct_order_lines
+depends_on: gcslhdepot.mart_v6_vnew.fct_order_lines
 description: |
   Order-line grain fact. Many order lines belong to one customer
   (order_lines.customer_id -> customers.customer_id).

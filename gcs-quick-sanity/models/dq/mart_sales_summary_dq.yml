@@ -1,6 +1,6 @@
 kind: dq
 name: mart_sales_summary_dq
-depends_on: gcslhdepot.mart_v5_vnew.mart_sales_summary
+depends_on: gcslhdepot.mart_v6_vnew.mart_sales_summary
 
 profiles:
   - order_count
@@ -19,7 +19,7 @@ rules:
       dimension: uniqueness
       fail query: |
         SELECT order_date, region, category, COUNT(*) AS cnt
-        FROM gcslhdepot.mart_v5_vnew.mart_sales_summary
+        FROM gcslhdepot.mart_v6_vnew.mart_sales_summary
         GROUP BY order_date, region, category
         HAVING COUNT(*) > 1
       samples limit: 5

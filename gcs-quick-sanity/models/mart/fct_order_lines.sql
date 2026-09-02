@@ -1,5 +1,5 @@
 MODEL (
-  name gcslhdepot.mart_v5_vnew.fct_order_lines,
+  name gcslhdepot.mart_v6_vnew.fct_order_lines,
   kind FULL,
   owner 'rohitrajtmdcio',
   grain order_item_id,
@@ -49,5 +49,5 @@ SELECT
   discount_pct,
   net_amount,
   order_value_tier
-FROM gcslhdepot.intermediate_v5_vnew.int_order_lines_enriched
+FROM gcslhdepot.intermediate_v6_vnew.int_order_lines_enriched
 WHERE order_status != 'Cancelled';

@@ -1,5 +1,5 @@
 MODEL (
-  name gcslhdepot.intermediate_v5_vnew.int_customers_enriched,
+  name gcslhdepot.intermediate_v6_vnew.int_customers_enriched,
   kind FULL,
   owner 'rohitrajtmdcio',
   grain customer_id,
@@ -29,6 +29,6 @@ SELECT
   c.signup_date,
   t.region_tier,
   t.priority_rank
-FROM gcslhdepot.staging_v5_vnew.stg_customers AS c
-LEFT JOIN gcslhdepot.staging_v5_vnew.stg_region_tier AS t
+FROM gcslhdepot.staging_v6_vnew.stg_customers AS c
+LEFT JOIN gcslhdepot.staging_v6_vnew.stg_region_tier AS t
   ON c.region = t.region;

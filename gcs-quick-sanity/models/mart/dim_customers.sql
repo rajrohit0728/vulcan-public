@@ -1,5 +1,5 @@
 MODEL (
-  name gcslhdepot.mart_v5_vnew.dim_customers,
+  name gcslhdepot.mart_v6_vnew.dim_customers,
   kind FULL,
   owner 'rohitrajtmdcio',
   grain customer_id,
@@ -32,4 +32,4 @@ SELECT
   signup_date,
   region_tier,
   priority_rank
-FROM gcslhdepot.intermediate_v5_vnew.int_customers_enriched;
+FROM gcslhdepot.intermediate_v6_vnew.int_customers_enriched;

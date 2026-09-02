@@ -82,13 +82,13 @@ class RequireAssertionsForAllModels(Rule):
 
 
 class RequireDqForMartModels(Rule):
-    """Every mart_v5_vnew.* model must have a matching kind: dq suite."""
+    """Every mart_v6_vnew.* model must have a matching kind: dq suite."""
 
     def check_model(self, model: "Model") -> t.Optional["RuleViolation"]:
         if _should_skip(model):
             return None
         name = str(getattr(model, "name", "") or "")
-        if ".mart_v5_vnew." not in name:
+        if ".mart_v6_vnew." not in name:
             return None
         if getattr(model, "dq", None) is None:
             return self.violation(
